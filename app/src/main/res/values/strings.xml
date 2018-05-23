@@ -10,4 +10,5 @@
     <string name="t_add_wardrobe">Dodawanie szafy</string>
     <string name="d_remove_button">Button which represents remove action.</string>
     <string name="l_hanging">Wisząca</string>
+    <string name="l_type">Typ</string>
 </resources>

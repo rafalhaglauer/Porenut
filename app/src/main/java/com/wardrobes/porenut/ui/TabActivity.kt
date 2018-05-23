@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import com.wardrobes.porenut.R
 import kotlinx.android.synthetic.main.activity_tab_list.*
 import java.util.*
 
@@ -13,14 +14,12 @@ abstract class TabActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutRes())
+        setContentView(R.layout.activity_tab_list)
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         setupViewPager(viewPager)
         tabLayout.setupWithViewPager(viewPager)
     }
-
-    protected abstract fun getLayoutRes(): Int
 
     protected abstract fun getFragments(): Map<String, Fragment>
 
