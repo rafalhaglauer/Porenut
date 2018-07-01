@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui
+package com.wardrobes.porenut.ui.wardrobe.manage
 
 import android.app.DialogFragment
 import android.os.Bundle

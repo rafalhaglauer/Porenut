@@ -1,6 +1,7 @@
-package com.wardrobes.porenut.ui
+package com.wardrobes.porenut.ui.wardrobe.detail
 
 import android.support.v4.app.Fragment
+import com.wardrobes.porenut.ui.base.TabActivity
 
 class WardrobeDetailsActivity : TabActivity() {
 

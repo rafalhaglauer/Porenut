@@ -11,13 +11,13 @@
         android:fullBackupContent="@xml/backup_descriptor"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".ui.WardrobeListActivity">
+        <activity android:name=".ui.wardrobe.group.view.WardrobeGroupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.WardrobeDetailsActivity" />
+        <activity android:name=".ui.wardrobe.detail.WardrobeDetailsActivity" />
 
     </application>
 </manifest>

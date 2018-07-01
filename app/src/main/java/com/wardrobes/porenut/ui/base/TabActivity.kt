@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui
+package com.wardrobes.porenut.ui.base
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

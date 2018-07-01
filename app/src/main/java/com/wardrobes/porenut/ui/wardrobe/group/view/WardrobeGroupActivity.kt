@@ -1,10 +1,12 @@
-package com.wardrobes.porenut.ui
+package com.wardrobes.porenut.ui.wardrobe.group.view
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import com.wardrobes.porenut.ui.base.TabActivity
+import com.wardrobes.porenut.ui.wardrobe.manage.ManageWardrobeDialog
 import kotlinx.android.synthetic.main.activity_tab_list.*
 
-class WardrobeListActivity : TabActivity() {
+class WardrobeGroupActivity : TabActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,8 +15,8 @@ class WardrobeListActivity : TabActivity() {
 
     override fun getFragments(): Map<String, Fragment> =
             mapOf(
-                    "TYPOWE" to ListFragment(),
-                    "NIETYPOWE" to ListFragment()
+                    "TYPOWE" to WardrobeGroupFragment(),
+                    "NIETYPOWE" to WardrobeGroupFragment()
             )
 
     private fun showManageWardrobeDialog() {
