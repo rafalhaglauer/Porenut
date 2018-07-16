@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.api
+package com.wardrobes.porenut.api.base
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object BaseProvider {
-    private const val API_URL = "http://127.0.0.1:8081"
+    private const val API_URL = "http://192.168.1.138:8080"
 
     val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(API_URL)

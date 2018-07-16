@@ -23,6 +23,8 @@ abstract class TabActivity : AppCompatActivity() {
 
     protected abstract fun getFragments(): Map<String, Fragment>
 
+    protected abstract fun onTabChangedListener(position: Int)
+
     private fun setupViewPager(viewPager: ViewPager) {
         ViewPagerAdapter(supportFragmentManager).also {
             getFragments().forEach { title, fragment -> it.addFragment(fragment, title) }
@@ -35,6 +37,7 @@ abstract class TabActivity : AppCompatActivity() {
         private val fragmentTitleList = ArrayList<String>()
 
         override fun getItem(position: Int): Fragment {
+            onTabChangedListener(position)
             return fragmentList[position]
         }
 

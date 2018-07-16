@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.wardrobes.porenut">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,12 +14,17 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".ui.wardrobe.group.view.WardrobeGroupActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
         <activity android:name=".ui.wardrobe.detail.WardrobeDetailsActivity" />
+        <activity android:name=".ui.wardrobe.manage.ManageWardrobeActivity" />
 
     </application>
+
 </manifest>
