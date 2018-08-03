@@ -7,5 +7,7 @@ interface WardrobeRepository {
 
     fun getAll(): Observable<List<Wardrobe>>
 
+    fun get(wardrobeId: Long): Observable<Wardrobe>
+
     fun add(wardrobe: Wardrobe): Observable<Any>
 }

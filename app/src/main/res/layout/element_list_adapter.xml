@@ -2,7 +2,6 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tool="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     cardCornerRadius="5dp"
     android:elevation="3dp"
     android:layout_margin="2dp"
@@ -17,14 +16,11 @@
         android:padding="20dp">
 
         <TextView
+            style="@style/Text.Primary"
             android:id="@+id/txtElementName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tool:text="DSG" />
+            android:textSize="@dimen/textMedium" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -32,37 +28,40 @@
             android:orientation="horizontal">
 
             <TextView
+                style="@style/Text.Secondary"
                 android:id="@+id/txtElementLength"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:textSize="@dimen/textSmall"
                 tool:text="600.0" />
 
             <TextView
+                style="@style/Text.Secondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:textSize="@dimen/textSmall"
                 android:text=" x " />
 
             <TextView
+                style="@style/Text.Secondary"
                 android:id="@+id/txtElementWidth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
-                tool:text="700.0" />
+                android:textSize="@dimen/textSmall" />
 
             <TextView
+                style="@style/Text.Secondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
+                android:textSize="@dimen/textSmall"
                 android:text=" x " />
 
             <TextView
+                style="@style/Text.Secondary"
                 android:id="@+id/txtElementHeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="22sp"
-                tool:text="400.0" />
+                android:textSize="@dimen/textSmall" />
 
         </LinearLayout>
 

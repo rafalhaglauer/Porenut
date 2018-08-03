@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layoutContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_symbol"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            style="@style/Text.Primary"
+            android:id="@+id/txtWardrobeSymbol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+        <include layout="@layout/view_divider" />
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_width"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            style="@style/Text.Primary"
+            android:id="@+id/txtWardrobeWidth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+        <include layout="@layout/view_divider" />
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_height"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            style="@style/Text.Primary"
+            android:id="@+id/txtWardrobeHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+        <include layout="@layout/view_divider" />
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_depth"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            style="@style/Text.Primary"
+            android:id="@+id/txtWardrobeDepth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+        <include layout="@layout/view_divider" />
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_type"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            style="@style/Text.Primary"
+            android:id="@+id/txtWardrobeType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+</FrameLayout>

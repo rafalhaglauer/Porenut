@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.api.wardrobe
+package com.wardrobes.porenut.api.data
 
 import com.wardrobes.porenut.data.wardrobe.WardrobeRequest
 import com.wardrobes.porenut.domain.Wardrobe

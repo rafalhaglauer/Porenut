@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Porenut</string>
+    <string name="app_name">Meble</string>
     <string name="d_image_wardrobe_type_description">The symbol of wardrobe type.</string>
     <string name="l_width">Szerokość</string>
     <string name="l_depth">Głębokość</string>
@@ -10,5 +10,9 @@
     <string name="t_add_wardrobe">Dodawanie szafy</string>
     <string name="d_remove_button">Button which represents remove action.</string>
     <string name="l_hanging">Wisząca</string>
+    <string name="l_standing">Stojąca</string>
     <string name="l_type">Typ</string>
+    <string name="l_standard">Typowe</string>
+    <string name="l_custom">Nietypowe</string>
+    <string name="l_details">Szczegóły</string>
 </resources>

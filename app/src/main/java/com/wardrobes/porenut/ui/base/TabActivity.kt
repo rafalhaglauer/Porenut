@@ -1,14 +1,12 @@
 package com.wardrobes.porenut.ui.base
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import com.wardrobes.porenut.R
 import kotlinx.android.synthetic.main.activity_tab_list.*
-import java.util.*
 
 abstract class TabActivity : AppCompatActivity() {
 
@@ -16,42 +14,31 @@ abstract class TabActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab_list)
         setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         setupViewPager(viewPager)
         tabLayout.setupWithViewPager(viewPager)
     }
 
-    protected abstract fun getFragments(): Map<String, Fragment>
-
-    protected abstract fun onTabChangedListener(position: Int)
+    abstract fun getFragments(): List<TabFragment>
 
     private fun setupViewPager(viewPager: ViewPager) {
-        ViewPagerAdapter(supportFragmentManager).also {
-            getFragments().forEach { title, fragment -> it.addFragment(fragment, title) }
+        ViewPagerAdapter(supportFragmentManager).apply {
+            getFragments().forEach { addFragment(it) }
+        }.also {
             viewPager.adapter = it
         }
     }
 
     internal inner class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager) {
-        private val fragmentList = ArrayList<Fragment>()
-        private val fragmentTitleList = ArrayList<String>()
+        private val fragmentList = mutableListOf<TabFragment>()
 
-        override fun getItem(position: Int): Fragment {
-            onTabChangedListener(position)
-            return fragmentList[position]
-        }
+        override fun getItem(position: Int) = fragmentList[position]
 
-        override fun getCount(): Int {
-            return fragmentList.size
-        }
+        override fun getCount(): Int = fragmentList.size
 
-        fun addFragment(fragment: Fragment, title: String) {
+        override fun getPageTitle(position: Int): String = fragmentList[position].getTitle()
+
+        fun addFragment(fragment: TabFragment) {
             fragmentList.add(fragment)
-            fragmentTitleList.add(title)
-        }
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            return fragmentTitleList[position]
         }
     }
 }

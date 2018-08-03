@@ -8,22 +8,36 @@
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/MyMaterialTheme"
+        android:theme="@style/AppTheme"
         android:allowBackup="false"
         android:fullBackupContent="@xml/backup_descriptor"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".ui.wardrobe.group.view.WardrobeGroupActivity">
+        <activity
+            android:theme="@style/TabTheme"
+            android:name=".ui.wardrobe.group.WardrobeGroupActivity"
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-        <activity android:name=".ui.wardrobe.detail.WardrobeDetailsActivity" />
-        <activity android:name=".ui.wardrobe.manage.ManageWardrobeActivity" />
+        <activity
+            android:theme="@style/TabTheme"
+            android:name=".ui.wardrobe.detail.WardrobeDetailsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:theme="@style/TabTheme"
+            android:name=".ui.wardrobe.manage.ManageWardrobeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:theme="@style/TabTheme"
+            android:name=".ui.element.ElementDetailsActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
