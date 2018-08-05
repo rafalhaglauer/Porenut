@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_delete_wardrobe"
+        android:title="Usuń"
+        android:icon="@drawable/ic_delete" />
+
+    <item
+        android:id="@+id/action_copy_wardrobe"
+        android:title="Kopiuj"
+        android:icon="@drawable/ic_copy" />
+
+    <item
+        android:id="@+id/action_edit_wardrobe"
+        android:title="Edytuj"
+        android:icon="@drawable/ic_edit" />
+</menu>

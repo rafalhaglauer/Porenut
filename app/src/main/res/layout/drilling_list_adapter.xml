@@ -13,70 +13,96 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="15dp">
 
-        <TextView
-            style="@style/Text.Secondary"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textSmall"
-            android:text="x: " />
+            android:orientation="horizontal">
 
-        <TextView
-            style="@style/Text.Primary"
-            android:id="@+id/txtXPosition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/textSmall"
-            tool:text="600.0" />
+            <TextView
+                style="@style/Text.Secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSmall"
+                android:text="x: " />
 
-        <TextView
-            style="@style/Text.Secondary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/textSmall"
-            android:layout_marginStart="20dp"
-            android:text="y: " />
+            <TextView
+                style="@style/Text.Primary"
+                android:id="@+id/txtXPosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSmall"
+                tool:text="600.0" />
 
-        <TextView
-            style="@style/Text.Primary"
-            android:id="@+id/txtYPosition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/textSmall"
-            tool:text="600.0" />
+        </LinearLayout>
 
-        <TextView
-            style="@style/Text.Secondary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/textSmall"
-            android:layout_marginStart="20dp"
-            android:text=": " />
 
-        <TextView
-            style="@style/Text.Primary"
-            android:id="@+id/txtDiameter"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textSmall"
-            tool:text="8.0" />
+            android:orientation="horizontal">
 
-        <TextView
-            style="@style/Text.Secondary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/textSmall"
-            android:layout_marginStart="20dp"
-            android:text="h: " />
+            <TextView
+                style="@style/Text.Secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSmall"
+                android:text="y: " />
 
-        <TextView
-            style="@style/Text.Primary"
-            android:id="@+id/txtDepth"
-            android:layout_width="wrap_content"
+            <TextView
+                style="@style/Text.Primary"
+                android:id="@+id/txtYPosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSmall"
+                tool:text="600.0" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textSmall"
-            tool:text="12.0" />
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Text.Secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSmall"
+                android:text="Φ: " />
+
+            <TextView
+                style="@style/Text.Primary"
+                android:id="@+id/txtDiameter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSmall"
+                tool:text="8.0" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Text.Secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSmall"
+                android:text="h: " />
+
+            <TextView
+                style="@style/Text.Primary"
+                android:id="@+id/txtDepth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSmall"
+                tool:text="12.0" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -14,12 +14,28 @@
             style="@style/Text.Secondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/l_symbol"
+            android:text="@string/l_name"
             android:textSize="@dimen/textSmall" />
 
         <TextView
             style="@style/Text.Primary"
-            android:id="@+id/txtWardrobeSymbol"
+            android:id="@+id/txtElementName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+        <include layout="@layout/view_divider" />
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_length"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            style="@style/Text.Primary"
+            android:id="@+id/txtElementLength"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/textMedium" />
@@ -35,7 +51,7 @@
 
         <TextView
             style="@style/Text.Primary"
-            android:id="@+id/txtWardrobeWidth"
+            android:id="@+id/txtElementWidth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/textMedium" />
@@ -51,39 +67,7 @@
 
         <TextView
             style="@style/Text.Primary"
-            android:id="@+id/txtWardrobeHeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/textMedium" />
-
-        <include layout="@layout/view_divider" />
-
-        <TextView
-            style="@style/Text.Secondary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/l_depth"
-            android:textSize="@dimen/textSmall" />
-
-        <TextView
-            style="@style/Text.Primary"
-            android:id="@+id/txtWardrobeDepth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/textMedium" />
-
-        <include layout="@layout/view_divider" />
-
-        <TextView
-            style="@style/Text.Secondary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/l_type"
-            android:textSize="@dimen/textSmall" />
-
-        <TextView
-            style="@style/Text.Primary"
-            android:id="@+id/txtWardrobeType"
+            android:id="@+id/txtElementHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/textMedium" />

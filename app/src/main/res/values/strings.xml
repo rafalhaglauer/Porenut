@@ -15,4 +15,8 @@
     <string name="l_standard">Typowe</string>
     <string name="l_custom">Nietypowe</string>
     <string name="l_details">Szczegóły</string>
+    <string name="l_name">Nazwa</string>
+    <string name="l_length">Długość</string>
+    <string name="l_save">Zapisz</string>
+    <string name="l_copy">Kopiuj</string>
 </resources>

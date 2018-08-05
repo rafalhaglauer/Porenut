@@ -32,6 +32,7 @@
         <activity
             android:theme="@style/TabTheme"
             android:name=".ui.wardrobe.manage.ManageWardrobeActivity"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait" />
 
         <activity
