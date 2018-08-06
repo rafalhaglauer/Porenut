@@ -40,6 +40,12 @@
             android:name=".ui.element.ElementDetailsActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:theme="@style/TabTheme"
+            android:name=".ui.element.ManageElementActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

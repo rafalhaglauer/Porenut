@@ -1,14 +1,11 @@
 <resources>
     <string name="app_name">Meble</string>
-    <string name="d_image_wardrobe_type_description">The symbol of wardrobe type.</string>
     <string name="l_width">Szerokość</string>
     <string name="l_depth">Głębokość</string>
     <string name="l_height">Wysokość</string>
     <string name="l_symbol">Symbol</string>
     <string name="l_add">Dodaj</string>
     <string name="l_cancel">Anuluj</string>
-    <string name="t_add_wardrobe">Dodawanie szafy</string>
-    <string name="d_remove_button">Button which represents remove action.</string>
     <string name="l_hanging">Wisząca</string>
     <string name="l_standing">Stojąca</string>
     <string name="l_type">Typ</string>
@@ -19,4 +16,6 @@
     <string name="l_length">Długość</string>
     <string name="l_save">Zapisz</string>
     <string name="l_copy">Kopiuj</string>
+    <string name="l_remove">Usuń</string>
+    <string name="l_edit">Edytuj</string>
 </resources>

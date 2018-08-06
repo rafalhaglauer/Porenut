@@ -16,5 +16,4 @@ interface WardrobeRepository {
     fun update(wardrobe: Wardrobe): Observable<Long>
 
     fun copy(wardrobeId: Long, symbol: String): Observable<Long>
-    
 }

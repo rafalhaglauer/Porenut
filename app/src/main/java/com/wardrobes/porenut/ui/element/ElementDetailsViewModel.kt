@@ -8,6 +8,7 @@ import com.wardrobes.porenut.data.element.ElementRepository
 import com.wardrobes.porenut.data.element.ElementRestRepository
 import com.wardrobes.porenut.domain.Element
 import com.wardrobes.porenut.domain.UNDEFINED_ID
+import com.wardrobes.porenut.domain.Wardrobe
 import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
 import com.wardrobes.porenut.ui.vo.MeasureFormatter
 import com.wardrobes.porenut.ui.wardrobe.detail.ElementViewEntity
@@ -20,11 +21,22 @@ class ElementDetailsViewModel(
         MutableLiveData<ElementViewState>()
     }
 
+    var creationType: Wardrobe.CreationType? = null
+
     var elementId: Long = UNDEFINED_ID
         set(value) {
             field = value
             fetchDetails()
         }
+
+    fun delete() {
+        elementRepository.delete(elementId)
+                .fetchStateFullModel(
+                        onLoading = { createLoadingState() },
+                        onSuccess = { createDeletedState() },
+                        onError = { createErrorState(it) }
+                )
+    }
 
     private fun fetchDetails() {
         elementRepository.get(elementId)
@@ -40,11 +52,15 @@ class ElementDetailsViewModel(
     }
 
     private fun createSuccessState(element: Element) {
-        viewState.update(ElementViewState(viewEntity = element.toViewEntity()))
+        viewState.update(ElementViewState(viewEntity = element.toViewEntity(), isManageButtonVisible = creationType == Wardrobe.CreationType.CUSTOM))
     }
 
     private fun createErrorState(errorMessage: String?) {
         viewState.update(ElementViewState(errorMessage = errorMessage))
+    }
+
+    private fun createDeletedState() {
+        viewState.update(ElementViewState(isDeleted = true))
     }
 
     private fun LiveData<ElementViewState>.update(viewState: ElementViewState) {
@@ -64,6 +80,8 @@ class ElementDetailsViewModel(
 
 class ElementViewState(
         val isLoading: Boolean = false,
+        val isDeleted: Boolean = false,
+        val isManageButtonVisible: Boolean = false,
         val viewEntity: ElementViewEntity? = null,
         val errorMessage: String? = null
 )

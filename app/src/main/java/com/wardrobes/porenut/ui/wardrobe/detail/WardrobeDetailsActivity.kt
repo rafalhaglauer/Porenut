@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.base.TabActivity
 import com.wardrobes.porenut.ui.base.TabFragment
+import com.wardrobes.porenut.ui.wardrobe.manage.creationType
 import com.wardrobes.porenut.ui.wardrobe.manage.wardrobeId
 
 class WardrobeDetailsActivity : TabActivity() {
@@ -16,6 +17,7 @@ class WardrobeDetailsActivity : TabActivity() {
         wardrobeDetailsViewModel = ViewModelProviders.of(this)[WardrobeDetailsViewModel::class.java]
         wardrobeDetailsViewModel.wardrobeId = intent.wardrobeId
         elementGroupViewModel = ViewModelProviders.of(this)[ElementGroupViewModel::class.java]
+        elementGroupViewModel.creationType = intent.creationType
         elementGroupViewModel.wardrobeId = intent.wardrobeId
     }
 
