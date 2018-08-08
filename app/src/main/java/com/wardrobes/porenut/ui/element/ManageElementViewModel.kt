@@ -28,8 +28,8 @@ class ManageElementViewModel(
         set(value) {
             field = value
             when (value) {
-                RequestType.EDIT -> fetchDetails()
                 RequestType.ADD -> viewState.updateValue(ManageElementViewState(isLoading = false))
+                else -> fetchDetails()
             }
         }
 

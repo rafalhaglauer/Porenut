@@ -18,6 +18,7 @@ class ElementDetailsActivity : TabActivity() {
         elementDetailsViewModel.creationType = intent.creationType
         drillingGroupViewModel = ViewModelProviders.of(this)[DrillingGroupViewModel::class.java]
         drillingGroupViewModel.elementId = intent.elementId
+        drillingGroupViewModel.creationType = intent.creationType
     }
 
     override fun getFragments(): List<TabFragment> {

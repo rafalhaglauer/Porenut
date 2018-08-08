@@ -29,35 +29,17 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/layoutElementName"
+        android:id="@+id/layoutXPosition"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/l_name"
+        android:hint="@string/l_x_position"
         android:layout_margin="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarLayout">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtElementName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textShortMessage" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/layoutElementLength"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/l_length"
-        android:layout_margin="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutElementName">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtElementLength"
+            android:id="@+id/txtXPosition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal" />
@@ -65,17 +47,17 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/layoutElementWidth"
+        android:id="@+id/layoutYPosition"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/l_width"
+        android:hint="@string/l_y_position"
         android:layout_margin="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutElementLength">
+        app:layout_constraintTop_toBottomOf="@+id/layoutXPosition">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtElementWidth"
+            android:id="@+id/txtYPosition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal" />
@@ -83,17 +65,35 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/layoutElementHeight"
+        android:id="@+id/layoutDiameter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/l_height"
+        android:hint="@string/l_diameter"
         android:layout_margin="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutElementWidth">
+        app:layout_constraintTop_toBottomOf="@+id/layoutYPosition">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/txtElementHeight"
+            android:id="@+id/txtDiameter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/layoutDepth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/l_depth"
+        android:layout_margin="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDiameter">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/txtDepth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal" />
@@ -101,7 +101,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <FrameLayout
-        android:id="@+id/btnManageElement"
+        android:id="@+id/btnManageDrilling"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@color/colorAccent"
@@ -113,7 +113,7 @@
         android:focusable="true">
 
         <TextView
-            android:id="@+id/txtManageElement"
+            android:id="@+id/txtManageDrilling"
             android:textColor="@color/textTertiary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -124,10 +124,20 @@
 
     </FrameLayout>
 
+    <com.leinardi.android.speeddial.SpeedDialView
+        android:id="@+id/btnAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnManageDrilling"
+        app:sdMainFabClosedSrc="@drawable/ic_add" />
+
     <android.support.constraint.Group
         android:id="@+id/layoutContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:constraint_referenced_ids="layoutElementName, layoutElementLength, layoutElementWidth, layoutElementHeight, btnManageElement" />
+        app:constraint_referenced_ids="layoutXPosition, layoutYPosition, layoutDiameter, layoutDepth, btnManageDrilling" />
 
 </android.support.constraint.ConstraintLayout>

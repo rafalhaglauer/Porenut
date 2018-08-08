@@ -18,4 +18,7 @@
     <string name="l_copy">Kopiuj</string>
     <string name="l_remove">Usuń</string>
     <string name="l_edit">Edytuj</string>
+    <string name="l_x_position">Pozycja X</string>
+    <string name="l_y_position">Pozycja Y</string>
+    <string name="l_diameter">Średnica</string>
 </resources>

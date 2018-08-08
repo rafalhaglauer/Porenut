@@ -8,6 +8,7 @@ import com.wardrobes.porenut.data.drilling.DrillingRepository
 import com.wardrobes.porenut.data.drilling.DrillingRestRepository
 import com.wardrobes.porenut.domain.Drilling
 import com.wardrobes.porenut.domain.UNDEFINED_ID
+import com.wardrobes.porenut.domain.Wardrobe
 import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
 import com.wardrobes.porenut.ui.vo.MeasureFormatter
 
@@ -23,11 +24,22 @@ class DrillingGroupViewModel(
             fetchDrillings()
         }
 
+    var creationType: Wardrobe.CreationType? = null
+
+    private var drillings: List<Drilling> = emptyList()
+
+    fun refresh() {
+        fetchDrillings()
+    }
+
     private fun fetchDrillings() {
-        drillingRepository.get(elementId)
+        drillingRepository.getAll(elementId)
                 .fetchStateFullModel(
                         onLoading = { createLoadingState() },
-                        onSuccess = { createSuccessState(it) },
+                        onSuccess = {
+                            drillings = it
+                            createSuccessState(it)
+                        },
                         onError = { createErrorState(it) }
                 )
     }
@@ -37,7 +49,7 @@ class DrillingGroupViewModel(
     }
 
     private fun createSuccessState(drillings: List<Drilling>) {
-        updateState(DrillingGroupViewState(viewEntities = drillings.toViewEntities()))
+        updateState(DrillingGroupViewState(viewEntities = drillings.toViewEntities(), isAddDrillingBtnVisible = creationType == Wardrobe.CreationType.CUSTOM))
     }
 
     private fun createErrorState(errorMessage: String?) {
@@ -57,6 +69,8 @@ class DrillingGroupViewModel(
             depth = depth.formattedValue
     )
 
+    fun getId(viewEntity: DrillingViewEntity): Long = drillings.first { it.toViewEntity() == viewEntity }.id
+
     private val Float.formattedValue: String
         get() = measureFormatter.format(this)
 }
@@ -64,7 +78,8 @@ class DrillingGroupViewModel(
 class DrillingGroupViewState(
         val isLoading: Boolean = false,
         val viewEntities: List<DrillingViewEntity> = emptyList(),
-        val errorMessage: String? = null
+        val errorMessage: String? = null,
+        val isAddDrillingBtnVisible: Boolean = false
 )
 
 data class DrillingViewEntity(

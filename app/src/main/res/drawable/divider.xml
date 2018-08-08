@@ -1,0 +1,17 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:left="20dp"
+        android:right="20dp">
+
+        <shape android:shape="rectangle">
+
+            <size android:height="0.5dp" />
+
+            <solid android:color="@color/divider" />
+
+        </shape>
+
+    </item>
+
+</layer-list>

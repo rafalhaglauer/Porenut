@@ -10,4 +10,5 @@
     <dimen name="textSmall">12dp</dimen>
     <dimen name="textMedium">16dp</dimen>
     <dimen name="textLarge">20dp</dimen>
+    <dimen name="textXLarge">24dp</dimen>
 </resources>
