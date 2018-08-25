@@ -8,7 +8,11 @@ import com.wardrobes.porenut.ui.extension.inflate
 import kotlinx.android.synthetic.main.drilling_list_adapter.view.*
 
 
-class DrillingGroupAdapter(private val items: List<DrillingViewEntity>, private val onItemSelected: (DrillingViewEntity) -> Unit) : RecyclerView.Adapter<DrillingGroupAdapter.ViewHolder>() {
+class DrillingGroupAdapter(
+    private val items: List<DrillingViewEntity>,
+    private val onItemSelected: (DrillingViewEntity) -> Unit
+) :
+    RecyclerView.Adapter<DrillingGroupAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(parent.inflate(R.layout.drilling_list_adapter))

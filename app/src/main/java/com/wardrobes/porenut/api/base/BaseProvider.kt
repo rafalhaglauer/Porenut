@@ -10,8 +10,8 @@ object BaseProvider {
     private const val API_URL = "http://192.168.1.138:8080"
 
     val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl(API_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
+        .baseUrl(API_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
 }

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/toolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarLayout" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txtRelativeDrillingComposition"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Grupa wierceń"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
+    <Spinner
+        android:id="@+id/spinnerRelativeDrillingComposition"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRelativeDrillingComposition" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txtElementReference"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Element odniesienia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerRelativeDrillingComposition" />
+
+    <Spinner
+        android:id="@+id/spinnerElementReference"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtElementReference" />
+
+    <com.wardrobes.porenut.ui.common.CompositeOffsetView
+        android:id="@+id/viewXOffset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Pozycja X"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerElementReference" />
+
+    <com.wardrobes.porenut.ui.common.CompositeOffsetView
+        android:id="@+id/viewYOffset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Pozycja Y"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewXOffset" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txtXReferenceLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/l_x_reference_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewYOffset" />
+
+    <Spinner
+        android:id="@+id/spinnerXReferenceLength"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/a_reference_types"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtXReferenceLength" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txtYReferenceLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/l_y_reference_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerXReferenceLength" />
+
+    <Spinner
+        android:id="@+id/spinnerYReferenceLength"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/a_reference_types"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtYReferenceLength" />
+
+    <FrameLayout
+        android:id="@+id/btnManageRelativeDrilling"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/txtManageRelativeComposition"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/l_add"
+            android:textColor="@color/textTertiary"
+            android:textSize="@dimen/textLarge"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+    <android.support.constraint.Group
+        android:id="@+id/layoutContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:constraint_referenced_ids="" />
+
+</android.support.constraint.ConstraintLayout>

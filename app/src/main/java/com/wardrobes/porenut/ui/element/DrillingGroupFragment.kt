@@ -13,11 +13,13 @@ import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.UNDEFINED_ID
 import com.wardrobes.porenut.ui.base.TabFragment
 import com.wardrobes.porenut.ui.drilling.ManageDrillingActivity
+import com.wardrobes.porenut.ui.element.composition.ManageCompositionActivity
 import com.wardrobes.porenut.ui.extension.inflate
 import com.wardrobes.porenut.ui.extension.launchActivity
 import com.wardrobes.porenut.ui.extension.setVisible
 import com.wardrobes.porenut.ui.extension.showMessage
 import com.wardrobes.porenut.ui.wardrobe.manage.drillingId
+import com.wardrobes.porenut.ui.wardrobe.manage.wardrobeId
 import kotlinx.android.synthetic.main.view_list.*
 
 private const val MANAGE_DRILLING_REQUEST_CODE = 1
@@ -36,8 +38,9 @@ class DrillingGroupFragment : TabFragment() {
         drillingGroupViewModel = ViewModelProviders.of(activity!!)[DrillingGroupViewModel::class.java]
         observeViewModel()
         btnAction.setOnClickListener {
-            launchActivity<ManageDrillingActivity>(MANAGE_DRILLING_REQUEST_CODE) {
+            launchActivity<ManageCompositionActivity>(MANAGE_DRILLING_REQUEST_CODE) {
                 elementId = drillingGroupViewModel.elementId
+                wardrobeId = drillingGroupViewModel.wardrobeId
             }
         }
     }
@@ -49,19 +52,21 @@ class DrillingGroupFragment : TabFragment() {
 
     private fun observeViewModel() {
         drillingGroupViewModel.viewState
-                .observe(this, Observer {
-                    progress.setVisible(it!!.isLoading)
-                    bind(it.viewEntities)
-                    context?.showMessage(it.errorMessage)
-                    btnAction.setVisible(it.isAddDrillingBtnVisible)
-                })
+            .observe(this, Observer {
+                progress.setVisible(it!!.isLoading)
+                bind(it.viewEntities)
+                context?.showMessage(it.errorMessage)
+                btnAction.setVisible(it.isAddDrillingBtnVisible)
+            })
         drillingGroupViewModel.elementId = elementId
     }
 
     private fun bind(viewEntities: List<DrillingViewEntity>) {
         contentLayout.apply {
             layoutManager = LinearLayoutManager(context)
-            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL).apply { ContextCompat.getDrawable(context, R.drawable.divider)?.also { setDrawable(it) } })
+            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL).apply {
+                ContextCompat.getDrawable(context, R.drawable.divider)?.also { setDrawable(it) }
+            })
             adapter = DrillingGroupAdapter(viewEntities) {
                 launchActivity<ManageDrillingActivity>(MANAGE_DRILLING_REQUEST_CODE) {
                     elementId = drillingGroupViewModel.elementId

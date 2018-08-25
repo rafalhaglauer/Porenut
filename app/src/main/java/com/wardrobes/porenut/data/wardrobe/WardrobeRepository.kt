@@ -1,6 +1,7 @@
 package com.wardrobes.porenut.data.wardrobe
 
 import com.wardrobes.porenut.domain.Wardrobe
+import com.wardrobes.porenut.domain.WardrobeLight
 import io.reactivex.Observable
 
 interface WardrobeRepository {
@@ -9,11 +10,11 @@ interface WardrobeRepository {
 
     fun get(wardrobeId: Long): Observable<Wardrobe>
 
-    fun add(wardrobe: Wardrobe, wardrobeCreationType: Wardrobe.CreationType): Observable<Long>
+    fun add(wardrobe: WardrobeLight): Observable<Long>
 
-    fun delete(wardrobeId: Long): Observable<Any>
+    fun delete(wardrobeId: Long): Observable<Unit>
 
-    fun update(wardrobe: Wardrobe): Observable<Long>
+    fun update(wardrobeId: Long, wardrobe: WardrobeLight): Observable<Unit>
 
-    fun copy(wardrobeId: Long, symbol: String): Observable<Long>
+//    fun copy(wardrobeId: Long, symbol: String): Observable<Long>
 }

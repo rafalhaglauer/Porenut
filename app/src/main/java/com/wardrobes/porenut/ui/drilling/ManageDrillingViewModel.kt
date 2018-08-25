@@ -4,7 +4,6 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.drilling.DrillingRepository
 import com.wardrobes.porenut.data.drilling.DrillingRestRepository
 import com.wardrobes.porenut.domain.Drilling
@@ -35,48 +34,48 @@ class ManageDrillingViewModel(
     }
 
     fun delete() {
-        drillingRepository.delete(drillingId)
-                .fetchStateFullModel(
-                        onLoading = { createLoadingState() },
-                        onSuccess = { createResultState() },
-                        onError = { createErrorState(it) }
-                )
+//        drillingRepository.delete(drillingId)
+//                .fetchStateFullModel(
+//                        onLoading = { createLoadingState() },
+//                        onSuccess = { createResultState() },
+//                        onError = { createErrorState(it) }
+//                )
     }
 
     fun copy(viewEntity: DrillingViewEntity) {
-        drillingRepository.create(elementId, viewEntity.toDrilling())
-                .fetchStateFullModel(
-                        onLoading = { createLoadingState() },
-                        onSuccess = { drillingId = it },
-                        onError = { createErrorState(it) }
-                )
+//        drillingRepository.create(elementId, viewEntity.toDrilling())
+//                .fetchStateFullModel(
+//                        onLoading = { createLoadingState() },
+//                        onSuccess = { drillingId = it },
+//                        onError = { createErrorState(it) }
+//                )
     }
 
     private fun add(viewEntity: DrillingViewEntity) {
-        drillingRepository.create(elementId, viewEntity.toDrilling())
-                .fetchStateFullModel(
-                        onLoading = { createLoadingState() },
-                        onSuccess = { createResultState() },
-                        onError = { createErrorState(it) }
-                )
+//        drillingRepository.create(elementId, viewEntity.toDrilling())
+//                .fetchStateFullModel(
+//                        onLoading = { createLoadingState() },
+//                        onSuccess = { createResultState() },
+//                        onError = { createErrorState(it) }
+//                )
     }
 
     private fun update(viewEntity: DrillingViewEntity) {
-        drillingRepository.update(drillingId, viewEntity.toDrilling())
-                .fetchStateFullModel(
-                        onLoading = { createLoadingState() },
-                        onSuccess = { createResultState() },
-                        onError = { createErrorState(it) }
-                )
+//        drillingRepository.update(drillingId, viewEntity.toDrilling())
+//                .fetchStateFullModel(
+//                        onLoading = { createLoadingState() },
+//                        onSuccess = { createResultState() },
+//                        onError = { createErrorState(it) }
+//                )
     }
 
     private fun fetchDetails(result: Result? = null) {
-        drillingRepository.get(drillingId)
-                .fetchStateFullModel(
-                        onLoading = { createLoadingState() },
-                        onSuccess = { createDetailsState(it, result) },
-                        onError = { createErrorState(it) }
-                )
+//        drillingRepository.get(drillingId)
+//                .fetchStateFullModel(
+//                        onLoading = { createLoadingState() },
+//                        onSuccess = { createDetailsState(it, result) },
+//                        onError = { createErrorState(it) }
+//                )
     }
 
     private fun createLoadingState() {
@@ -99,13 +98,13 @@ class ManageDrillingViewModel(
         (this as MutableLiveData).value = viewState
     }
 
-    private fun DrillingViewEntity.toDrilling() = Drilling(
-            id = drillingId,
-            xPosition = measureFormatter.toFloat(xPosition),
-            yPosition = measureFormatter.toFloat(yPosition),
-            diameter = measureFormatter.toFloat(diameter),
-            depth = measureFormatter.toFloat(depth)
-    )
+//    private fun DrillingViewEntity.toDrilling() = Drilling(
+//            id = drillingId,
+//            xPosition = measureFormatter.toFloat(xPosition),
+//            yPosition = measureFormatter.toFloat(yPosition),
+//            diameter = measureFormatter.toFloat(diameter),
+//            depth = measureFormatter.toFloat(depth)
+//    )
 
     private fun Drilling.toViewEntity() = DrillingViewEntity(
             xPosition = xPosition.formattedValue,

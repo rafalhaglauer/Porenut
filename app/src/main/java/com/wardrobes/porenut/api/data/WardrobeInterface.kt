@@ -1,11 +1,14 @@
 package com.wardrobes.porenut.api.data
 
-import com.wardrobes.porenut.data.wardrobe.WardrobeRequest
 import com.wardrobes.porenut.domain.Wardrobe
+import com.wardrobes.porenut.domain.WardrobeLight
 import io.reactivex.Observable
 import retrofit2.http.*
 
 interface WardrobeInterface {
+
+    @POST("/wardrobe/copy")
+    fun copy(@Query("id") wardrobeId: Long, @Query("symbol") symbol: String): Observable<Long>
 
     @GET("/wardrobe")
     fun getAll(@Query("creationType") wardrobeCreationType: Wardrobe.CreationType): Observable<List<Wardrobe>>
@@ -13,15 +16,12 @@ interface WardrobeInterface {
     @GET("/wardrobe/{id}")
     fun get(@Path("id") wardrobeId: Long): Observable<Wardrobe>
 
-    @DELETE("/wardrobe/{id}")
-    fun remove(@Path("id") wardrobeId: Long): Observable<Any>
-
     @POST("/wardrobe")
-    fun add(@Body wardrobeRequest: WardrobeRequest, @Query("creationType") wardrobeCreationType: Wardrobe.CreationType): Observable<Long>
+    fun add(@Body wardrobe: WardrobeLight): Observable<Long>
+
+    @DELETE("/wardrobe/{id}")
+    fun delete(@Path("id") wardrobeId: Long): Observable<Unit>
 
     @PUT("/wardrobe/{id}")
-    fun update(@Path("id") wardrobeId: Long, @Body wardrobe: WardrobeRequest): Observable<Long>
-
-    @POST("/wardrobe/copy")
-    fun copy(@Query("id") wardrobeId: Long, @Query("symbol") symbol: String): Observable<Long>
+    fun update(wardrobeId: Long, wardrobe: WardrobeLight): Observable<Unit>
 }

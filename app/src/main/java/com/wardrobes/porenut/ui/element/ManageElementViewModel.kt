@@ -8,6 +8,7 @@ import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.element.ElementRepository
 import com.wardrobes.porenut.data.element.ElementRestRepository
 import com.wardrobes.porenut.domain.Element
+import com.wardrobes.porenut.domain.ElementLight
 import com.wardrobes.porenut.domain.UNDEFINED_ID
 import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
 import com.wardrobes.porenut.ui.vo.MeasureFormatter
@@ -16,8 +17,8 @@ import com.wardrobes.porenut.ui.wardrobe.Result
 import com.wardrobes.porenut.ui.wardrobe.detail.ElementViewEntity
 
 class ManageElementViewModel(
-        private val elementRepository: ElementRepository = ElementRestRepository,
-        private val measureFormatter: MeasureFormatter = DefaultMeasureFormatter
+    private val elementRepository: ElementRepository = ElementRestRepository,
+    private val measureFormatter: MeasureFormatter = DefaultMeasureFormatter
 ) : ViewModel() {
     val viewState: LiveData<ManageElementViewState> = MutableLiveData()
 
@@ -43,47 +44,47 @@ class ManageElementViewModel(
 
     private fun fetchDetails() {
         elementRepository.get(elementId)
-                .fetchStateFullModel(
-                        onLoading = { createLoadingState() },
-                        onSuccess = { createInitialState(it) },
-                        onError = { createErrorState(it) }
-                )
+            .fetchStateFullModel(
+                onLoading = { createLoadingState() },
+                onSuccess = { createInitialState(it) },
+                onError = { createErrorState(it) }
+            )
     }
 
     private fun add(elementViewEntity: ElementViewEntity) {
-        elementRepository.add(wardrobeId, elementViewEntity.toElement(elementId))
-                .fetchStateFullModel(
-                        onLoading = { createLoadingState() },
-                        onSuccess = {
-                            elementId = it
-                            createResultState(Result.ADDED)
-                        },
-                        onError = { createErrorState(it) }
-                )
+        elementRepository.add(elementViewEntity.toElement())
+            .fetchStateFullModel(
+                onLoading = { createLoadingState() },
+                onSuccess = {
+                    elementId = it
+                    createResultState(Result.ADDED)
+                },
+                onError = { createErrorState(it) }
+            )
     }
 
     private fun update(elementViewEntity: ElementViewEntity) {
-        elementRepository.update(elementViewEntity.toElement(elementId))
-                .fetchStateFullModel(
-                        onLoading = { createLoadingState() },
-                        onSuccess = {
-                            elementId = it
-                            createResultState(Result.MODIFIED)
-                        },
-                        onError = { createErrorState(it) }
-                )
+//        elementRepository.update(elementViewEntity.toElement(elementId))
+//                .fetchStateFullModel(
+//                        onLoading = { createLoadingState() },
+//                        onSuccess = {
+//                            elementId = it
+//                            createResultState(Result.MODIFIED)
+//                        },
+//                        onError = { createErrorState(it) }
+//                )
     }
 
     private fun copy(elementViewEntity: ElementViewEntity) {
-        elementRepository.copy(elementId, elementViewEntity.name)
-                .fetchStateFullModel(
-                        onLoading = { createLoadingState() },
-                        onSuccess = {
-                            elementId = it
-                            createResultState(Result.COPIED)
-                        },
-                        onError = { createErrorState(it) }
-                )
+//        elementRepository.copy(elementId, elementViewEntity.name)
+//                .fetchStateFullModel(
+//                        onLoading = { createLoadingState() },
+//                        onSuccess = {
+//                            elementId = it
+//                            createResultState(Result.COPIED)
+//                        },
+//                        onError = { createErrorState(it) }
+//                )
     }
 
     private fun createLoadingState() {
@@ -91,7 +92,13 @@ class ManageElementViewModel(
     }
 
     private fun createInitialState(element: Element) {
-        viewState.updateValue(ManageElementViewState(viewEntity = element.toViewEntity(), btnTextMessage = R.string.l_save, disableEveryFieldExceptName = requestType == RequestType.COPY))
+        viewState.updateValue(
+            ManageElementViewState(
+                viewEntity = element.toViewEntity(),
+                btnTextMessage = R.string.l_save,
+                disableEveryFieldExceptName = requestType == RequestType.COPY
+            )
+        )
     }
 
     private fun createResultState(result: Result) {
@@ -103,18 +110,19 @@ class ManageElementViewModel(
     }
 
     private fun Element.toViewEntity() = ElementViewEntity(
-            name = name,
-            length = length.formattedValue,
-            width = width.formattedValue,
-            height = height.formattedValue
+        name = name,
+        length = length.formattedValue,
+        width = width.formattedValue,
+        height = height.formattedValue
     )
 
-    private fun ElementViewEntity.toElement(elementId: Long) = Element(
-            id = elementId,
-            name = name,
-            length = length.toFloat(),
-            width = width.toFloat(),
-            height = height.toFloat()
+    private fun ElementViewEntity.toElement() = ElementLight(
+        name = name,
+        length = length.toFloat(),
+        width = width.toFloat(),
+        height = height.toFloat(),
+        wardrobeId = wardrobeId
+
     )
 
     private fun String.toFloat() = measureFormatter.toFloat(this)
@@ -128,10 +136,10 @@ class ManageElementViewModel(
 }
 
 class ManageElementViewState(
-        val isLoading: Boolean = false,
-        val disableEveryFieldExceptName: Boolean = false,
-        val viewEntity: ElementViewEntity? = null,
-        val resultType: Result? = null,
-        val errorMessage: String? = null,
-        val btnTextMessage: Int = R.string.l_add
+    val isLoading: Boolean = false,
+    val disableEveryFieldExceptName: Boolean = false,
+    val viewEntity: ElementViewEntity? = null,
+    val resultType: Result? = null,
+    val errorMessage: String? = null,
+    val btnTextMessage: Int = R.string.l_add
 )

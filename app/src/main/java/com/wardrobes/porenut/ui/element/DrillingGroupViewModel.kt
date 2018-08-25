@@ -13,10 +13,12 @@ import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
 import com.wardrobes.porenut.ui.vo.MeasureFormatter
 
 class DrillingGroupViewModel(
-        private val drillingRepository: DrillingRepository = DrillingRestRepository,
-        private val measureFormatter: MeasureFormatter = DefaultMeasureFormatter
+    private val drillingRepository: DrillingRepository = DrillingRestRepository,
+    private val measureFormatter: MeasureFormatter = DefaultMeasureFormatter
 ) : ViewModel() {
     val viewState: LiveData<DrillingGroupViewState> = MutableLiveData()
+
+    var wardrobeId: Long = UNDEFINED_ID
 
     var elementId: Long = UNDEFINED_ID
         set(value) {
@@ -34,14 +36,14 @@ class DrillingGroupViewModel(
 
     private fun fetchDrillings() {
         drillingRepository.getAll(elementId)
-                .fetchStateFullModel(
-                        onLoading = { createLoadingState() },
-                        onSuccess = {
-                            drillings = it
-                            createSuccessState(it)
-                        },
-                        onError = { createErrorState(it) }
-                )
+            .fetchStateFullModel(
+                onLoading = { createLoadingState() },
+                onSuccess = {
+                    drillings = it
+                    createSuccessState(it)
+                },
+                onError = { createErrorState(it) }
+            )
     }
 
     private fun createLoadingState() {
@@ -63,10 +65,10 @@ class DrillingGroupViewModel(
     private fun List<Drilling>.toViewEntities() = map { it.toViewEntity() }
 
     private fun Drilling.toViewEntity() = DrillingViewEntity(
-            xPosition = xPosition.formattedValue,
-            yPosition = yPosition.formattedValue,
-            diameter = diameter.formattedValue,
-            depth = depth.formattedValue
+        xPosition = xPosition.formattedValue,
+        yPosition = yPosition.formattedValue,
+        diameter = diameter.formattedValue,
+        depth = depth.formattedValue
     )
 
     fun getId(viewEntity: DrillingViewEntity): Long = drillings.first { it.toViewEntity() == viewEntity }.id
@@ -76,14 +78,15 @@ class DrillingGroupViewModel(
 }
 
 class DrillingGroupViewState(
-        val isLoading: Boolean = false,
-        val viewEntities: List<DrillingViewEntity> = emptyList(),
-        val errorMessage: String? = null,
-        val isAddDrillingBtnVisible: Boolean = false
+    val isLoading: Boolean = false,
+    val viewEntities: List<DrillingViewEntity> = emptyList(),
+    val errorMessage: String? = null,
+    val isAddDrillingBtnVisible: Boolean = false
 )
 
 data class DrillingViewEntity(
-        val xPosition: String,
-        val yPosition: String,
-        val diameter: String,
-        val depth: String)
+    val xPosition: String,
+    val yPosition: String,
+    val diameter: String,
+    val depth: String
+)

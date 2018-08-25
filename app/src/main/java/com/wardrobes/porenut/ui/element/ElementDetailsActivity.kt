@@ -6,6 +6,7 @@ import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.base.TabActivity
 import com.wardrobes.porenut.ui.base.TabFragment
 import com.wardrobes.porenut.ui.wardrobe.manage.creationType
+import com.wardrobes.porenut.ui.wardrobe.manage.wardrobeId
 
 class ElementDetailsActivity : TabActivity() {
     private lateinit var elementDetailsViewModel: ElementDetailsViewModel
@@ -17,6 +18,7 @@ class ElementDetailsActivity : TabActivity() {
         elementDetailsViewModel.elementId = intent.elementId
         elementDetailsViewModel.creationType = intent.creationType
         drillingGroupViewModel = ViewModelProviders.of(this)[DrillingGroupViewModel::class.java]
+        drillingGroupViewModel.wardrobeId = intent.wardrobeId
         drillingGroupViewModel.elementId = intent.elementId
         drillingGroupViewModel.creationType = intent.creationType
     }
