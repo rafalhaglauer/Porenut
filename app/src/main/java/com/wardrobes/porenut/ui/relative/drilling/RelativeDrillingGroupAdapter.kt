@@ -1,8 +1,8 @@
 package com.wardrobes.porenut.ui.relative.drilling
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.inflate
 import kotlinx.android.synthetic.main.relative_drilling_list_adapter.view.*

@@ -1,8 +1,8 @@
 package com.wardrobes.porenut.ui.common
 
 import android.content.Context
-import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.Offset
 import com.wardrobes.porenut.ui.extension.float

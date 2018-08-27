@@ -1,8 +1,8 @@
 package com.wardrobes.porenut.ui.wardrobe.group
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.domain.Wardrobe
 
 class CreationTypeViewModel : ViewModel() {
@@ -10,7 +10,10 @@ class CreationTypeViewModel : ViewModel() {
     val viewState: LiveData<CreationTypeViewState> = MutableLiveData()
 
     fun refresh() {
-        (viewState as MutableLiveData).value = CreationTypeViewState(shouldRefreshStandardWardrobes = true, shouldRefreshCustomWardrobes = true)
+        (viewState as MutableLiveData).value = CreationTypeViewState(
+            shouldRefreshStandardWardrobes = true,
+            shouldRefreshCustomWardrobes = true
+        )
     }
 
     fun notifyRefreshed(creationType: Wardrobe.CreationType) {
@@ -21,4 +24,7 @@ class CreationTypeViewModel : ViewModel() {
     }
 }
 
-data class CreationTypeViewState(val shouldRefreshCustomWardrobes: Boolean = false, val shouldRefreshStandardWardrobes: Boolean = false)
+data class CreationTypeViewState(
+    val shouldRefreshCustomWardrobes: Boolean = false,
+    val shouldRefreshStandardWardrobes: Boolean = false
+)

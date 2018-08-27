@@ -9,7 +9,8 @@ import io.reactivex.Observable
 object WardrobeRestRepository : WardrobeRepository {
     private val wardrobeInterface = BaseProvider.retrofit.create(WardrobeInterface::class.java)
 
-    override fun getAll(wardrobeCreationType: Wardrobe.CreationType): Observable<List<Wardrobe>> = wardrobeInterface.getAll(wardrobeCreationType)
+    override fun getAll(wardrobeCreationType: Wardrobe.CreationType): Observable<List<Wardrobe>> =
+        wardrobeInterface.getAll(wardrobeCreationType)
 
     override fun get(wardrobeId: Long): Observable<Wardrobe> = wardrobeInterface.get(wardrobeId)
 

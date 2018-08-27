@@ -1,7 +1,7 @@
 package com.wardrobes.porenut.ui.wardrobe.detail
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.base.TabActivity
 import com.wardrobes.porenut.ui.base.TabFragment

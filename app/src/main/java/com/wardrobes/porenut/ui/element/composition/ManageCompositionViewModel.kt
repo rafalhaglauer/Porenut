@@ -1,7 +1,7 @@
 package com.wardrobes.porenut.ui.element.composition
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.composition.CompositionRepository
 import com.wardrobes.porenut.data.composition.CompositionRestRepository

@@ -6,17 +6,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="false"
-        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".ui.wardrobe.group.WardrobeGroupActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/TabTheme">
+            android:name=".ui.MainActivity"
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,69 +23,61 @@
         </activity>
 
         <activity
+            android:name=".ui.wardrobe.group.WardrobeGroupActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".ui.wardrobe.detail.WardrobeDetailsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/TabTheme" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.wardrobe.manage.ManageWardrobeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/TabTheme"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".ui.element.ElementDetailsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/TabTheme" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.element.ManageElementActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/TabTheme"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".ui.drilling.ManageDrillingActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/TabTheme"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".ui.relative.composition.ManageRelativeCompositionActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/TabTheme"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".ui.relative.composition.RelativeCompositionGroupActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/TabTheme" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.relative.drilling.RelativeDrillingGroupActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/TabTheme" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.relative.drilling.ManageRelativeDrillingActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/TabTheme"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".ui.select.ElementGroupActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/TabTheme" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.select.RelativeCompositionGroupActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/TabTheme" />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.element.composition.ManageCompositionActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/TabTheme"
             android:windowSoftInputMode="adjustResize" />
 
     </application>

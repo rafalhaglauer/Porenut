@@ -1,13 +1,13 @@
 package com.wardrobes.porenut.ui.relative.composition
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.launchActivity
 import com.wardrobes.porenut.ui.extension.setVisible
@@ -54,9 +54,13 @@ class RelativeCompositionGroupActivity : AppCompatActivity() {
     private fun bind(compositions: List<String>) {
         contentLayout.apply {
             layoutManager = LinearLayoutManager(context)
-            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL).apply {
-                ContextCompat.getDrawable(context, R.drawable.divider)?.also { setDrawable(it) }
-            })
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    LinearLayoutManager.VERTICAL
+                ).apply {
+                    ContextCompat.getDrawable(context, R.drawable.divider)?.also { setDrawable(it) }
+                })
             adapter = RelativeCompositionGroupAdapter(compositions) {
                 launchActivity<RelativeDrillingGroupActivity> {
                     relativeCompositionId = viewModel.getRelativeCompositionId(it)

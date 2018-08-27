@@ -1,14 +1,14 @@
 package com.wardrobes.porenut.ui.element
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.UNDEFINED_ID
 import com.wardrobes.porenut.ui.base.TabFragment
@@ -64,9 +64,13 @@ class DrillingGroupFragment : TabFragment() {
     private fun bind(viewEntities: List<DrillingViewEntity>) {
         contentLayout.apply {
             layoutManager = LinearLayoutManager(context)
-            addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL).apply {
-                ContextCompat.getDrawable(context, R.drawable.divider)?.also { setDrawable(it) }
-            })
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    LinearLayoutManager.VERTICAL
+                ).apply {
+                    ContextCompat.getDrawable(context, R.drawable.divider)?.also { setDrawable(it) }
+                })
             adapter = DrillingGroupAdapter(viewEntities) {
                 launchActivity<ManageDrillingActivity>(MANAGE_DRILLING_REQUEST_CODE) {
                     elementId = drillingGroupViewModel.elementId

@@ -1,8 +1,8 @@
 package com.wardrobes.porenut.ui.element
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.drilling.DrillingRepository
 import com.wardrobes.porenut.data.drilling.DrillingRestRepository
@@ -51,7 +51,12 @@ class DrillingGroupViewModel(
     }
 
     private fun createSuccessState(drillings: List<Drilling>) {
-        updateState(DrillingGroupViewState(viewEntities = drillings.toViewEntities(), isAddDrillingBtnVisible = creationType == Wardrobe.CreationType.CUSTOM))
+        updateState(
+            DrillingGroupViewState(
+                viewEntities = drillings.toViewEntities(),
+                isAddDrillingBtnVisible = creationType == Wardrobe.CreationType.CUSTOM
+            )
+        )
     }
 
     private fun createErrorState(errorMessage: String?) {
@@ -71,7 +76,8 @@ class DrillingGroupViewModel(
         depth = depth.formattedValue
     )
 
-    fun getId(viewEntity: DrillingViewEntity): Long = drillings.first { it.toViewEntity() == viewEntity }.id
+    fun getId(viewEntity: DrillingViewEntity): Long =
+        drillings.first { it.toViewEntity() == viewEntity }.id
 
     private val Float.formattedValue: String
         get() = measureFormatter.format(this)

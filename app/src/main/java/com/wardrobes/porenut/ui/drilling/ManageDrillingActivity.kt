@@ -1,10 +1,10 @@
 package com.wardrobes.porenut.ui.drilling
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.element.DrillingViewEntity
 import com.wardrobes.porenut.ui.element.elementId
@@ -64,10 +64,10 @@ class ManageDrillingActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?) =
-            when (item?.itemId) {
-                android.R.id.home -> onBackPressed().run { true }
-                else -> super.onOptionsItemSelected(item)
-            }
+        when (item?.itemId) {
+            android.R.id.home -> onBackPressed().run { true }
+            else -> super.onOptionsItemSelected(item)
+        }
 
     private fun observeViewModel() {
         viewModel.viewState.observe(this, Observer {
@@ -95,8 +95,9 @@ class ManageDrillingActivity : AppCompatActivity() {
     }
 
     private fun build() = DrillingViewEntity(
-            xPosition = xPosition,
-            yPosition = yPosition,
-            diameter = diameter,
-            depth = depth)
+        xPosition = xPosition,
+        yPosition = yPosition,
+        diameter = diameter,
+        depth = depth
+    )
 }

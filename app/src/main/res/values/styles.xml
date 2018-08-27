@@ -6,10 +6,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="TabTheme" parent="AppTheme">
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-    </style>
+    <style name="Text" />
 
     <style name="Text.Primary">
         <item name="android:textColor">@color/textPrimary</item>
@@ -19,6 +16,8 @@
         <item name="android:textColor">@color/textSecondary</item>
     </style>
 
-    <style name="Text" />
+    <style name="Text.Tertiary">
+        <item name="android:textColor">@color/textTertiary</item>
+    </style>
 
 </resources>

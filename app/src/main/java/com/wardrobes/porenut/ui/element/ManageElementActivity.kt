@@ -1,10 +1,10 @@
 package com.wardrobes.porenut.ui.element
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.*
 import com.wardrobes.porenut.ui.wardrobe.detail.ElementViewEntity
@@ -58,10 +58,10 @@ class ManageElementActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?) =
-            when (item?.itemId) {
-                android.R.id.home -> onBackPressed().run { true }
-                else -> super.onOptionsItemSelected(item)
-            }
+        when (item?.itemId) {
+            android.R.id.home -> onBackPressed().run { true }
+            else -> super.onOptionsItemSelected(item)
+        }
 
     private fun observeViewModel() {
         manageElementViewModel.viewState.observe(this, Observer {
@@ -72,7 +72,11 @@ class ManageElementActivity : AppCompatActivity() {
                 showMessage(it.errorMessage)
                 txtManageElement.text = getString(it.btnTextMessage)
                 it.viewEntity?.also { bind(it) }
-                if (it.disableEveryFieldExceptName) listOf(txtElementLength, txtElementWidth, txtElementHeight).forEach { it.isEnabled = false }
+                if (it.disableEveryFieldExceptName) listOf(
+                    txtElementLength,
+                    txtElementWidth,
+                    txtElementHeight
+                ).forEach { it.isEnabled = false }
 
             } else {
                 finishWithResult(result.value) {
@@ -92,9 +96,9 @@ class ManageElementActivity : AppCompatActivity() {
     }
 
     private fun build() = ElementViewEntity(
-            name = elementName,
-            length = elementLength,
-            width = elementWidth,
-            height = elementHeight
+        name = elementName,
+        length = elementLength,
+        width = elementWidth,
+        height = elementHeight
     )
 }

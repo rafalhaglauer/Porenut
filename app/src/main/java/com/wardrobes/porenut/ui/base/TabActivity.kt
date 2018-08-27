@@ -1,11 +1,11 @@
 package com.wardrobes.porenut.ui.base
 
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.wardrobes.porenut.R
 import kotlinx.android.synthetic.main.activity_tab.*
 
@@ -23,10 +23,10 @@ abstract class TabActivity : AppCompatActivity() {
     abstract fun getFragments(): List<TabFragment>
 
     override fun onOptionsItemSelected(item: MenuItem?) =
-            when (item?.itemId) {
-                android.R.id.home -> onBackPressed().run { true }
-                else -> super.onOptionsItemSelected(item)
-            }
+        when (item?.itemId) {
+            android.R.id.home -> onBackPressed().run { true }
+            else -> super.onOptionsItemSelected(item)
+        }
 
     private fun setupViewPager(viewPager: ViewPager) {
         ViewPagerAdapter(supportFragmentManager).apply {
