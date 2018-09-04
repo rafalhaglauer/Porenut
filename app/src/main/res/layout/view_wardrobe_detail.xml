@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/contentWardrobeDetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_symbol"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            android:id="@+id/txtWardrobeSymbol"
+            style="@style/Text.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+        <include layout="@layout/view_divider" />
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_width"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            android:id="@+id/txtWardrobeWidth"
+            style="@style/Text.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+        <include layout="@layout/view_divider" />
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_height"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            android:id="@+id/txtWardrobeHeight"
+            style="@style/Text.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+        <include layout="@layout/view_divider" />
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_depth"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            android:id="@+id/txtWardrobeDepth"
+            style="@style/Text.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+        <include layout="@layout/view_divider" />
+
+        <TextView
+            style="@style/Text.Secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/l_type"
+            android:textSize="@dimen/textSmall" />
+
+        <TextView
+            android:id="@+id/txtWardrobeType"
+            style="@style/Text.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textMedium" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressWardrobeDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <com.leinardi.android.speeddial.SpeedDialView
+        android:id="@+id/btnActionWardrobeDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:sdMainFabClosedSrc="@drawable/ic_add" />
+
+</merge>

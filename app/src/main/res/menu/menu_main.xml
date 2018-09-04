@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/wardrobeCollectionSectionFragment"
+        android:icon="@drawable/ic_kitchen"
+        android:title="Kolekcje" />
+
+    <item
+        android:id="@+id/wardrobeSectionFragment"
+        android:icon="@drawable/ic_wardrobe"
+        android:title="Szafy" />
+
+    <item
+        android:id="@+id/drillingSectionFragment"
+        android:icon="@drawable/ic_drilling"
+        android:title="Wiercenia" />
+
+</menu>
