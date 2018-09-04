@@ -12,8 +12,8 @@ import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.launchActivity
 import com.wardrobes.porenut.ui.extension.setVisible
 import com.wardrobes.porenut.ui.extension.showMessage
-import com.wardrobes.porenut.ui.relativeCompositionId
-import com.wardrobes.porenut.ui.wardrobe.Result
+import com.wardrobes.porenut.ui.vo.Result
+import com.wardrobes.porenut.ui.vo.relativeCompositionId
 import kotlinx.android.synthetic.main.view_list.*
 
 class RelativeDrillingGroupActivity : AppCompatActivity() {
@@ -51,7 +51,7 @@ class RelativeDrillingGroupActivity : AppCompatActivity() {
     }
 
     private fun bind(drillingNames: List<String>) {
-        contentLayout.apply {
+        layoutContent.apply {
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(
                 DividerItemDecoration(

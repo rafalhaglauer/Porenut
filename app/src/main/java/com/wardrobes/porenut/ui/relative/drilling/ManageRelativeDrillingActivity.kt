@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.*
-import com.wardrobes.porenut.ui.relativeCompositionId
+import com.wardrobes.porenut.ui.vo.relativeCompositionId
 import kotlinx.android.synthetic.main.activity_manage_relative_drilling.*
 
 class ManageRelativeDrillingActivity : AppCompatActivity() {

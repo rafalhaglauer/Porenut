@@ -8,7 +8,7 @@ import com.wardrobes.porenut.data.relative.RelativeDrillingRepository
 import com.wardrobes.porenut.data.relative.RelativeDrillingRestRepository
 import com.wardrobes.porenut.domain.CompositeOffset
 import com.wardrobes.porenut.domain.RelativeDrillingLight
-import com.wardrobes.porenut.ui.wardrobe.Result
+import com.wardrobes.porenut.ui.vo.Result
 
 class ManageRelativeDrillingViewModel(
     private val relativeDrillingRepository: RelativeDrillingRepository = RelativeDrillingRestRepository

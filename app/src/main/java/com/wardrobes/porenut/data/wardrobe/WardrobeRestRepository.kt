@@ -4,6 +4,7 @@ import com.wardrobes.porenut.api.base.BaseProvider
 import com.wardrobes.porenut.api.data.WardrobeInterface
 import com.wardrobes.porenut.domain.Wardrobe
 import com.wardrobes.porenut.domain.WardrobeLight
+import io.reactivex.Completable
 import io.reactivex.Observable
 
 object WardrobeRestRepository : WardrobeRepository {
@@ -16,9 +17,9 @@ object WardrobeRestRepository : WardrobeRepository {
 
     override fun add(wardrobe: WardrobeLight): Observable<Long> = wardrobeInterface.add(wardrobe)
 
-    override fun delete(wardrobeId: Long): Observable<Unit> = wardrobeInterface.delete(wardrobeId)
+    override fun delete(wardrobeId: Long): Completable = wardrobeInterface.delete(wardrobeId)
 
-    override fun update(wardrobeId: Long, wardrobe: WardrobeLight): Observable<Unit> =
+    override fun update(wardrobeId: Long, wardrobe: WardrobeLight): Completable =
         wardrobeInterface.update(wardrobeId, wardrobe)
 
 //    override fun copy(wardrobeId: Long, symbol: String): Observable<Long> = wardrobeInterface.copy(wardrobeId, symbol)

@@ -13,7 +13,7 @@ import com.wardrobes.porenut.domain.CompositeOffset
 import com.wardrobes.porenut.domain.Element
 import com.wardrobes.porenut.domain.ReferenceElementRelativeDrillingCompositionLight
 import com.wardrobes.porenut.domain.RelativeDrillingComposition
-import com.wardrobes.porenut.ui.wardrobe.Result
+import com.wardrobes.porenut.ui.vo.Result
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 

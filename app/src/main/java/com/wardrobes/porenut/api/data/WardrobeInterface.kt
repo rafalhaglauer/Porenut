@@ -2,6 +2,7 @@ package com.wardrobes.porenut.api.data
 
 import com.wardrobes.porenut.domain.Wardrobe
 import com.wardrobes.porenut.domain.WardrobeLight
+import io.reactivex.Completable
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -20,8 +21,8 @@ interface WardrobeInterface {
     fun add(@Body wardrobe: WardrobeLight): Observable<Long>
 
     @DELETE("/wardrobe/{id}")
-    fun delete(@Path("id") wardrobeId: Long): Observable<Unit>
+    fun delete(@Path("id") wardrobeId: Long): Completable
 
     @PUT("/wardrobe/{id}")
-    fun update(wardrobeId: Long, wardrobe: WardrobeLight): Observable<Unit>
+    fun update(@Path("id") wardrobeId: Long, @Body wardrobe: WardrobeLight): Completable
 }

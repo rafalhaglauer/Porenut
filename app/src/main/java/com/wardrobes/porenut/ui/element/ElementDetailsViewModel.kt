@@ -9,9 +9,9 @@ import com.wardrobes.porenut.data.element.ElementRestRepository
 import com.wardrobes.porenut.domain.Element
 import com.wardrobes.porenut.domain.UNDEFINED_ID
 import com.wardrobes.porenut.domain.Wardrobe
+import com.wardrobes.porenut.ui.v2.element.ElementViewEntity
 import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
 import com.wardrobes.porenut.ui.vo.MeasureFormatter
-import com.wardrobes.porenut.ui.wardrobe.detail.ElementViewEntity
 
 class ElementDetailsViewModel(
     private val elementRepository: ElementRepository = ElementRestRepository,

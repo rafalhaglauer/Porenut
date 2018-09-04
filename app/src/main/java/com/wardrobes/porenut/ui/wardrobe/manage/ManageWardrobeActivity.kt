@@ -7,6 +7,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.*
+import com.wardrobes.porenut.ui.vo.requestType
+import com.wardrobes.porenut.ui.vo.wardrobeCreationType
+import com.wardrobes.porenut.ui.vo.wardrobeId
 import kotlinx.android.synthetic.main.activity_manage_wardrobe.*
 
 class ManageWardrobeActivity : AppCompatActivity() {
@@ -20,7 +23,7 @@ class ManageWardrobeActivity : AppCompatActivity() {
         observeViewModel()
 
         manageWardrobeViewModel.wardrobeId = intent.wardrobeId
-        manageWardrobeViewModel.creationType = intent.creationType
+        manageWardrobeViewModel.creationType = intent.wardrobeCreationType
         manageWardrobeViewModel.requestType = intent.requestType
 
         btnManageWardrobe.setOnClickListener {

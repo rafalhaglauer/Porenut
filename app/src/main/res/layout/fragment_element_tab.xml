@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:background="@drawable/toggle_switch_background"
+        android:padding="1.25dp">
+
+        <belka.us.androidtoggleswitch.widgets.ToggleSwitch
+            android:id="@+id/switchElementTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/textLarge"
+            custom:activeBgColor="@color/colorAccent"
+            custom:activeTextColor="@color/textTertiary"
+            custom:cornerRadius="10dp"
+            custom:inactiveBgColor="@color/textTertiary"
+            custom:inactiveTextColor="@android:color/black"
+            custom:textToggleCenter="WIERCENIA"
+            custom:textToggleLeft="SZCZEGÓŁY"
+            custom:textToggleRight="KOMPOZYCJE"
+            custom:toggleWidth="180dp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp">
+
+        <com.wardrobes.porenut.ui.v2.element.ElementDetailView
+            android:id="@+id/viewElementDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <com.wardrobes.porenut.ui.v2.element.DrillingGroupView
+            android:id="@+id/viewDrillingGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <com.wardrobes.porenut.ui.v2.element.DrillingGroupView
+            android:id="@+id/viewRelativeDrillingGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</LinearLayout>

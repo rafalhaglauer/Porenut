@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.ui.element.elementId
 import com.wardrobes.porenut.ui.extension.finishWithResult
 import com.wardrobes.porenut.ui.extension.setVisible
-import com.wardrobes.porenut.ui.wardrobe.manage.wardrobeId
+import com.wardrobes.porenut.ui.vo.elementId
+import com.wardrobes.porenut.ui.vo.wardrobeId
 import kotlinx.android.synthetic.main.activity_manage_reference_element_composition.*
 
 class ManageCompositionActivity : AppCompatActivity() {

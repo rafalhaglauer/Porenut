@@ -29,13 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout"
-        app:layout_constraintBottom_toTopOf="@id/navigationBar" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
 
-    <com.wardrobes.porenut.ui.NavigationBar
-        android:id="@+id/navigationBar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
-    s
 </androidx.constraintlayout.widget.ConstraintLayout>

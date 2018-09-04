@@ -4,23 +4,23 @@
     android:layout_height="match_parent">
 
     <ProgressBar
-        android:id="@+id/layoutProgress"
+        android:id="@+id/progressWardrobeGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
         custom:layout_constraintBottom_toBottomOf="parent"
         custom:layout_constraintEnd_toEndOf="parent"
         custom:layout_constraintStart_toStartOf="parent"
-        custom:layout_constraintTop_toBottomOf="@id/layoutSwitch" />
+        custom:layout_constraintTop_toBottomOf="@id/layoutSwitchWardrobeGroup" />
 
     <FrameLayout
-        android:id="@+id/layoutSwitch"
+        android:id="@+id/layoutSwitchWardrobeGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="@drawable/toggle_switch_background"
         android:padding="1.25dp"
-        custom:layout_constraintBottom_toTopOf="@+id/layoutContent"
+        custom:layout_constraintBottom_toTopOf="@+id/contentWardrobeGroup"
         custom:layout_constraintEnd_toEndOf="parent"
         custom:layout_constraintStart_toStartOf="parent"
         custom:layout_constraintTop_toTopOf="parent">
@@ -43,24 +43,24 @@
     </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/layoutContent"
+        android:id="@+id/contentWardrobeGroup"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         custom:layout_constraintBottom_toBottomOf="parent"
         custom:layout_constraintEnd_toEndOf="parent"
         custom:layout_constraintStart_toStartOf="parent"
-        custom:layout_constraintTop_toBottomOf="@id/layoutSwitch" />
+        custom:layout_constraintTop_toBottomOf="@id/layoutSwitchWardrobeGroup" />
 
     <RelativeLayout
-        android:id="@+id/layoutEmptyListNotification"
+        android:id="@+id/emptyListNotificationWardrobeGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
         custom:layout_constraintBottom_toBottomOf="parent"
         custom:layout_constraintEnd_toEndOf="parent"
         custom:layout_constraintStart_toStartOf="parent"
-        custom:layout_constraintTop_toBottomOf="@id/layoutSwitch">
+        custom:layout_constraintTop_toBottomOf="@id/layoutSwitchWardrobeGroup">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/icEmptyList"
@@ -83,7 +83,7 @@
     </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAction"
+        android:id="@+id/btnActionWardrobeGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"

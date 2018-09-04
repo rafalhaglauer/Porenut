@@ -1,5 +1,6 @@
-package com.wardrobes.porenut.ui.v2
+package com.wardrobes.porenut.ui.v2.wardrobe
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.Wardrobe
 import com.wardrobes.porenut.ui.extension.*
-import com.wardrobes.porenut.ui.wardrobe.RequestType
+import com.wardrobes.porenut.ui.vo.*
 import com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupAdapter
 import com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupViewModel
 import com.wardrobes.porenut.ui.wardrobe.group.WardrobeViewEntity
 import com.wardrobes.porenut.ui.wardrobe.manage.ManageWardrobeActivity
-import com.wardrobes.porenut.ui.wardrobe.manage.creationType
-import com.wardrobes.porenut.ui.wardrobe.manage.requestType
 import kotlinx.android.synthetic.main.fragment_wardrobe_group.*
+
+private const val REQUEST_ADD_WARDROBE = 1
 
 class WardrobeGroupFragment : Fragment() {
     private lateinit var viewModel: WardrobeGroupViewModel
@@ -35,16 +36,21 @@ class WardrobeGroupFragment : Fragment() {
         setupFab()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_ADD_WARDROBE && resultCode == Result.ADDED.value) {
+            switchWardrobeGroup.checkedTogglePosition = switchWardrobeGroup.checkedTogglePosition
+        }
+    }
+
     private fun setupLayoutContent() {
-        layoutContent.apply {
+        contentWardrobeGroup.apply {
             layoutManager = LinearLayoutManager(context)
             setDivider(R.drawable.divider)
             adapter = WardrobeGroupAdapter {
-                viewModel.selectedWardrobe = it
-//                launchActivity<WardrobeDetailsActivity>(MANAGE_WARDROBE_REQUEST_CODE) {
-//                    creationType = wardrobeCreationType
-//                    wardrobeId = wardrobeGroupViewModel.selectedWardrobeId
-//                }
+                navigateTo(R.id.wardrobeSectionToWardrobeTab) {
+                    wardrobeId = viewModel.getWardrobeId(it)
+                }
             }
         }
     }
@@ -52,9 +58,9 @@ class WardrobeGroupFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.viewState
             .observe(this) {
-                layoutProgress.setVisible(isLoading)
-                layoutEmptyListNotification.setVisible(isEmptyListNotificationVisible)
-                bind(viewEntity)
+                progressWardrobeGroup.setVisible(isLoading)
+                emptyListNotificationWardrobeGroup.setVisible(isEmptyListNotificationVisible)
+                bind(viewEntities)
                 context?.showMessage(errorMessage)
             }
     }
@@ -67,15 +73,15 @@ class WardrobeGroupFragment : Fragment() {
     }
 
     private fun setupFab() {
-        btnAction.setOnClickListener {
-            launchActivity<ManageWardrobeActivity> {
-                creationType = viewModel.creationType
+        btnActionWardrobeGroup.setOnClickListener {
+            launchActivity<ManageWardrobeActivity>(REQUEST_ADD_WARDROBE) {
+                wardrobeCreationType = viewModel.creationType
                 requestType = RequestType.ADD
             }
         }
     }
 
     private fun bind(viewEntities: List<WardrobeViewEntity>) {
-        (layoutContent.adapter as WardrobeGroupAdapter).setItems(viewEntities)
+        (contentWardrobeGroup.adapter as WardrobeGroupAdapter).setItems(viewEntities)
     }
 }

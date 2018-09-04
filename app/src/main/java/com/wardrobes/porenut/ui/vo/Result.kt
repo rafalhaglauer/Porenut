@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.wardrobe
+package com.wardrobes.porenut.ui.vo
 
 enum class Result(val value: Int) {
     UNDEFINED(0), DELETED(1), MODIFIED(2), ADDED(3), COPIED(4);

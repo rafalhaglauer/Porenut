@@ -13,8 +13,8 @@ import com.wardrobes.porenut.ui.extension.launchActivity
 import com.wardrobes.porenut.ui.extension.setVisible
 import com.wardrobes.porenut.ui.extension.showMessage
 import com.wardrobes.porenut.ui.relative.drilling.RelativeDrillingGroupActivity
-import com.wardrobes.porenut.ui.relativeCompositionId
-import com.wardrobes.porenut.ui.wardrobe.Result
+import com.wardrobes.porenut.ui.vo.Result
+import com.wardrobes.porenut.ui.vo.relativeCompositionId
 import kotlinx.android.synthetic.main.view_list.*
 
 private const val ADD_RELATIVE_COMPOSITION_REQUEST_CODE = 1
@@ -52,7 +52,7 @@ class RelativeCompositionGroupActivity : AppCompatActivity() {
     }
 
     private fun bind(compositions: List<String>) {
-        contentLayout.apply {
+        layoutContent.apply {
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(
                 DividerItemDecoration(

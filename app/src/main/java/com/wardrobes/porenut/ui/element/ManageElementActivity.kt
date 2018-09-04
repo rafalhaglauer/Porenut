@@ -7,9 +7,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.*
-import com.wardrobes.porenut.ui.wardrobe.detail.ElementViewEntity
-import com.wardrobes.porenut.ui.wardrobe.manage.requestType
-import com.wardrobes.porenut.ui.wardrobe.manage.wardrobeId
+import com.wardrobes.porenut.ui.v2.element.ElementViewEntity
+import com.wardrobes.porenut.ui.vo.elementId
+import com.wardrobes.porenut.ui.vo.requestType
+import com.wardrobes.porenut.ui.vo.wardrobeId
 import kotlinx.android.synthetic.main.activity_manage_element.*
 
 class ManageElementActivity : AppCompatActivity() {
@@ -41,7 +42,6 @@ class ManageElementActivity : AppCompatActivity() {
     fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_element)
-        setSupportActionBar(toolbar)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_close)
@@ -59,7 +59,7 @@ class ManageElementActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?) =
         when (item?.itemId) {
-            android.R.id.home -> onBackPressed().run { true }
+            android.R.id.home -> finish().run { true }
             else -> super.onOptionsItemSelected(item)
         }
 

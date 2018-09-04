@@ -23,21 +23,9 @@
         </activity>
 
         <activity
-            android:name=".ui.wardrobe.group.WardrobeGroupActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".ui.wardrobe.detail.WardrobeDetailsActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".ui.wardrobe.manage.ManageWardrobeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name=".ui.element.ElementDetailsActivity"
-            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.element.ManageElementActivity"
@@ -66,14 +54,6 @@
             android:name=".ui.relative.drilling.ManageRelativeDrillingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name=".ui.select.ElementGroupActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".ui.select.RelativeCompositionGroupActivity"
-            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.element.composition.ManageCompositionActivity"

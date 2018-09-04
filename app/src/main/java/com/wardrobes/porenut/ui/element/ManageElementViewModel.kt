@@ -10,11 +10,11 @@ import com.wardrobes.porenut.data.element.ElementRestRepository
 import com.wardrobes.porenut.domain.Element
 import com.wardrobes.porenut.domain.ElementLight
 import com.wardrobes.porenut.domain.UNDEFINED_ID
+import com.wardrobes.porenut.ui.v2.element.ElementViewEntity
 import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
 import com.wardrobes.porenut.ui.vo.MeasureFormatter
-import com.wardrobes.porenut.ui.wardrobe.RequestType
-import com.wardrobes.porenut.ui.wardrobe.Result
-import com.wardrobes.porenut.ui.wardrobe.detail.ElementViewEntity
+import com.wardrobes.porenut.ui.vo.RequestType
+import com.wardrobes.porenut.ui.vo.Result
 
 class ManageElementViewModel(
     private val elementRepository: ElementRepository = ElementRestRepository,
