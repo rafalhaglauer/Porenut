@@ -4,8 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wardrobes.porenut.R
+import com.wardrobes.porenut.ui.element.detail.ElementViewEntity
 import com.wardrobes.porenut.ui.extension.inflate
-import com.wardrobes.porenut.ui.v2.element.ElementViewEntity
 import kotlinx.android.synthetic.main.element_list_adapter.view.*
 
 

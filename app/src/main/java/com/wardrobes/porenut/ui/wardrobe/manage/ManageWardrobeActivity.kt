@@ -18,7 +18,10 @@ class ManageWardrobeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_wardrobe)
-
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_close)
+        }
         manageWardrobeViewModel = ViewModelProviders.of(this)[ManageWardrobeViewModel::class.java]
         observeViewModel()
 

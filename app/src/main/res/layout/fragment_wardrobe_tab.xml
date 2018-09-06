@@ -35,17 +35,17 @@
         android:layout_height="match_parent"
         android:layout_marginTop="20dp">
 
-        <com.wardrobes.porenut.ui.v2.wardrobe.WardrobeDetailView
+        <com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailView
             android:id="@+id/viewWardrobeDetail"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <com.wardrobes.porenut.ui.v2.wardrobe.ElementGroupView
+        <com.wardrobes.porenut.ui.wardrobe.detail.ElementGroupView
             android:id="@+id/viewElementGroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <com.wardrobes.porenut.ui.v2.wardrobe.WardrobeGalleryView
+        <com.wardrobes.porenut.ui.wardrobe.detail.WardrobeGalleryView
             android:id="@+id/viewWardrobeGallery"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

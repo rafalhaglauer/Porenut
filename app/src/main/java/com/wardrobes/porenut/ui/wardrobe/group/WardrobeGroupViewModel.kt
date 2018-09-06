@@ -27,10 +27,6 @@ class WardrobeGroupViewModel(
 
     private var wardrobes: List<Wardrobe> = emptyList()
 
-    fun refresh() {
-        fetchWardrobes()
-    }
-
     fun getWardrobeId(viewEntity: WardrobeViewEntity) = wardrobes.first { it.symbol == viewEntity.symbol }.id
 
     private fun fetchWardrobes() {

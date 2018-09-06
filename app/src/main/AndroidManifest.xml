@@ -23,40 +23,40 @@
         </activity>
 
         <activity
-            android:name=".ui.wardrobe.manage.ManageWardrobeActivity"
+            android:name="com.wardrobes.porenut.ui.wardrobe.manage.ManageWardrobeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".ui.element.ManageElementActivity"
+            android:name="com.wardrobes.porenut.ui.element.manage.ManageElementActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".ui.drilling.ManageDrillingActivity"
+            android:name="com.wardrobes.porenut.ui.drilling.standard.ManageDrillingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".ui.relative.composition.ManageRelativeCompositionActivity"
+            android:name=".ui.composition.manage.ManageRelativeCompositionActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".ui.relative.composition.RelativeCompositionGroupActivity"
+            android:name=".ui.composition.group.RelativeCompositionGroupFragment"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.relative.drilling.RelativeDrillingGroupActivity"
+            android:name=".ui.drilling.relative.group.RelativeDrillingGroupFragment"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.relative.drilling.ManageRelativeDrillingActivity"
+            android:name=".ui.drilling.relative.manage.ManageRelativeDrillingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".ui.element.composition.ManageCompositionActivity"
+            android:name=".ui.element.composition.manage.ManageCompositionActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 

@@ -3,10 +3,11 @@ package com.wardrobes.porenut.domain
 import com.google.gson.annotations.SerializedName
 
 data class DrillingLight(
-    @SerializedName("xposition") val xPosition: Float,
-    @SerializedName("yposition") val yPosition: Float,
+    val xPosition: Float,
+    val yPosition: Float,
     val diameter: Float,
-    val depth: Float
+    val depth: Float,
+    val elementId: Long
 )
 
 data class Drilling(

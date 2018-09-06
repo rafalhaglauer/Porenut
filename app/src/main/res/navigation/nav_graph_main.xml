@@ -5,11 +5,11 @@
 
     <fragment
         android:id="@+id/wardrobeCollectionSectionFragment"
-        android:name="com.wardrobes.porenut.ui.v2.wardrobe.WardrobeGroupFragment" />
+        android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment" />
 
     <fragment
         android:id="@+id/wardrobeSectionFragment"
-        android:name="com.wardrobes.porenut.ui.v2.wardrobe.WardrobeGroupFragment">
+        android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment">
 
         <action
             android:id="@+id/wardrobeSectionToWardrobeTab"
@@ -19,11 +19,17 @@
 
     <fragment
         android:id="@+id/drillingSectionFragment"
-        android:name="com.wardrobes.porenut.ui.v2.wardrobe.WardrobeGroupFragment" />
+        android:name="com.wardrobes.porenut.ui.composition.group.RelativeCompositionGroupFragment">
+
+        <action
+            android:id="@+id/drillingSectionToRelativeDrillingGroup"
+            app:destination="@id/relativeDrillingGroupFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/wardrobeTabFragment"
-        android:name="com.wardrobes.porenut.ui.v2.wardrobe.WardrobeTabFragment">
+        android:name="com.wardrobes.porenut.ui.wardrobe.detail.WardrobeTabFragment">
 
         <action
             android:id="@+id/wardrobeTabToElementTab"
@@ -33,6 +39,10 @@
 
     <fragment
         android:id="@+id/elementTabFragment"
-        android:name="com.wardrobes.porenut.ui.v2.element.ElementTabFragment" />
+        android:name="com.wardrobes.porenut.ui.element.detail.ElementTabFragment" />
+
+    <fragment
+        android:id="@+id/relativeDrillingGroupFragment"
+        android:name="com.wardrobes.porenut.ui.drilling.relative.group.RelativeDrillingGroupFragment" />
 
 </navigation>

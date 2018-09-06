@@ -1,42 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/toolbarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="@color/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+    android:layout_height="match_parent">
 
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarLayout"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutXPosition"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/l_x_position"
         android:layout_margin="30dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/l_x_position"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarLayout">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtXPosition"
@@ -50,10 +35,10 @@
         android:id="@+id/layoutYPosition"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/l_y_position"
         android:layout_margin="30dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/l_y_position"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutXPosition">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -68,10 +53,10 @@
         android:id="@+id/layoutDiameter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/l_diameter"
         android:layout_margin="30dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/l_diameter"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutYPosition">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -86,10 +71,10 @@
         android:id="@+id/layoutDepth"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/l_depth"
         android:layout_margin="30dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/l_depth"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutDiameter">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -105,22 +90,22 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@color/colorAccent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:foreground="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/txtManageDrilling"
-            android:textColor="@color/textTertiary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/l_add"
             android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="@dimen/textLarge" />
+            android:text="@string/l_add"
+            android:textColor="@color/textTertiary"
+            android:textSize="@dimen/textLarge"
+            android:textStyle="bold" />
 
     </FrameLayout>
 
@@ -130,8 +115,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnManageDrilling"
+        app:layout_constraintEnd_toEndOf="parent"
         app:sdMainFabClosedSrc="@drawable/ic_add" />
 
     <androidx.constraintlayout.widget.Group
