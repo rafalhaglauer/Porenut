@@ -2,6 +2,7 @@ package com.wardrobes.porenut.data.relative
 
 import com.wardrobes.porenut.domain.RelativeDrilling
 import com.wardrobes.porenut.domain.RelativeDrillingLight
+import io.reactivex.Completable
 import io.reactivex.Observable
 
 interface RelativeDrillingRepository {
@@ -12,5 +13,7 @@ interface RelativeDrillingRepository {
 
     fun add(relativeDrilling: RelativeDrillingLight): Observable<Long>
 
-    fun update(id: Long, relativeDrilling: RelativeDrillingLight): Observable<Unit>
+    fun update(id: Long, relativeDrilling: RelativeDrillingLight): Completable
+
+    fun delete(id: Long): Completable
 }

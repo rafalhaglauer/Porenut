@@ -45,7 +45,7 @@ class RelativeCompositionGroupFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             setDivider(R.drawable.divider)
             adapter = RelativeCompositionGroupAdapter {
-                navigateTo(R.id.drillingSectionToRelativeDrillingGroup) {
+                navigateTo(R.id.drillingSectionToRelativeCompositionTab) {
                     relativeCompositionId = viewModel.getRelativeCompositionId(it)
                 }
             }

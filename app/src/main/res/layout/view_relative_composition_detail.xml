@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/contentWardrobeDetail"
+        android:id="@+id/contentRelativeCompositionDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -13,11 +13,11 @@
             style="@style/Text.Secondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/l_symbol"
+            android:text="@string/l_name"
             android:textSize="@dimen/textSmall" />
 
         <TextView
-            android:id="@+id/txtWardrobeSymbol"
+            android:id="@+id/txtRelativeCompositionName"
             style="@style/Text.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,11 +29,11 @@
             style="@style/Text.Secondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/l_width"
+            android:text="Typ wartości odniesienia dla X"
             android:textSize="@dimen/textSmall" />
 
         <TextView
-            android:id="@+id/txtWardrobeWidth"
+            android:id="@+id/txtXReferenceLength"
             style="@style/Text.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,64 +45,26 @@
             style="@style/Text.Secondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/l_height"
+            android:text="Typ wartości odniesienia dla Y"
             android:textSize="@dimen/textSmall" />
 
         <TextView
-            android:id="@+id/txtWardrobeHeight"
+            android:id="@+id/txtYReferenceLength"
             style="@style/Text.Primary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/textMedium" />
-
-        <include layout="@layout/view_divider" />
-
-        <TextView
-            style="@style/Text.Secondary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/l_depth"
-            android:textSize="@dimen/textSmall" />
-
-        <TextView
-            android:id="@+id/txtWardrobeDepth"
-            style="@style/Text.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/textMedium" />
-
-        <include layout="@layout/view_divider" />
-
-        <TextView
-            style="@style/Text.Secondary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/l_type"
-            android:textSize="@dimen/textSmall" />
-
-        <TextView
-            android:id="@+id/txtWardrobeType"
-            style="@style/Text.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/textMedium" />
-
-        <FrameLayout
-            android:id="@+id/layoutModel"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:visibility="gone" />
 
     </LinearLayout>
 
     <ProgressBar
-        android:id="@+id/progressWardrobeDetail"
+        android:id="@+id/progressRelativeCompositionDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
     <com.leinardi.android.speeddial.SpeedDialView
-        android:id="@+id/btnActionWardrobeDetail"
+        android:id="@+id/btnActionRelativeCompositionDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

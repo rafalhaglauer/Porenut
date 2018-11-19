@@ -4,6 +4,7 @@ import com.wardrobes.porenut.api.base.BaseProvider
 import com.wardrobes.porenut.api.data.RelativeDrillingCompositionInterface
 import com.wardrobes.porenut.domain.RelativeDrillingComposition
 import com.wardrobes.porenut.domain.RelativeDrillingCompositionLight
+import io.reactivex.Completable
 import io.reactivex.Observable
 
 object RelativeDrillingCompositionRestRepository : RelativeDrillingCompositionRepository {
@@ -19,8 +20,12 @@ object RelativeDrillingCompositionRestRepository : RelativeDrillingCompositionRe
     override fun add(relativeDrillingComposition: RelativeDrillingCompositionLight): Observable<Long> =
         compositionInterface.add(relativeDrillingComposition)
 
+    override fun delete(id: Long): Completable =
+        compositionInterface.delete(id)
+
     override fun update(
         id: Long,
         relativeDrillingComposition: RelativeDrillingCompositionLight
-    ): Observable<Unit> = compositionInterface.update(id, relativeDrillingComposition)
+    ): Completable =
+        compositionInterface.update(id, relativeDrillingComposition)
 }

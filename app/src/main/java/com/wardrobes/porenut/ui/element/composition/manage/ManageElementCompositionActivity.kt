@@ -26,8 +26,8 @@ class ManageCompositionActivity : AppCompatActivity() {
         btnManageRelativeDrilling.setOnClickListener {
             viewModel.add(
                 drillingCompositionName = spinnerRelativeDrillingComposition.selectedItem as String,
-                xOffset = viewXOffset.compositeOffset,
-                yOffset = viewYOffset.compositeOffset,
+                xOffset = viewXOffset.offset,
+                yOffset = viewYOffset.offset,
                 referenceElementName = spinnerElementReference.selectedItem as String,
                 xReferenceLengthName = spinnerXReferenceLength.selectedItem as String,
                 yReferenceLengthName = spinnerYReferenceLength.selectedItem as String

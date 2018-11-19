@@ -1,15 +1,11 @@
 package com.wardrobes.porenut.domain
 
-data class CompositeOffset(
-    val offset: Offset,
-    val percentageOffset: Offset
-)
-
 data class Offset(
     val value: Float,
-    val reference: Reference
+    val percentageValue: Float,
+    val direction: Direction
 ) {
-    enum class Reference {
-        BEGIN, END
+    enum class Direction {
+        FORWARD, BACKWARD
     }
 }

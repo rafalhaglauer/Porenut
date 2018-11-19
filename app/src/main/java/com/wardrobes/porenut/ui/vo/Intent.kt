@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.wardrobes.porenut.domain.Wardrobe
 
 private const val KEY_RELATIVE_COMPOSITION_ID = "key-relative-composition-id"
+private const val KEY_RELATIVE_DRILLING_ID = "key-relative-drilling-id"
 private const val KEY_WARDROBE_CREATION_TYPE = "key-wardrobe-creation-type"
 private const val KEY_WARDROBE_ID = "key-wardrobe-id"
 private const val KEY_DRILLING_ID = "key-drilling-id"
@@ -47,6 +48,15 @@ var Intent.relativeCompositionId: Long
     get() = getLongExtra(KEY_RELATIVE_COMPOSITION_ID, UNDEFINED_ID)
     set(value) {
         putExtra(KEY_RELATIVE_COMPOSITION_ID, value)
+    }
+
+var Intent.relativeDrillingId: Long?
+    get() = getLongExtra(
+        KEY_RELATIVE_DRILLING_ID,
+        UNDEFINED_ID
+    ).let { if (it == UNDEFINED_ID) null else it }
+    set(value) {
+        putExtra(KEY_RELATIVE_DRILLING_ID, value)
     }
 
 var Bundle.wardrobeCreationType: Wardrobe.CreationType?

@@ -17,8 +17,8 @@
         android:id="@+id/layoutName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/l_name"
         android:layout_margin="10dp"
+        android:hint="@string/l_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,7 +31,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.wardrobes.porenut.ui.common.CompositeOffsetView
+    <com.wardrobes.porenut.ui.common.OffsetView
         android:id="@+id/viewXOffset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         android:text="Pozycja X"
         app:layout_constraintTop_toBottomOf="@id/layoutName" />
 
-    <com.wardrobes.porenut.ui.common.CompositeOffsetView
+    <com.wardrobes.porenut.ui.common.OffsetView
         android:id="@+id/viewYOffset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,8 +51,8 @@
         android:id="@+id/layoutDiameter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/l_diameter"
         android:layout_margin="10dp"
+        android:hint="@string/l_diameter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewYOffset">
@@ -69,8 +69,8 @@
         android:id="@+id/layoutDepth"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/l_depth"
         android:layout_margin="10dp"
+        android:hint="@string/l_depth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutDiameter">
@@ -96,7 +96,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txtManageRelativeComposition"
+            android:id="@+id/txtManageRelativeDrilling"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -107,10 +107,19 @@
 
     </FrameLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnDeleteRelativeDrilling"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toTopOf="@id/btnManageRelativeDrilling"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.constraintlayout.widget.Group
         android:id="@+id/layoutContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:constraint_referenced_ids="" />
+        app:constraint_referenced_ids="layoutName, viewXOffset, viewYOffset, layoutDiameter, layoutDepth, btnManageRelativeDrilling" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

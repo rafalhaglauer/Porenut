@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.drilling.relative.group
+package com.wardrobes.porenut.ui.composition.detail
 
 import android.view.View
 import android.view.ViewGroup

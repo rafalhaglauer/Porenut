@@ -1,4 +1,6 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <ProgressBar
         android:id="@+id/progressRelativeCompositionGroup"
@@ -20,4 +22,4 @@
         android:src="@drawable/ic_add"
         android:visibility="gone" />
 
-</merge>
+</FrameLayout>

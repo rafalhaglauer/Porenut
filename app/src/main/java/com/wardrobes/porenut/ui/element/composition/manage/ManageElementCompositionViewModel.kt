@@ -9,8 +9,8 @@ import com.wardrobes.porenut.data.element.ElementRepository
 import com.wardrobes.porenut.data.element.ElementRestRepository
 import com.wardrobes.porenut.data.relative.RelativeDrillingCompositionRepository
 import com.wardrobes.porenut.data.relative.RelativeDrillingCompositionRestRepository
-import com.wardrobes.porenut.domain.CompositeOffset
 import com.wardrobes.porenut.domain.Element
+import com.wardrobes.porenut.domain.Offset
 import com.wardrobes.porenut.domain.ReferenceElementRelativeDrillingCompositionLight
 import com.wardrobes.porenut.domain.RelativeDrillingComposition
 import com.wardrobes.porenut.ui.vo.Result
@@ -38,8 +38,8 @@ class ManageCompositionViewModel(
     fun add(
         drillingCompositionName: String,
         referenceElementName: String,
-        xOffset: CompositeOffset,
-        yOffset: CompositeOffset,
+        xOffset: Offset,
+        yOffset: Offset,
         xReferenceLengthName: String,
         yReferenceLengthName: String
     ) {

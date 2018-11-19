@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="CompositeOffsetView">
-        <attr name="android:text" />
-    </declare-styleable>
-
     <declare-styleable name="OffsetView">
         <attr name="android:text" />
     </declare-styleable>

@@ -2,6 +2,7 @@ package com.wardrobes.porenut.api.data
 
 import com.wardrobes.porenut.domain.RelativeDrilling
 import com.wardrobes.porenut.domain.RelativeDrillingLight
+import io.reactivex.Completable
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -17,5 +18,8 @@ interface RelativeDrillingInterface {
     fun add(@Body relativeDrilling: RelativeDrillingLight): Observable<Long>
 
     @PUT("/drilling/relative/{id}")
-    fun update(@Path("id") id: Long, @Body relativeDrilling: RelativeDrillingLight): Observable<Unit>
+    fun update(@Path("id") id: Long, @Body relativeDrilling: RelativeDrillingLight): Completable
+
+    @DELETE("/drilling/relative/{id}")
+    fun delete(@Path("id") id: Long): Completable
 }

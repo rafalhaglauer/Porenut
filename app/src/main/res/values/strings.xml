@@ -22,13 +22,14 @@
     <string name="l_y_position">Pozycja Y</string>
     <string name="l_diameter">Średnica</string>
 
-    <string name="l_calculate_based_on">Licz od</string>
+    <string name="l_direction">Kierunek</string>
     <string name="l_x_reference_type">Wybierz typ wartości odniesienia dla X</string>
     <string name="l_y_reference_type">Wybierz typ wartości odniesienia dla Y</string>
     <string name="l_offset">Przesunięcie</string>
     <string name="l_offset_percentage">Przesunięcie procentowo</string>
 
     <string name="l_add_drilling">Dodaj wiercenie</string>
+    <string name="l_reference_point">Punkt odniesienia</string>
 
     <string-array name="a_reference_types">
         <item>Długość elementu</item>
@@ -36,9 +37,9 @@
         <item>Wysokość elementu</item>
     </string-array>
 
-    <string-array name="a_offset_reference_types">
-        <item>Początek elementu</item>
-        <item>Koniec elementu</item>
+    <string-array name="a_direction">
+        <item>Naprzód</item>
+        <item>Wstecz</item>
     </string-array>
 
 </resources>

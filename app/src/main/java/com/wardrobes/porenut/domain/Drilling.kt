@@ -25,8 +25,8 @@ data class Drilling(
 
 data class RelativeDrillingLight(
     val name: String,
-    val xOffset: CompositeOffset,
-    val yOffset: CompositeOffset,
+    val xOffset: Offset,
+    val yOffset: Offset,
     val diameter: Float,
     val depth: Float,
     val relativeDrillingCompositionId: Long
@@ -35,9 +35,8 @@ data class RelativeDrillingLight(
 data class RelativeDrilling(
     val id: Long,
     val name: String,
-    val xOffset: CompositeOffset,
-    val yOffset: CompositeOffset,
+    @SerializedName("xoffset") val xOffset: Offset,
+    @SerializedName("yoffset") val yOffset: Offset,
     val diameter: Float,
-    val depth: Float,
-    val relativeDrillingCompositionId: Long
+    val depth: Float
 )

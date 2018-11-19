@@ -4,8 +4,8 @@ data class ReferenceElementRelativeDrillingCompositionLight(
     val relativeDrillingCompositionId: Long,
     val referenceElementId: Long,
     val elementId: Long,
-    val xOffset: CompositeOffset,
-    val yOffset: CompositeOffset,
+    val xOffset: Offset,
+    val yOffset: Offset,
     val xReferenceLength: Element.LengthType,
     val yReferenceLength: Element.LengthType
 )
@@ -15,8 +15,8 @@ data class ReferenceElementRelativeDrillingComposition(
     val relativeDrillingComposition: RelativeDrillingComposition,
     val referenceElement: Element,
     val element: Element,
-    val xOffset: CompositeOffset,
-    val yOffset: CompositeOffset,
+    val xOffset: Offset,
+    val yOffset: Offset,
     val xReferenceLength: Element.LengthType,
     val yReferenceLength: Element.LengthType
 )

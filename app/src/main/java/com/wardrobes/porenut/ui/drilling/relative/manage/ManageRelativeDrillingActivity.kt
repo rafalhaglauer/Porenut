@@ -3,11 +3,11 @@ package com.wardrobes.porenut.ui.drilling.relative.manage
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.*
 import com.wardrobes.porenut.ui.vo.relativeCompositionId
+import com.wardrobes.porenut.ui.vo.relativeDrillingId
 import kotlinx.android.synthetic.main.activity_manage_relative_drilling.*
 
 class ManageRelativeDrillingActivity : AppCompatActivity() {
@@ -25,13 +25,16 @@ class ManageRelativeDrillingActivity : AppCompatActivity() {
         observeViewModel()
         btnManageRelativeDrilling.setOnClickListener {
             it.hideKeyboard()
-            viewModel.add(
+            viewModel.manage(
                 name = txtName.string(),
-                xOffset = viewXOffset.compositeOffset,
-                yOffset = viewYOffset.compositeOffset,
+                xOffset = viewXOffset.offset,
+                yOffset = viewYOffset.offset,
                 depth = txtDepth.float(),
                 diameter = txtDiameter.float()
             )
+        }
+        btnDeleteRelativeDrilling.setOnClickListener {
+            viewModel.delete()
         }
     }
 
@@ -42,14 +45,24 @@ class ManageRelativeDrillingActivity : AppCompatActivity() {
         }
 
     private fun observeViewModel() {
+        viewModel.viewState.observe(this) {
+            result?.also { finishWithResult(it.value) }
+            progress.setVisible(isLoading)
+            layoutContent.setVisible(!isLoading)
+            btnDeleteRelativeDrilling.setVisible(isDeleteButtonVisible)
+            viewEntity?.also { bind(it) }
+            showMessage(errorMessage)
+            txtManageRelativeDrilling.text = getString(manageText)
+        }
         viewModel.relativeCompositionId = intent.relativeCompositionId
-        viewModel.viewState.observe(this, Observer {
-            it!!.also {
-                it.result?.also { finishWithResult(it.value) }
-                progress.setVisible(it.isLoading)
-                layoutContent.setVisible(!it.isLoading)
-                showMessage(it.errorMessage)
-            }
-        })
+        viewModel.relativeDrillingId = intent.relativeDrillingId
+    }
+
+    private fun bind(viewEntity: RelativeDrillingViewEntity) {
+        txtName.setText(viewEntity.name)
+        txtDepth.setText(viewEntity.depth)
+        txtDiameter.setText(viewEntity.diameter)
+        viewXOffset.offset = viewEntity.xOffset
+        viewYOffset.offset = viewEntity.yOffset
     }
 }

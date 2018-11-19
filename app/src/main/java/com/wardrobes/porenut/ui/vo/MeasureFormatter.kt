@@ -12,7 +12,8 @@ interface MeasureFormatter {
 
 object DefaultMeasureFormatter : MeasureFormatter {
 
-    override fun format(measurement: Float): String = String.format(Locale.getDefault(), "%.1f", measurement)
+    override fun format(measurement: Float): String = String.format(Locale.US, "%.1f", measurement)
 
-    override fun toFloat(measurement: String): Float = NumberFormat.getInstance().parse(measurement).toFloat()
+    override fun toFloat(measurement: String): Float =
+        if (measurement.isEmpty()) 0F else NumberFormat.getInstance(Locale.US).parse(measurement).toFloat()
 }

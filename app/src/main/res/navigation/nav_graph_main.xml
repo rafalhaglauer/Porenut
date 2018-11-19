@@ -22,8 +22,8 @@
         android:name="com.wardrobes.porenut.ui.composition.group.RelativeCompositionGroupFragment">
 
         <action
-            android:id="@+id/drillingSectionToRelativeDrillingGroup"
-            app:destination="@id/relativeDrillingGroupFragment" />
+            android:id="@+id/drillingSectionToRelativeCompositionTab"
+            app:destination="@id/relativeCompositionTabFragment" />
 
     </fragment>
 
@@ -44,5 +44,9 @@
     <fragment
         android:id="@+id/relativeDrillingGroupFragment"
         android:name="com.wardrobes.porenut.ui.drilling.relative.group.RelativeDrillingGroupFragment" />
+
+    <fragment
+        android:id="@+id/relativeCompositionTabFragment"
+        android:name="com.wardrobes.porenut.ui.composition.detail.RelativeCompositionTabFragment" />
 
 </navigation>

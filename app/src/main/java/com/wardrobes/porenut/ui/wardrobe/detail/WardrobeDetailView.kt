@@ -6,6 +6,9 @@ import android.widget.FrameLayout
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.inflate
 import com.wardrobes.porenut.ui.extension.setVisible
+import com.wardrobes.porenut.ui.extension.show
+import com.wardrobes.porenut.ui.viewer.model.Model
+import com.wardrobes.porenut.ui.viewer.view.ModelSurfaceView
 import kotlinx.android.synthetic.main.view_wardrobe_detail.view.*
 
 class WardrobeDetailView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
@@ -34,6 +37,12 @@ class WardrobeDetailView(context: Context, attrs: AttributeSet?) : FrameLayout(c
 
     fun showContent(shouldBeVisible: Boolean) {
         contentWardrobeDetail.setVisible(shouldBeVisible)
+    }
+
+    fun showModel(model: Model) {
+        layoutModel.show()
+        layoutModel.removeAllViews()
+        layoutModel.addView(ModelSurfaceView(context, model))
     }
 
     private fun setupActionButton() {

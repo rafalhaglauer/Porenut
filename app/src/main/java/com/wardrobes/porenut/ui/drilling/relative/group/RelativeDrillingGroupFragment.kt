@@ -9,18 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
+import com.wardrobes.porenut.ui.composition.detail.RelativeDrillingGroupAdapter
 import com.wardrobes.porenut.ui.drilling.relative.manage.ManageRelativeDrillingActivity
 import com.wardrobes.porenut.ui.extension.*
 import com.wardrobes.porenut.ui.vo.Result
 import com.wardrobes.porenut.ui.vo.relativeCompositionId
-import kotlinx.android.synthetic.main.fragment_relative_drilling_group.*
+import kotlinx.android.synthetic.main.view_relative_drilling_group.*
 
 class RelativeDrillingGroupFragment : Fragment() {
 
     private lateinit var viewModel: RelativeDrillingGroupViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return container?.inflate(R.layout.fragment_relative_drilling_group)
+        return container?.inflate(R.layout.view_relative_drilling_group)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
