@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
+import com.wardrobes.porenut.pdf.PdfGenerator
 import com.wardrobes.porenut.ui.element.manage.ManageElementActivity
 import com.wardrobes.porenut.ui.extension.*
 import com.wardrobes.porenut.ui.viewer.model.Model
@@ -25,7 +26,11 @@ private const val REQUEST_ADD_ELEMENT = 2
 class WardrobeTabFragment : Fragment() {
     private lateinit var viewModel: WardrobeTabViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return container?.inflate(R.layout.fragment_wardrobe_tab)
     }
 

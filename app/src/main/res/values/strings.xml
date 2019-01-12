@@ -30,6 +30,7 @@
 
     <string name="l_add_drilling">Dodaj wiercenie</string>
     <string name="l_reference_point">Punkt odniesienia</string>
+    <string name="l_element">element</string>
 
     <string-array name="a_reference_types">
         <item>Długość elementu</item>

@@ -8,8 +8,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 
 object CompositionRestRepository : CompositionRepository {
-    private val compositionInterface =
-        BaseProvider.retrofit.create(CompositionInterface::class.java)
+    private val compositionInterface = BaseProvider.retrofit.create(CompositionInterface::class.java)
 
     override fun getAll(elementId: Long): Observable<List<ReferenceElementRelativeDrillingComposition>> =
         compositionInterface.getAll(elementId)
