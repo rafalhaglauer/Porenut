@@ -66,6 +66,10 @@ dependencies {
     // PDF
     implementation 'com.itextpdf:itextpdf:5.5.13'
 
+    // Gallery
+    implementation 'com.github.stfalcon:stfalcon-imageviewer:0.1.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    
     // Tests
     testImplementation 'junit:junit:4.12'
 

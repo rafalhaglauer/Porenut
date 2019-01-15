@@ -22,6 +22,7 @@ interface PdfGenerator {
 }
 
 class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
+
     private val baseFont = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.EMBEDDED)
     private val boldFont = Font(baseFont, 32F, Font.BOLD)
     private val normalFont = Font(baseFont, 12F, Font.NORMAL)

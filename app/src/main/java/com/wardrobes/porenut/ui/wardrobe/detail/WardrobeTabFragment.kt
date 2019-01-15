@@ -1,6 +1,8 @@
 package com.wardrobes.porenut.ui.wardrobe.detail
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
@@ -8,10 +10,14 @@ import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.squareup.picasso.Picasso
+import com.stfalcon.imageviewer.StfalconImageViewer
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.pdf.PdfGenerator
 import com.wardrobes.porenut.ui.element.manage.ManageElementActivity
 import com.wardrobes.porenut.ui.extension.*
 import com.wardrobes.porenut.ui.viewer.model.Model
@@ -25,6 +31,7 @@ private const val REQUEST_ADD_ELEMENT = 2
 
 class WardrobeTabFragment : Fragment() {
     private lateinit var viewModel: WardrobeTabViewModel
+    private lateinit var viewer: StfalconImageViewer<Poster>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,8 +65,8 @@ class WardrobeTabFragment : Fragment() {
         switchWardrobeTab.setOnToggleSwitchChangeListener { _, _ ->
             when (switchWardrobeTab.checkedTogglePosition) {
                 0 -> viewModel.showDetails()
-                1 -> viewModel.showElementGroup()
-                2 -> viewModel.showGallery()
+                2 -> viewModel.showElementGroup() // TODO 1 temp
+                1 -> viewModel.showGallery() // TODO 2 temp
             }
         }
     }
@@ -131,6 +138,11 @@ class WardrobeTabFragment : Fragment() {
                 arguments?.wardrobeId?.also { wardrobeId = it }
             }
         }
+
+        viewWardrobeGallery.apply {
+            imageLoader = ::loadPosterImage
+            onPosterClick = ::openViewer
+        }.also { it.loadImages() }
     }
 
     private inner class ModelLoadTask : AsyncTask<Uri, Int, Model>() {
@@ -155,4 +167,28 @@ class WardrobeTabFragment : Fragment() {
             model?.also { viewWardrobeDetail.showModel(it) }
         }
     }
+
+    private fun openViewer(startPosition: Int, target: ImageView) {
+        viewer = StfalconImageViewer.Builder<Poster>(context, Demo.posters, ::loadPosterImage)
+            .withStartPosition(startPosition)
+            .withTransitionFrom(target)
+            .withImageChangeListener {
+                viewer.updateTransitionImage(viewWardrobeGallery.imageViews[it])
+            }
+            .show()
+    }
+
+    private fun loadPosterImage(imageView: ImageView, poster: Poster?) {
+        imageView.apply {
+            background = context.getDrawableCompat(R.drawable.ic_kitchen)
+            loadImage(poster?.url)
+        }
+    }
+
+    fun ImageView.loadImage(url: String?) = Picasso.get().load(url).into(this)
+
+    fun Context.getDrawableCompat(@DrawableRes drawableRes: Int): Drawable? {
+        return AppCompatResources.getDrawable(this, drawableRes)
+    }
+
 }
