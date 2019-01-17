@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             width = "600",
             height = "716",
             depth = "320",
-            type = R.string.l_hanging
+            type = R.string.l_upper
         )
         val el1 = ElementViewEntity(
             name = "Wieniec górny",

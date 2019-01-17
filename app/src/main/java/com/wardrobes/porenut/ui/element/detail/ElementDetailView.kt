@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.inflate
-import com.wardrobes.porenut.ui.extension.setVisible
+import com.wardrobes.porenut.ui.extension.isVisibleWhen
 import kotlinx.android.synthetic.main.view_element_detail.view.*
 
 class ElementDetailView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
@@ -40,14 +40,14 @@ class ElementDetailView(context: Context, attrs: AttributeSet?) : FrameLayout(co
     }
 
     fun showProgress(shouldBeVisible: Boolean) {
-        progressElementDetail.setVisible(shouldBeVisible)
+        progressElementDetail.isVisibleWhen(shouldBeVisible)
     }
 
     fun showContent(shouldBeVisible: Boolean) {
-        contentElementDetail.setVisible(shouldBeVisible)
+        contentElementDetail.isVisibleWhen(shouldBeVisible)
     }
 
     fun showActionButton(shouldBeVisible: Boolean) {
-        btnActionElementDetail.setVisible(shouldBeVisible)
+        btnActionElementDetail.isVisibleWhen(shouldBeVisible)
     }
 }

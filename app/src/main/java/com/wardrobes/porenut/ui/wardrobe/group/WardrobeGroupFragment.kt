@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.Wardrobe
 import com.wardrobes.porenut.ui.extension.*
-import com.wardrobes.porenut.ui.vo.*
-import com.wardrobes.porenut.ui.wardrobe.manage.ManageWardrobeActivity
+import com.wardrobes.porenut.ui.vo.Result
+import com.wardrobes.porenut.ui.wardrobe.dashboard.WardrobeDashboardFragment
 import kotlinx.android.synthetic.main.fragment_wardrobe_group.*
 
 private const val REQUEST_ADD_WARDROBE = 1
@@ -45,8 +45,8 @@ class WardrobeGroupFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             setDivider(R.drawable.divider)
             adapter = WardrobeGroupAdapter {
-                navigateTo(R.id.wardrobeSectionToWardrobeTab) {
-                    wardrobeId = viewModel.getWardrobeId(it)
+                viewModel.getWardrobeId(it)?.also { id ->
+                    navigateTo(R.id.wardrobeSectionToWardrobeDashboard, WardrobeDashboardFragment.createExtras(id))
                 }
             }
         }
@@ -55,8 +55,8 @@ class WardrobeGroupFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.viewState
             .observe(this) {
-                progressWardrobeGroup.setVisible(isLoading)
-                emptyListNotificationWardrobeGroup.setVisible(isEmptyListNotificationVisible)
+                progressWardrobeGroup.isVisibleWhen(isLoading)
+                emptyListNotificationWardrobeGroup.isVisibleWhen(isEmptyListNotificationVisible)
                 bind(viewEntities)
                 context?.showMessage(errorMessage)
             }
@@ -64,17 +64,14 @@ class WardrobeGroupFragment : Fragment() {
 
     private fun setupWardrobeSwitch() {
         switchWardrobeGroup.setOnToggleSwitchChangeListener { _, _ ->
-            viewModel.creationType = if (switchWardrobeGroup.checkedTogglePosition == 0) Wardrobe.CreationType.STANDARD else Wardrobe.CreationType.CUSTOM
+            viewModel.wardrobeType = if (switchWardrobeGroup.checkedTogglePosition == 0) Wardrobe.Type.BOTTOM else Wardrobe.Type.UPPER
         }
         switchWardrobeGroup.checkedTogglePosition = 0
     }
 
     private fun setupFab() {
         btnActionWardrobeGroup.setOnClickListener {
-            launchActivity<ManageWardrobeActivity>(REQUEST_ADD_WARDROBE) {
-                wardrobeCreationType = viewModel.creationType
-                requestType = RequestType.ADD
-            }
+            navigateTo(R.id.wardrobeSectionToWardrobeCreationTypeFragment)
         }
     }
 

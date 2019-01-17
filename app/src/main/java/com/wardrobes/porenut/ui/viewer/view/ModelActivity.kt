@@ -11,12 +11,19 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.wardrobes.porenut.FileUtils
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.ui.extension.show
+import com.wardrobes.porenut.api.base.BaseProvider
+import com.wardrobes.porenut.api.data.AttachmentInterface
+import com.wardrobes.porenut.api.extension.fetchStateFullModel
+import com.wardrobes.porenut.ui.extension.showMessage
 import com.wardrobes.porenut.ui.viewer.model.Model
 import com.wardrobes.porenut.ui.viewer.model.ObjModel
-import kotlinx.android.synthetic.main.activity_model.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.InputStream
+
 
 private const val READ_PERMISSION_REQUEST = 100
 private const val OPEN_DOCUMENT_REQUEST = 101
@@ -54,7 +61,11 @@ class ModelActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         when (requestCode) {
             READ_PERMISSION_REQUEST -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 beginOpenModel()
@@ -74,9 +85,31 @@ class ModelActivity : AppCompatActivity() {
         }
     }
 
+    private fun dupa(uri: Uri) {
+        val service = BaseProvider.retrofit.create(AttachmentInterface::class.java)
+        val file = FileUtils.getFile(this, uri)
+        val requestFile = RequestBody.create(MediaType.parse(contentResolver.getType(uri)), file)
+        val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+        intent.getLongExtra("key-wardrobe-id", -1).takeIf { it != -1L }?.also {
+            service.upload(body, it)
+                .fetchStateFullModel(
+                    onLoading = { showMessage("Loading") },
+                    onSuccess = { showMessage("Done") },
+                    onError = { showMessage("Error") }
+                )
+        }
+    }
+
     private fun checkReadPermissionThenOpen() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), READ_PERMISSION_REQUEST)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                READ_PERMISSION_REQUEST
+            )
         } else {
             beginOpenModel()
         }
@@ -89,8 +122,9 @@ class ModelActivity : AppCompatActivity() {
     }
 
     private fun beginLoadModel(uri: Uri?) {
-        progressBar.show()
-        ModelLoadTask().execute(uri)
+//        progressBar.show()
+//        ModelLoadTask().execute(uri)
+        uri?.also { dupa(it) }
     }
 
     private inner class ModelLoadTask : AsyncTask<Uri, Int, Model>() {

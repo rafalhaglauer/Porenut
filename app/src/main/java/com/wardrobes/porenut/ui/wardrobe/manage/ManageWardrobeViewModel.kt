@@ -7,39 +7,34 @@ import com.wardrobes.porenut.R
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.wardrobe.WardrobeRepository
 import com.wardrobes.porenut.data.wardrobe.WardrobeRestRepository
-import com.wardrobes.porenut.domain.UNDEFINED_ID
+import com.wardrobes.porenut.domain.CreationType
 import com.wardrobes.porenut.domain.Wardrobe
-import com.wardrobes.porenut.domain.WardrobeLight
+import com.wardrobes.porenut.ui.extension.updateValue
 import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
+import com.wardrobes.porenut.ui.vo.Event
 import com.wardrobes.porenut.ui.vo.MeasureFormatter
-import com.wardrobes.porenut.ui.vo.RequestType
-import com.wardrobes.porenut.ui.vo.Result
 
 class ManageWardrobeViewModel(
     private val wardrobeRepository: WardrobeRepository = WardrobeRestRepository,
     private val measureFormatter: MeasureFormatter = DefaultMeasureFormatter
 ) : ViewModel() {
-    val viewState: LiveData<ManageWardrobeViewState> = MutableLiveData<ManageWardrobeViewState>()
+    val viewState: LiveData<ManageWardrobeViewState> = MutableLiveData<ManageWardrobeViewState>().apply {
+        value = ManageWardrobeViewState()
+    }
+    val navigateBack: LiveData<Event<Unit>> = MutableLiveData()
 
-    var creationType: Wardrobe.CreationType? = null
-
-    var wardrobeId: Long = UNDEFINED_ID
-
-    var requestType: RequestType? = null
+    var wardrobeId: Long? = null
         set(value) {
-            field = value
-            when (value) {
-                RequestType.ADD -> setViewState(ManageWardrobeViewState(viewEntity = ManageWardrobeViewEntity.empty()))
-                RequestType.COPY -> fetchWardrobeDetails(wardrobeId)
-                RequestType.EDIT -> fetchWardrobeDetails(wardrobeId)
-            }
+            field = value?.also { fetchWardrobeDetails(it) }
         }
+    var creationType: CreationType = CreationType.GENERATE
 
-    var viewEntity: ManageWardrobeViewEntity = ManageWardrobeViewEntity.empty()
-        set(value) {
-            field = value
-            manageWardrobe()
-        }
+    fun manageWardrobe(viewEntity: ManageWardrobeViewEntity) {
+        val wardrobe = viewEntity.toWardrobe()
+        wardrobeId
+            ?.also { updateWardrobe(wardrobe, it) }
+            ?: addWardrobe(wardrobe)
+    }
 
     private fun fetchWardrobeDetails(wardrobeId: Long) {
         wardrobeRepository.get(wardrobeId)
@@ -50,71 +45,38 @@ class ManageWardrobeViewModel(
             )
     }
 
-    private fun manageWardrobe() {
-        when (requestType) {
-            RequestType.ADD -> addWardrobe()
-            RequestType.EDIT -> updateWardrobe()
-            RequestType.COPY -> copyWardrobe()
-        }
+    private fun addWardrobe(wardrobe: Wardrobe) {
+        wardrobeRepository.add(wardrobe, creationType)
+            .fetchStateFullModel(
+                onLoading = { createLoadingState() },
+                onSuccess = { navigateBack() },
+                onError = { createErrorState(it) }
+            )
     }
 
-    private fun addWardrobe() {
-        creationType?.also { creationType ->
-            wardrobeRepository.add(viewEntity.toWardrobe(creationType))
-                .fetchStateFullModel(
-                    onLoading = { createLoadingState() },
-                    onSuccess = { createFinishState(it) },
-                    onError = { createErrorState(it) }
-                )
-        }
-    }
-
-    private fun updateWardrobe() {
-        creationType?.also { creationType ->
-            wardrobeRepository.update(wardrobeId, viewEntity.toWardrobe(creationType))
-                .fetchStateFullModel(
-                    onLoading = { createLoadingState() },
-                    onSuccess = { createFinishState(wardrobeId) },
-                    onError = { createErrorState(it) }
-                )
-        }
-    }
-
-    private fun copyWardrobe() {
-//        wardrobeRepository.copy(wardrobeId, viewEntities.symbol)
-//                .fetchStateFullModel(
-//                        onLoading = { createLoadingState() },
-//                        onSuccess = { createFinishState(it) },
-//                        onError = { createErrorState(it) }
-//                )
+    private fun updateWardrobe(wardrobe: Wardrobe, wardrobeId: Long) {
+        wardrobeRepository.update(wardrobeId, wardrobe)
+            .fetchStateFullModel(
+                onLoading = { createLoadingState() },
+                onSuccess = { navigateBack() },
+                onError = { createErrorState(it) }
+            )
     }
 
     private fun createLoadingState() {
-        setViewState(ManageWardrobeViewState(isLoading = true))
+        viewState.updateValue(ManageWardrobeViewState(isLoading = true))
     }
 
     private fun createDetailsState(wardrobe: Wardrobe) {
-        creationType = wardrobe.creationType
-        setViewState(
-            ManageWardrobeViewState(
-                viewEntity = wardrobe.toViewEntity(),
-                disableEveryFieldExceptSymbol = requestType == RequestType.COPY,
-                btnActionText = if (requestType == RequestType.EDIT) R.string.l_save else R.string.l_copy
-            )
-        )
-    }
-
-    private fun createFinishState(wardrobeId: Long) {
-        this.wardrobeId = wardrobeId
-        setViewState(ManageWardrobeViewState(resultType = requestType?.resultType))
+        viewState.updateValue(ManageWardrobeViewState(viewEntity = wardrobe.toViewEntity(), btnActionText = R.string.l_save))
     }
 
     private fun createErrorState(errorMessage: String) {
-        setViewState(ManageWardrobeViewState(errorMessage = errorMessage))
+        viewState.updateValue(ManageWardrobeViewState(errorMessage = errorMessage))
     }
 
-    private fun setViewState(viewState: ManageWardrobeViewState) {
-        (this@ManageWardrobeViewModel.viewState as MutableLiveData).value = viewState
+    private fun navigateBack() {
+        navigateBack.updateValue(Event(Unit))
     }
 
     private fun Wardrobe.toViewEntity() = ManageWardrobeViewEntity(
@@ -122,62 +84,34 @@ class ManageWardrobeViewModel(
         width = width.format(),
         height = height.format(),
         depth = depth.format(),
-        isHanging = type.isHanging
+        isUpper = type == Wardrobe.Type.UPPER
     )
 
-    private fun ManageWardrobeViewEntity.toWardrobe(creationType: Wardrobe.CreationType) =
-        WardrobeLight(
+    private fun ManageWardrobeViewEntity.toWardrobe() =
+        Wardrobe(
             symbol = symbol,
             width = width.toFloat(),
             height = height.toFloat(),
             depth = depth.toFloat(),
-            type = isHanging.wardrobeType,
-            creationType = creationType
+            type = if (isUpper) Wardrobe.Type.UPPER else Wardrobe.Type.BOTTOM
         )
 
     private fun Float.format(): String = measureFormatter.format(this)
 
     private fun String.toFloat(): Float = measureFormatter.toFloat(this)
-
-    private val Wardrobe.Type.isHanging: Boolean
-        get() = when (this) {
-            Wardrobe.Type.HANGING -> true
-            Wardrobe.Type.STANDING -> false
-        }
-
-    private val Boolean.wardrobeType: Wardrobe.Type
-        get() = when (this) {
-            true -> Wardrobe.Type.HANGING
-            false -> Wardrobe.Type.STANDING
-        }
-
-    private val RequestType.resultType: Result
-        get() = when (this) {
-            RequestType.ADD -> Result.ADDED
-            RequestType.COPY -> Result.COPIED
-            RequestType.EDIT -> Result.MODIFIED
-            RequestType.DELETE -> Result.DELETED
-        }
 }
 
 class ManageWardrobeViewState(
     val isLoading: Boolean = false,
-    val viewEntity: ManageWardrobeViewEntity = ManageWardrobeViewEntity.empty(),
+    val viewEntity: ManageWardrobeViewEntity = ManageWardrobeViewEntity(),
     val errorMessage: String = "",
-    val btnActionText: Int = R.string.l_add,
-    val disableEveryFieldExceptSymbol: Boolean = false,
-    val resultType: Result? = null
+    val btnActionText: Int = R.string.l_add
 )
 
 data class ManageWardrobeViewEntity(
-    val symbol: String,
-    val width: String,
-    val height: String,
-    val depth: String,
-    val isHanging: Boolean
-) {
-    companion object {
-
-        fun empty() = ManageWardrobeViewEntity("", "", "", "", false)
-    }
-}
+    val symbol: String = "",
+    val width: String = "",
+    val height: String = "",
+    val depth: String = "",
+    val isUpper: Boolean = false
+)

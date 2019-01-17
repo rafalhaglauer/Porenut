@@ -6,8 +6,8 @@
     <string name="l_symbol">Symbol</string>
     <string name="l_add">Dodaj</string>
     <string name="l_cancel">Anuluj</string>
-    <string name="l_hanging">Wisząca</string>
-    <string name="l_standing">Stojąca</string>
+    <string name="l_upper">Górna</string>
+    <string name="l_bottom">Dolna</string>
     <string name="l_type">Typ</string>
     <string name="l_standard">Typowe</string>
     <string name="l_custom">Nietypowe</string>

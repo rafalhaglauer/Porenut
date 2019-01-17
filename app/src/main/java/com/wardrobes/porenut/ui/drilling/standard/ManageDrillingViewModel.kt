@@ -9,10 +9,10 @@ import com.wardrobes.porenut.data.drilling.DrillingRepository
 import com.wardrobes.porenut.data.drilling.DrillingRestRepository
 import com.wardrobes.porenut.domain.Drilling
 import com.wardrobes.porenut.domain.DrillingLight
-import com.wardrobes.porenut.domain.UNDEFINED_ID
 import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
 import com.wardrobes.porenut.ui.vo.MeasureFormatter
 import com.wardrobes.porenut.ui.vo.Result
+import com.wardrobes.porenut.ui.vo.UNDEFINED_ID
 
 class ManageDrillingViewModel(
     private val drillingRepository: DrillingRepository = DrillingRestRepository,

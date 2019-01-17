@@ -6,8 +6,8 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.inflate
+import com.wardrobes.porenut.ui.extension.isVisibleWhen
 import com.wardrobes.porenut.ui.extension.setDivider
-import com.wardrobes.porenut.ui.extension.setVisible
 import kotlinx.android.synthetic.main.view_element_composition_group.view.*
 
 class ElementCompositionGroupView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
@@ -25,19 +25,19 @@ class ElementCompositionGroupView(context: Context, attrs: AttributeSet?) : Fram
     }
 
     fun showProgress(shouldBeVisible: Boolean) {
-        progressElementCompositionGroup.setVisible(shouldBeVisible)
+        progressElementCompositionGroup.isVisibleWhen(shouldBeVisible)
     }
 
     fun showContent(shouldBeVisible: Boolean) {
-        contentElementCompositionGroup.setVisible(shouldBeVisible)
+        contentElementCompositionGroup.isVisibleWhen(shouldBeVisible)
     }
 
     fun showEmptyListNotification(shouldBeVisible: Boolean) {
-        emptyListNotificationElementCompositionGroup.setVisible(shouldBeVisible)
+        emptyListNotificationElementCompositionGroup.isVisibleWhen(shouldBeVisible)
     }
 
     fun showActionButton(shouldBeVisible: Boolean) {
-        btnActionElementCompositionGroup.setVisible(shouldBeVisible)
+        btnActionElementCompositionGroup.isVisibleWhen(shouldBeVisible)
     }
 
     private fun setupAdapter() {

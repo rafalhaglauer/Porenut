@@ -47,9 +47,9 @@ class ManageRelativeDrillingActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.viewState.observe(this) {
             result?.also { finishWithResult(it.value) }
-            progress.setVisible(isLoading)
-            layoutContent.setVisible(!isLoading)
-            btnDeleteRelativeDrilling.setVisible(isDeleteButtonVisible)
+            progress.isVisibleWhen(isLoading)
+            layoutContent.isVisibleWhen(!isLoading)
+            btnDeleteRelativeDrilling.isVisibleWhen(isDeleteButtonVisible)
             viewEntity?.also { bind(it) }
             showMessage(errorMessage)
             txtManageRelativeDrilling.text = getString(manageText)

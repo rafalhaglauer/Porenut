@@ -53,8 +53,8 @@ class RelativeCompositionTabFragment : Fragment() {
         viewModel.relativeCompositionId = arguments?.relativeCompositionId
         viewModel.viewState
             .observe(viewLifecycleOwner) {
-                viewRelativeCompositionDetail.setVisible(areDetailsVisible)
-                viewDrillingGroup.setVisible(isDrillingGroupVisible)
+                viewRelativeCompositionDetail.isVisibleWhen(areDetailsVisible)
+                viewDrillingGroup.isVisibleWhen(isDrillingGroupVisible)
             }
         viewModel.messageEvent
             .observe(viewLifecycleOwner) {

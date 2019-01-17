@@ -80,7 +80,6 @@ public class ObjModel extends IndexedModel {
 
             } else if (lineArr.length > 3 && lineArr[0].equals("f")) {
                 if (lineArr.length == 4) {
-                    // it's a triangle
                     parseInts(lineArr[1], intArr[0]);
                     parseInts(lineArr[2], intArr[1]);
                     parseInts(lineArr[3], intArr[2]);
@@ -110,7 +109,6 @@ public class ObjModel extends IndexedModel {
                     }
 
                 } else if (lineArr.length == 5) {
-                    // it's a quad
                     parseInts(lineArr[1], intArr[0]);
                     parseInts(lineArr[2], intArr[1]);
                     parseInts(lineArr[3], intArr[2]);
@@ -158,8 +156,6 @@ public class ObjModel extends IndexedModel {
                     }
                 }
             }
-            // TODO: Support texture coordinates ("vt")
-
         }
 
         vertexCount = vertices.size() / 3;
@@ -206,13 +202,6 @@ public class ObjModel extends IndexedModel {
         normalBuffer.position(0);
     }
 
-    // This is a method that takes a string and parses any integers out of it (in place, without
-    // using any additional string splitting, regexes, or int parsing), which provides a pretty
-    // significant speed gain.
-    // - The first three output integers are pre-initialized to -1.
-    // - The integers in the string are expected to be delimited by a single non-numeric character.
-    //   If a non-numeric character follows another non-numeric character, then an integer value
-    //   of -1 will be added to the output array.
     protected static void parseInts(String str, int[] ints) {
         int len = str.length();
         int intIndex = 0;

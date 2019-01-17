@@ -58,9 +58,9 @@ class RelativeDrillingGroupFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.viewState
             .observe(viewLifecycleOwner) {
-                progressRelativeDrillingGroup.setVisible(isLoading)
-                contentRelativeDrillingGroup.setVisible(!isLoading)
-                btnAddRelativeDrillingGroup.setVisible(!isLoading)
+                progressRelativeDrillingGroup.isVisibleWhen(isLoading)
+                contentRelativeDrillingGroup.isVisibleWhen(!isLoading)
+                btnAddRelativeDrillingGroup.isVisibleWhen(!isLoading)
                 bind(drillingNames)
                 context?.showMessage(errorMessage)
             }

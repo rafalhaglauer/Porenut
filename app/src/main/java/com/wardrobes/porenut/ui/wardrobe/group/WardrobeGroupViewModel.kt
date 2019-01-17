@@ -1,10 +1,8 @@
 package com.wardrobes.porenut.ui.wardrobe.group
 
-import androidx.annotation.DrawableRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.wardrobes.porenut.R
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.wardrobe.WardrobeRepository
 import com.wardrobes.porenut.data.wardrobe.WardrobeRestRepository
@@ -19,7 +17,7 @@ class WardrobeGroupViewModel(
 ) : ViewModel() {
     val viewState: LiveData<WardrobeGroupViewState> = MutableLiveData<WardrobeGroupViewState>()
 
-    var creationType: Wardrobe.CreationType = Wardrobe.CreationType.STANDARD
+    var wardrobeType: Wardrobe.Type = Wardrobe.Type.BOTTOM
         set(value) {
             field = value
             fetchWardrobes()
@@ -30,7 +28,7 @@ class WardrobeGroupViewModel(
     fun getWardrobeId(viewEntity: WardrobeViewEntity) = wardrobes.first { it.symbol == viewEntity.symbol }.id
 
     private fun fetchWardrobes() {
-        wardrobeRepository.getAll(creationType)
+        wardrobeRepository.getAll(wardrobeType)
             .fetchStateFullModel(
                 onLoading = { createLoadingState() },
                 onSuccess = {
@@ -60,16 +58,11 @@ class WardrobeGroupViewModel(
     }
 
     private fun List<Wardrobe>.toViewEntity(): List<WardrobeViewEntity> = map {
-        WardrobeViewEntity(it.symbol, it.width.format(), it.height.format(), it.depth.format(), it.type.icon)
+        WardrobeViewEntity(it.symbol, it.width.format(), it.height.format(), it.depth.format())
     }
 
     private fun Float.format(): String = measureFormatter.format(this)
 
-    private val Wardrobe.Type.icon: Int
-        get() = when (this) {
-            Wardrobe.Type.HANGING -> R.drawable.ic_wardrobe_hanging
-            Wardrobe.Type.STANDING -> R.drawable.ic_wardrobe_standing
-        }
 }
 
 class WardrobeGroupViewState(
@@ -83,6 +76,5 @@ data class WardrobeViewEntity(
     val symbol: String,
     val width: String,
     val height: String,
-    val depth: String,
-    @DrawableRes val icon: Int
+    val depth: String
 )

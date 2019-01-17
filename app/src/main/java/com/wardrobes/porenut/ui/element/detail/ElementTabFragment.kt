@@ -60,9 +60,9 @@ class ElementTabFragment : Fragment() {
         viewModel.elementId = arguments?.elementId
         viewModel.viewState
             .observe(viewLifecycleOwner) {
-                viewElementDetail.setVisible(areDetailsVisible)
-                viewDrillingGroup.setVisible(isDrillingGroupVisible)
-                viewCompositionGroup.setVisible(isCompositionGroupVisible)
+                viewElementDetail.isVisibleWhen(areDetailsVisible)
+                viewDrillingGroup.isVisibleWhen(isDrillingGroupVisible)
+                viewCompositionGroup.isVisibleWhen(isCompositionGroupVisible)
             }
         viewModel.messageEvent
             .observe(viewLifecycleOwner) {

@@ -6,8 +6,8 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.inflate
+import com.wardrobes.porenut.ui.extension.isVisibleWhen
 import com.wardrobes.porenut.ui.extension.setDivider
-import com.wardrobes.porenut.ui.extension.setVisible
 import kotlinx.android.synthetic.main.view_relative_drilling_group.view.*
 
 class RelativeDrillingGroupView(context: Context, attrs: AttributeSet?) :
@@ -28,15 +28,15 @@ class RelativeDrillingGroupView(context: Context, attrs: AttributeSet?) :
     }
 
     fun showProgress(shouldBeVisible: Boolean) {
-        progressRelativeDrillingGroup.setVisible(shouldBeVisible)
+        progressRelativeDrillingGroup.isVisibleWhen(shouldBeVisible)
     }
 
     fun showContent(shouldBeVisible: Boolean) {
-        contentRelativeDrillingGroup.setVisible(shouldBeVisible)
+        contentRelativeDrillingGroup.isVisibleWhen(shouldBeVisible)
     }
 
     fun showEmptyListNotification(shouldBeVisible: Boolean) {
-        emptyListNotificationRelativeDrillingGroup.setVisible(shouldBeVisible)
+        emptyListNotificationRelativeDrillingGroup.isVisibleWhen(shouldBeVisible)
     }
 
     private fun setupAdapter() {

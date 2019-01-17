@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.wardrobe.detail
+package com.wardrobes.porenut.ui.element.group
 
 import android.view.View
 import android.view.ViewGroup

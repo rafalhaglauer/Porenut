@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FLAG_GRANT_READ_URI_PERMISSION" />
 
     <application
         android:allowBackup="true"
@@ -25,11 +26,6 @@
             </intent-filter>
 
         </activity>
-
-        <activity
-            android:name="com.wardrobes.porenut.ui.wardrobe.manage.ManageWardrobeActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name="com.wardrobes.porenut.ui.element.manage.ManageElementActivity"
@@ -58,7 +54,7 @@
 
         <activity
             android:name=".ui.viewer.view.ModelActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
     </application>
 

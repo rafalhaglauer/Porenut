@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.inflate
-import com.wardrobes.porenut.ui.extension.setVisible
+import com.wardrobes.porenut.ui.extension.isVisibleWhen
 import kotlinx.android.synthetic.main.view_relative_composition_detail.view.*
 
 class RelativeCompositionDetailView(context: Context, attrs: AttributeSet?) :
@@ -38,10 +38,10 @@ class RelativeCompositionDetailView(context: Context, attrs: AttributeSet?) :
     }
 
     fun showProgress(shouldBeVisible: Boolean) {
-        progressRelativeCompositionDetail.setVisible(shouldBeVisible)
+        progressRelativeCompositionDetail.isVisibleWhen(shouldBeVisible)
     }
 
     fun showContent(shouldBeVisible: Boolean) {
-        contentRelativeCompositionDetail.setVisible(shouldBeVisible)
+        contentRelativeCompositionDetail.isVisibleWhen(shouldBeVisible)
     }
 }

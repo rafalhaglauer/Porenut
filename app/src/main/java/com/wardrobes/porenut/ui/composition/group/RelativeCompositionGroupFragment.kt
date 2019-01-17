@@ -56,9 +56,9 @@ class RelativeCompositionGroupFragment : Fragment() {
         viewModel.viewState
             .observe(this, Observer {
                 it?.also {
-                    progressRelativeCompositionGroup.setVisible(it.isLoading)
-                    contentRelativeCompositionGroup.setVisible(!it.isLoading)
-                    btnAddRelativeCompositionGroup.setVisible(!it.isLoading)
+                    progressRelativeCompositionGroup.isVisibleWhen(it.isLoading)
+                    contentRelativeCompositionGroup.isVisibleWhen(!it.isLoading)
+                    btnAddRelativeCompositionGroup.isVisibleWhen(!it.isLoading)
                     bind(it.compositions)
                     context?.showMessage(it.errorMessage)
                 }

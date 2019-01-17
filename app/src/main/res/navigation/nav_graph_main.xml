@@ -12,8 +12,12 @@
         android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment">
 
         <action
-            android:id="@+id/wardrobeSectionToWardrobeTab"
-            app:destination="@id/wardrobeTabFragment" />
+            android:id="@+id/wardrobeSectionToWardrobeDashboard"
+            app:destination="@id/wardrobeDashboardFragment" />
+
+        <action
+            android:id="@+id/wardrobeSectionToWardrobeCreationTypeFragment"
+            app:destination="@id/wardrobeCreationTypeFragment" />
 
     </fragment>
 
@@ -43,10 +47,66 @@
 
     <fragment
         android:id="@+id/relativeDrillingGroupFragment"
-        android:name="com.wardrobes.porenut.ui.drilling.relative.group.RelativeDrillingGroupFragment" />
+        android:name="com.wardrobes.porenut.ui.drilling.relative.group.RelativeDrillingGroupFragment">
+
+    </fragment>
 
     <fragment
         android:id="@+id/relativeCompositionTabFragment"
         android:name="com.wardrobes.porenut.ui.composition.detail.RelativeCompositionTabFragment" />
+
+    <fragment
+        android:id="@+id/wardrobeCreationTypeFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.manage.WardrobeCreationTypeFragment">
+
+        <action
+            android:id="@+id/wardrobeCreationTypeFragmentToManageWardrobeFragment"
+            app:destination="@id/manageWardrobeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/manageWardrobeFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.manage.ManageWardrobeFragment">
+
+        <action
+            android:id="@+id/manageWardrobeFragmentToWardrobeSection"
+            app:popUpTo="@id/wardrobeSectionFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/wardrobeDashboardFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.dashboard.WardrobeDashboardFragment">
+
+        <action
+            android:id="@+id/wardrobeDashboardFragmentToElementGroupFragment"
+            app:destination="@id/elementGroupFragment" />
+
+        <action
+            android:id="@+id/wardrobeDashboardFragmentToWardrobeDetails"
+            app:destination="@id/wardrobeDetailsFragment" />
+
+        <action
+            android:id="@+id/wardrobeDashboardFragmentToWardrobeGallery"
+            app:destination="@id/wardrobeGalleryFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/elementGroupFragment"
+        android:name="com.wardrobes.porenut.ui.element.group.ElementGroupFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/wardrobeDetailsFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailsFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/wardrobeGalleryFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.gallery.WardrobeGalleryFragment" />
 
 </navigation>

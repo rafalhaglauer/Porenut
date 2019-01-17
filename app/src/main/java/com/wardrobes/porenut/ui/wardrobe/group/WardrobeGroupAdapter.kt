@@ -36,7 +36,6 @@ class WardrobeGroupAdapter(private val onItemSelected: (WardrobeViewEntity) -> U
                     txtWardrobeWidth.text = width
                     txtWardrobeHeight.text = height
                     txtWardrobeDepth.text = depth
-                    imgWardrobeType.setImageDrawable(context.getDrawable(icon))
                     setOnClickListener { onItemSelected(this) }
                 }
             }

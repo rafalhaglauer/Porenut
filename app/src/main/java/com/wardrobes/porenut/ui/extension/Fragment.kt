@@ -20,5 +20,13 @@ fun Fragment.navigateUp() {
 }
 
 fun Fragment.navigateTo(@IdRes actionId: Int, applyExtras: Bundle.() -> Unit = { }) {
-    navController.navigate(actionId, Bundle().apply(applyExtras))
+    navigateTo(actionId, Bundle().apply(applyExtras))
+}
+
+fun Fragment.navigateTo(@IdRes actionId: Int, bundle: Bundle) {
+    navController.navigate(actionId, bundle)
+}
+
+fun Fragment.showMessage(message: String) {
+    context?.showMessage(message)
 }

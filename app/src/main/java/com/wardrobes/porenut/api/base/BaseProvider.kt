@@ -1,5 +1,6 @@
 package com.wardrobes.porenut.api.base
 
+import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 import retrofit2.Retrofit
@@ -10,7 +11,13 @@ object BaseProvider {
 
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(API_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder()
+                    .setLenient()
+                    .create()
+            )
+        )
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
 }

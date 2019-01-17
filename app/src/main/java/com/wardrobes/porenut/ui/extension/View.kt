@@ -6,7 +6,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.inputmethod.InputMethodManager
 
-fun View.setVisible(shouldBeVisible: Boolean) {
+infix fun View.isVisibleWhen(shouldBeVisible: Boolean) {
     if (shouldBeVisible) show() else begone()
 }
 

@@ -67,8 +67,8 @@ class ManageElementActivity : AppCompatActivity() {
         manageElementViewModel.viewState.observe(this, Observer {
             val result = it!!.resultType
             if (result == null) {
-                progress.setVisible(it.isLoading)
-                layoutContent.setVisible(!it.isLoading)
+                progress.isVisibleWhen(it.isLoading)
+                layoutContent.isVisibleWhen(!it.isLoading)
                 showMessage(it.errorMessage)
                 txtManageElement.text = getString(it.btnTextMessage)
                 it.viewEntity?.also { bind(it) }

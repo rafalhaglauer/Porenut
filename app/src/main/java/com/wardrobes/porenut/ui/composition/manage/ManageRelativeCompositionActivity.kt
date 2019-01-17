@@ -41,8 +41,8 @@ class ManageRelativeCompositionActivity : AppCompatActivity() {
         viewModel.viewState.observe(this, Observer {
             it!!.also {
                 it.result?.also { finishWithResult(it.value) }
-                progress.setVisible(it.isLoading)
-                layoutContent.setVisible(!it.isLoading)
+                progress.isVisibleWhen(it.isLoading)
+                layoutContent.isVisibleWhen(!it.isLoading)
                 showMessage(it.errorMessage)
             }
         })

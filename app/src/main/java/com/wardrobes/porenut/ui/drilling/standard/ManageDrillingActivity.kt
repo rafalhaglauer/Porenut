@@ -70,12 +70,12 @@ class ManageDrillingActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.viewState.observe(this, Observer {
             if (it!!.result != Result.MODIFIED) {
-                progress.setVisible(it.isLoading)
-                layoutContent.setVisible(!it.isLoading)
+                progress.isVisibleWhen(it.isLoading)
+                layoutContent.isVisibleWhen(!it.isLoading)
                 showMessage(it.errorMessage)
                 it.viewEntity?.also { bind(it) }
                 txtManageDrilling.setText(it.btnTextMessage)
-                btnAction.setVisible(it.isManageBtnVisible)
+                btnAction.isVisibleWhen(it.isManageBtnVisible)
             } else {
                 finishWithResult(it.result!!.value)
             }
