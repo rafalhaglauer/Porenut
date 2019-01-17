@@ -43,15 +43,6 @@ class ManageDrillingViewModel(
             )
     }
 
-    fun copy(viewEntity: DrillingViewEntity) {
-//        drillingRepository.create(elementId, viewEntities.toDrilling())
-//                .fetchStateFullModel(
-//                        onLoading = { createLoadingState() },
-//                        onSuccess = { drillingId = it },
-//                        onError = { createErrorState(it) }
-//                )
-    }
-
     private fun add(viewEntity: DrillingViewEntity) {
         drillingRepository.add(viewEntity.toDrilling())
             .fetchStateFullModel(

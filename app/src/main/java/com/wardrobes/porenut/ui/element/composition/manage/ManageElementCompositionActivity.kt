@@ -27,10 +27,7 @@ class ManageCompositionActivity : AppCompatActivity() {
             viewModel.add(
                 drillingCompositionName = spinnerRelativeDrillingComposition.selectedItem as String,
                 xOffset = viewXOffset.offset,
-                yOffset = viewYOffset.offset,
-                referenceElementName = spinnerElementReference.selectedItem as String,
-                xReferenceLengthName = spinnerXReferenceLength.selectedItem as String,
-                yReferenceLengthName = spinnerYReferenceLength.selectedItem as String
+                yOffset = viewYOffset.offset
             )
         }
         viewModel = ViewModelProviders.of(this)[ManageCompositionViewModel::class.java]
@@ -41,7 +38,7 @@ class ManageCompositionActivity : AppCompatActivity() {
             progress.isVisibleWhen(it.isLoading)
             layoutContent.isVisibleWhen(!it.isLoading)
             spinnerElementReference.adapter =
-                    ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, it.elementNames)
+                ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, it.elementNames)
             spinnerRelativeDrillingComposition.adapter = ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,

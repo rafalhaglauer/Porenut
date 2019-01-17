@@ -20,4 +20,23 @@
         <item name="android:textColor">@color/textTertiary</item>
     </style>
 
+    <style name="DashboardButton">
+        <item name="android:background">@drawable/rounded_rectangle</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/textBig</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+        <item name="android:textColor">@color/textTertiary</item>
+    </style>
+
+    <style name="DashboardButton.Accent">
+        <item name="android:backgroundTint">@color/colorAccent</item>
+    </style>
+
+    <style name="DashboardButton.Negative">
+        <item name="android:backgroundTint">@color/error</item>
+    </style>
+
 </resources>

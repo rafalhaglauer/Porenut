@@ -55,7 +55,6 @@ class ManageDrillingActivity : AppCompatActivity() {
         btnAction.setOnActionSelectedListener {
             when (it.id) {
                 R.id.action_delete_drilling -> viewModel.delete()
-                R.id.action_copy_drilling -> viewModel.copy(build())
             }
             false
         }

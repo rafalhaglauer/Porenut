@@ -20,6 +20,7 @@ class ElementGroupViewModel(
     val viewState: LiveData<ElementGroupViewState> = MutableLiveData()
     val messageEvent: LiveData<Event<String>> = MutableLiveData()
     val navigateUpEvent: LiveData<Event<Unit>> = MutableLiveData()
+    val navigateToDetailsEvent: LiveData<Event<Long>> = MutableLiveData()
 
     var wardrobeId: Long? = null
         set(value) {
@@ -28,7 +29,11 @@ class ElementGroupViewModel(
 
     private var elementGroup: List<Element> = emptyList()
 
-    fun getElementId(viewEntity: ElementViewEntity): Long = elementGroup.first { it.name == viewEntity.name }.id
+    fun goToDetails(viewEntity: ElementViewEntity) {
+        elementGroup.firstOrNull { it.name == viewEntity.name }?.id?.also {
+            navigateToDetailsEvent.updateValue(Event(it))
+        }
+    }
 
     private fun showElementGroup(wardrobeId: Long) {
         elementRepository.getAll(wardrobeId)

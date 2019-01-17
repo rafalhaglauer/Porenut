@@ -2,23 +2,17 @@ package com.wardrobes.porenut.domain
 
 data class ReferenceElementRelativeDrillingCompositionLight(
     val relativeDrillingCompositionId: Long,
-    val referenceElementId: Long,
     val elementId: Long,
     val xOffset: Offset,
-    val yOffset: Offset,
-    val xReferenceLength: Element.LengthType,
-    val yReferenceLength: Element.LengthType
+    val yOffset: Offset
 )
 
 data class ReferenceElementRelativeDrillingComposition(
     val id: Long,
     val relativeDrillingComposition: RelativeDrillingComposition,
-    val referenceElement: Element,
     val element: Element,
     val xOffset: Offset,
-    val yOffset: Offset,
-    val xReferenceLength: Element.LengthType,
-    val yReferenceLength: Element.LengthType
+    val yOffset: Offset
 )
 
 data class RelativeDrillingCompositionLight(

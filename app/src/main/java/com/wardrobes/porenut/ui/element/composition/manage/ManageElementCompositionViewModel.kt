@@ -37,20 +37,14 @@ class ManageCompositionViewModel(
 
     fun add(
         drillingCompositionName: String,
-        referenceElementName: String,
         xOffset: Offset,
-        yOffset: Offset,
-        xReferenceLengthName: String,
-        yReferenceLengthName: String
+        yOffset: Offset
     ) {
         ReferenceElementRelativeDrillingCompositionLight(
             relativeDrillingCompositionId = drillingCompositions.first { it.name == drillingCompositionName }.id,
-            referenceElementId = elements.first { it.name == referenceElementName }.id,
             elementId = elementId,
             xOffset = xOffset,
-            yOffset = yOffset,
-            xReferenceLength = xReferenceLengthName.toElementLengthType(),
-            yReferenceLength = yReferenceLengthName.toElementLengthType()
+            yOffset = yOffset
         ).also { add(it) }
     }
 
@@ -97,14 +91,6 @@ class ManageCompositionViewModel(
 
     private fun createErrorState(errorMessage: String?) {
         viewState.value = ManageCompositionViewState(errorMessage = errorMessage)
-    }
-
-    private fun String.toElementLengthType(): Element.LengthType {
-        return when (this) {
-            "Długość elementu" -> Element.LengthType.LENGTH
-            "Szerokość elementu" -> Element.LengthType.WIDTH
-            else -> Element.LengthType.HEIGHT
-        }
     }
 }
 

@@ -8,101 +8,78 @@ import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.element.ElementRepository
 import com.wardrobes.porenut.data.element.ElementRestRepository
 import com.wardrobes.porenut.domain.Element
-import com.wardrobes.porenut.domain.ElementLight
 import com.wardrobes.porenut.ui.element.detail.ElementViewEntity
-import com.wardrobes.porenut.ui.vo.*
+import com.wardrobes.porenut.ui.extension.updateValue
+import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
+import com.wardrobes.porenut.ui.vo.Event
+import com.wardrobes.porenut.ui.vo.MeasureFormatter
 
 class ManageElementViewModel(
     private val elementRepository: ElementRepository = ElementRestRepository,
     private val measureFormatter: MeasureFormatter = DefaultMeasureFormatter
 ) : ViewModel() {
-    val viewState: LiveData<ManageElementViewState> = MutableLiveData()
+    val viewState: LiveData<ManageElementViewState> = MutableLiveData<ManageElementViewState>().apply {
+        value = ManageElementViewState()
+    }
+    val errorStateEvent: LiveData<Event<String>> = MutableLiveData()
+    val navigateBackEvent: LiveData<Event<Unit>> = MutableLiveData()
 
-    var wardrobeId = UNDEFINED_ID
-    var elementId = UNDEFINED_ID
-
-    var requestType: RequestType? = null
+    var wardrobeId: Long? = null
+    var elementId: Long? = null
         set(value) {
-            field = value
-            when (value) {
-                RequestType.ADD -> viewState.updateValue(ManageElementViewState(isLoading = false))
-                else -> fetchDetails()
-            }
+            field = value?.also { fetchDetails(it) }
         }
 
     fun manage(elementViewEntity: ElementViewEntity) {
-        when (requestType) {
-            RequestType.EDIT -> update(elementViewEntity)
-            RequestType.COPY -> copy(elementViewEntity)
-            RequestType.ADD -> add(elementViewEntity)
+        elementViewEntity.toElement()?.also { element ->
+            elementId
+                ?.also { update(element, it) }
+                ?: add(element)
         }
     }
 
-    private fun fetchDetails() {
+    private fun fetchDetails(elementId: Long) {
         elementRepository.get(elementId)
             .fetchStateFullModel(
-                onLoading = { createLoadingState() },
+                onLoading = { setLoading() },
                 onSuccess = { createInitialState(it) },
-                onError = { createErrorState(it) }
+                onError = { createErrorState(it, shouldNavigateBack = true) }
             )
     }
 
-    private fun add(elementViewEntity: ElementViewEntity) {
-        elementRepository.add(elementViewEntity.toElement())
+    private fun add(element: Element) {
+        elementRepository.add(element)
             .fetchStateFullModel(
-                onLoading = { createLoadingState() },
-                onSuccess = {
-                    elementId = it
-                    createResultState(Result.ADDED)
-                },
-                onError = { createErrorState(it) }
+                onLoading = { setLoading() },
+                onSuccess = { navigateBack() },
+                onError = { createErrorState(it, shouldNavigateBack = false) }
             )
     }
 
-    private fun update(elementViewEntity: ElementViewEntity) {
-//        elementRepository.update(elementViewEntity.toElement(elementId))
-//                .fetchStateFullModel(
-//                        onLoading = { createLoadingState() },
-//                        onSuccess = {
-//                            elementId = it
-//                            createResultState(Result.MODIFIED)
-//                        },
-//                        onError = { createErrorState(it) }
-//                )
+    private fun update(element: Element, elementId: Long) {
+        elementRepository.update(elementId, element)
+            .fetchStateFullModel(
+                onLoading = { setLoading() },
+                onSuccess = { navigateBack() },
+                onError = { createErrorState(it, shouldNavigateBack = false) }
+            )
     }
 
-    private fun copy(elementViewEntity: ElementViewEntity) {
-//        elementRepository.copy(elementId, elementViewEntity.name)
-//                .fetchStateFullModel(
-//                        onLoading = { createLoadingState() },
-//                        onSuccess = {
-//                            elementId = it
-//                            createResultState(Result.COPIED)
-//                        },
-//                        onError = { createErrorState(it) }
-//                )
-    }
-
-    private fun createLoadingState() {
-        viewState.updateValue(ManageElementViewState(isLoading = true))
+    private fun setLoading(isLoading: Boolean = true) {
+        viewState.updateValue(ManageElementViewState(isLoading = isLoading))
     }
 
     private fun createInitialState(element: Element) {
-        viewState.updateValue(
-            ManageElementViewState(
-                viewEntity = element.toViewEntity(),
-                btnTextMessage = R.string.l_save,
-                disableEveryFieldExceptName = requestType == RequestType.COPY
-            )
-        )
+        viewState.updateValue(ManageElementViewState(viewEntity = element.toViewEntity(), btnTextMessage = R.string.l_save))
     }
 
-    private fun createResultState(result: Result) {
-        viewState.updateValue(ManageElementViewState(resultType = result))
+    private fun createErrorState(errorMessage: String, shouldNavigateBack: Boolean) {
+        errorStateEvent.updateValue(Event(errorMessage))
+        if (shouldNavigateBack) navigateBack() else setLoading(false)
     }
 
-    private fun createErrorState(errorMessage: String?) {
-        viewState.updateValue(ManageElementViewState(errorMessage = errorMessage))
+    private fun navigateBack() {
+        navigateBackEvent.updateValue(Event(Unit))
     }
 
     private fun Element.toViewEntity() = ElementViewEntity(
@@ -112,14 +89,15 @@ class ManageElementViewModel(
         height = height.formattedValue
     )
 
-    private fun ElementViewEntity.toElement() = ElementLight(
-        name = name,
-        length = length.toFloat(),
-        width = width.toFloat(),
-        height = height.toFloat(),
-        wardrobeId = wardrobeId
-
-    )
+    private fun ElementViewEntity.toElement() = wardrobeId?.let {
+        Element(
+            name = name,
+            length = length.toFloat(),
+            width = width.toFloat(),
+            height = height.toFloat(),
+            wardrobeId = it
+        )
+    }
 
     private fun String.toFloat() = measureFormatter.toFloat(this)
 
@@ -133,9 +111,6 @@ class ManageElementViewModel(
 
 class ManageElementViewState(
     val isLoading: Boolean = false,
-    val disableEveryFieldExceptName: Boolean = false,
-    val viewEntity: ElementViewEntity? = null,
-    val resultType: Result? = null,
-    val errorMessage: String? = null,
+    val viewEntity: ElementViewEntity = ElementViewEntity(),
     val btnTextMessage: Int = R.string.l_add
 )

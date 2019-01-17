@@ -97,16 +97,38 @@
         android:id="@+id/elementGroupFragment"
         android:name="com.wardrobes.porenut.ui.element.group.ElementGroupFragment">
 
+        <action
+            android:id="@+id/elementGroupFragmentToElementDashboard"
+            app:destination="@id/elementDashboardFragment" />
+
+        <action
+            android:id="@+id/elementGroupFragmentToManageElement"
+            app:destination="@id/manageElementFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/wardrobeDetailsFragment"
         android:name="com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailsFragment">
 
+        <action
+            android:id="@+id/wardrobeDetailsFragmentToManageWardrobe"
+            app:destination="@id/manageWardrobeFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/wardrobeGalleryFragment"
         android:name="com.wardrobes.porenut.ui.wardrobe.gallery.WardrobeGalleryFragment" />
+
+    <fragment
+        android:id="@+id/elementDashboardFragment"
+        android:name="com.wardrobes.porenut.ui.element.dashboard.ElementDashboardFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/manageElementFragment"
+        android:name="com.wardrobes.porenut.ui.element.manage.ManageElementFragment" />
 
 </navigation>

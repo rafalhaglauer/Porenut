@@ -47,13 +47,7 @@ class ElementTabViewModel(
                     },
                     onSuccess = {
                         element = it
-                        val isActionButtonVisible = it.creationType == Element.CreationType.CUSTOM
-                        elementDetailViewState.updateValue(
-                            ElementDetailViewState(
-                                viewEntity = it.toViewEntity(),
-                                isActionButtonVisible = isActionButtonVisible
-                            )
-                        )
+                        elementDetailViewState.updateValue(ElementDetailViewState(viewEntity = it.toViewEntity()))
                     },
                     onError = {
                         messageEvent.updateValue(Event(it))
@@ -72,18 +66,11 @@ class ElementTabViewModel(
                         drillingGroupViewState.updateValue(DrillingGroupViewState(isLoading = true))
                     },
                     onSuccess = {
-                        val isActionButtonVisible = element?.creationType == Element.CreationType.CUSTOM
                         drillingGroup = it
                         if (it.isEmpty()) {
-                            DrillingGroupViewState(
-                                isEmptyListNotificationVisible = true,
-                                isActionButtonVisible = isActionButtonVisible
-                            )
+                            DrillingGroupViewState(isEmptyListNotificationVisible = true)
                         } else {
-                            DrillingGroupViewState(
-                                viewEntities = it.toViewEntities(),
-                                isActionButtonVisible = isActionButtonVisible
-                            )
+                            DrillingGroupViewState(viewEntities = it.toViewEntities())
                         }.also { drillingGroupViewState.updateValue(it) }
                     },
                     onError = {
@@ -103,12 +90,10 @@ class ElementTabViewModel(
                         compositionGroupViewState.updateValue(ElementCompositionViewState(isLoading = true))
                     },
                     onSuccess = {
-                        val isActionButtonVisible = element?.creationType == Element.CreationType.CUSTOM
-                        //                        compositions = it
                         if (it.isEmpty()) {
-                            ElementCompositionViewState(isEmptyListNotificationVisible = true, isActionButtonVisible = isActionButtonVisible)
+                            ElementCompositionViewState(isEmptyListNotificationVisible = true)
                         } else {
-                            ElementCompositionViewState(names = it.map { it.id.toString() }, isActionButtonVisible = isActionButtonVisible)
+                            ElementCompositionViewState(names = it.map { it.id.toString() })
                         }.also { state -> compositionGroupViewState.updateValue(state) }
                     },
                     onError = {
@@ -193,10 +178,10 @@ data class DrillingGroupViewEntity(
 )
 
 data class ElementViewEntity(
-    val name: String,
-    val length: String,
-    val width: String,
-    val height: String
+    val name: String = "",
+    val length: String = "",
+    val width: String = "",
+    val height: String = ""
 )
 
 class ElementCompositionViewState(

@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
+import com.wardrobes.porenut.ui.element.dashboard.ElementDashboardFragment
 import com.wardrobes.porenut.ui.element.detail.ElementViewEntity
+import com.wardrobes.porenut.ui.element.manage.ManageElementFragment
 import com.wardrobes.porenut.ui.extension.*
 import kotlinx.android.synthetic.main.fragment_element_group.*
 
@@ -46,7 +48,7 @@ class ElementGroupFragment : Fragment() {
             .observe(viewLifecycleOwner) {
                 progressElementGroup isVisibleWhen isLoading
                 contentElementGroup isVisibleWhen !isLoading
-                btnActionElementGroup isVisibleWhen !isLoading
+                btnAddElement isVisibleWhen !isLoading
                 emptyListNotificationElementGroup isVisibleWhen isEmptyListNotificationVisible
                 bind(viewEntities)
             }
@@ -61,6 +63,10 @@ class ElementGroupFragment : Fragment() {
             .observeEvent(viewLifecycleOwner) {
                 navigateUp()
             }
+        viewModel.navigateToDetailsEvent
+            .observeEvent(viewLifecycleOwner) {
+                navigateTo(R.id.elementGroupFragmentToElementDashboard, ElementDashboardFragment.createExtras(it))
+            }
     }
 
     private fun bind(viewEntities: List<ElementViewEntity>) {
@@ -72,21 +78,16 @@ class ElementGroupFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             setDivider(R.drawable.divider)
             adapter = ElementGroupAdapter {
-                //                navigateTo(R.id.wardrobeTabToElementTab) {
-//                    elementId = viewModel.getElementId(it)
-//                    arguments?.wardrobeId?.also { wardrobeId = it }
-//                }
+                viewModel.goToDetails(it)
             }
         }
     }
 
     private fun setupActionButton() {
-        btnActionElementGroup.setOnClickListener {
-            //            wardrobeId?.also {
-//                launchActivity<ManageElementActivity>(REQUEST_ADD_ELEMENT) {
-//                    wardrobeId = it
-//                    requestType = RequestType.ADD
-//                }
+        btnAddElement.setOnClickListener {
+            wardrobeId?.also { id ->
+                navigateTo(R.id.elementGroupFragmentToManageElement, ManageElementFragment.createExtras(id))
+            }
         }
     }
 

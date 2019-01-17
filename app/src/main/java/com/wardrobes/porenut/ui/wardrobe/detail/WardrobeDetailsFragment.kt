@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.*
-import com.wardrobes.porenut.ui.viewer.model.Model
-import com.wardrobes.porenut.ui.viewer.view.ModelActivity
+import com.wardrobes.porenut.ui.wardrobe.manage.ManageWardrobeFragment
 import kotlinx.android.synthetic.main.fragment_wardrobe_details.*
 
 private const val KEY_WARDROBE_ID = "key-wardrobe-id"
@@ -17,11 +16,7 @@ private const val KEY_WARDROBE_ID = "key-wardrobe-id"
 class WardrobeDetailsFragment : Fragment() {
     private lateinit var viewModel: WardrobeDetailViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? =
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         container?.inflate(R.layout.fragment_wardrobe_details)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -30,9 +25,6 @@ class WardrobeDetailsFragment : Fragment() {
         observeViewModel()
         setupActionButton()
         unpackArguments()
-        launchActivity<ModelActivity> {
-            putExtra("key-wardrobe-id", arguments?.getLong(KEY_WARDROBE_ID))
-        }
     }
 
     private fun setupViewModel() {
@@ -70,21 +62,16 @@ class WardrobeDetailsFragment : Fragment() {
             txtWardrobeWidth.text = width
             txtWardrobeHeight.text = height
             txtWardrobeDepth.text = depth
-            txtWardrobeType.text = context?.getString(type)
+            txtWardrobeType.text = getString(type)
         }
     }
 
-    fun showModel(model: Model) {
-        //TODO Model 3d!!!
-//        layoutModel.show()
-//        layoutModel.removeAllViews()
-//        layoutModel.addView(ModelSurfaceView(context, model))
-    }
-
     private fun setupActionButton() {
-        // TODO Just edit!
-        // SETUP EDITION
-        btnActionWardrobeDetail.inflate(R.menu.menu_wardrobe_details)
+        btnEditWardrobe.setOnClickListener {
+            arguments?.getLong(KEY_WARDROBE_ID)?.also { id ->
+                navigateTo(R.id.wardrobeDetailsFragmentToManageWardrobe, ManageWardrobeFragment.createExtras(id))
+            }
+        }
     }
 
     private fun unpackArguments() {
@@ -98,43 +85,3 @@ class WardrobeDetailsFragment : Fragment() {
         }
     }
 }
-
-/*
-
-        ModelLoadTask().execute(Uri.parse("file:///${Environment.getExternalStorageDirectory()}/Download/wardrobe_OBJ.obj"))
-
-
-
-*     private inner class ModelLoadTask : AsyncTask<Uri, Int, Model>() {
-        override fun doInBackground(vararg file: Uri): Model? {
-            var stream: InputStream? = null
-            try {
-                val uri = file[0]
-                val cr = context?.contentResolver
-                stream = cr?.openInputStream(uri)
-                return stream?.let { ObjModel(it) }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            } finally {
-                stream?.close()
-            }
-            return null
-        }
-
-        override fun onProgressUpdate(vararg values: Int?) {}
-
-        override fun onPostExecute(model: Model?) {
-            model?.also { viewWardrobeDetail.showModel(it) }
-        }
-    }
-
-
-    //            arguments?.wardrobeId?.also {
-//                launchActivity<ManageWardrobeActivity>(REQUEST_EDIT_WARDROBE) {
-//                    wardrobeId = it
-//                    requestType = RequestType.EDIT
-//                }
-//            }
-
-
-* */
