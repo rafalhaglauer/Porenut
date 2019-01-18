@@ -7,33 +7,20 @@ import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.relative.RelativeDrillingSetRepository
 import com.wardrobes.porenut.data.relative.RelativeDrillingSetRestRepository
 import com.wardrobes.porenut.domain.RelativeDrillingSet
+import com.wardrobes.porenut.ui.extension.updateValue
+import com.wardrobes.porenut.ui.vo.Event
 
-class RelativeCompositionGroupViewModel(
+class RelativeDrillingSetGroupViewModel(
     private val relativeDrillingCompositionRepository: RelativeDrillingSetRepository = RelativeDrillingSetRestRepository
 ) : ViewModel() {
     val viewState: LiveData<RelativeCompositionGroupViewState> = MutableLiveData()
+    val errorMessageEvent: LiveData<Event<String>> = MutableLiveData()
 
-    private var compositions: List<RelativeDrillingSet> = emptyList()
-
-    fun startObserving() {
-        getCompositions()
-    }
-
-    fun refresh() {
-        getCompositions()
-    }
-
-    fun getRelativeCompositionId(compositionName: String) =
-        compositions.first { it.name == compositionName }.id
-
-    private fun getCompositions() {
+    fun fetchDrillingSets() {
         relativeDrillingCompositionRepository.getAll()
             .fetchStateFullModel(
                 onLoading = { createLoadingState() },
-                onSuccess = {
-                    compositions = it
-                    createSuccessState()
-                },
+                onSuccess = { createSuccessState(it) },
                 onError = { createErrorState(it) }
             )
     }
@@ -42,12 +29,13 @@ class RelativeCompositionGroupViewModel(
         updateState(RelativeCompositionGroupViewState(isLoading = true))
     }
 
-    private fun createSuccessState() {
-        updateState(RelativeCompositionGroupViewState(compositions = compositions.map { it.name }))
+    private fun createSuccessState(drillingSets: List<RelativeDrillingSet>) {
+        updateState(RelativeCompositionGroupViewState(drillingSets = drillingSets))
     }
 
-    private fun createErrorState(errorMessage: String?) {
-        updateState(RelativeCompositionGroupViewState(errorMessage = errorMessage))
+    private fun createErrorState(errorMessage: String) {
+        errorMessageEvent.updateValue(Event(errorMessage))
+        updateState(RelativeCompositionGroupViewState(isLoading = false))
     }
 
     private fun updateState(state: RelativeCompositionGroupViewState) {
@@ -57,6 +45,5 @@ class RelativeCompositionGroupViewModel(
 
 class RelativeCompositionGroupViewState(
     val isLoading: Boolean = false,
-    val compositions: List<String> = emptyList(),
-    val errorMessage: String? = null
+    val drillingSets: List<RelativeDrillingSet> = emptyList()
 )

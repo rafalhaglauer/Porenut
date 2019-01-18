@@ -23,11 +23,11 @@
 
     <fragment
         android:id="@+id/drillingSectionFragment"
-        android:name="com.wardrobes.porenut.ui.composition.group.RelativeCompositionGroupFragment">
+        android:name="com.wardrobes.porenut.ui.composition.group.RelativeDrillingSetGroupFragment">
 
         <action
-            android:id="@+id/drillingSectionToRelativeCompositionTab"
-            app:destination="@id/relativeCompositionTabFragment" />
+            android:id="@+id/drillingSectionToRelativeDrillingSetDetails"
+            app:destination="@id/relativeDrillingSetDetailsFragment" />
 
     </fragment>
 
@@ -38,8 +38,8 @@
     </fragment>
 
     <fragment
-        android:id="@+id/relativeCompositionTabFragment"
-        android:name="com.wardrobes.porenut.ui.composition.detail.RelativeCompositionTabFragment" />
+        android:id="@+id/relativeDrillingSetDetailsFragment"
+        android:name="com.wardrobes.porenut.ui.composition.detail.RelativeDrillingSetDetailsFragment" />
 
     <fragment
         android:id="@+id/wardrobeCreationTypeFragment"

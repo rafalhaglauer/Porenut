@@ -47,7 +47,7 @@ class RelativeDrillingGroupFragment : Fragment() {
             setDivider(R.drawable.divider)
             adapter = RelativeDrillingGroupAdapter {
                 //                launchActivity<ManageRelativeDrillingActivity> {
-//                    arguments?.relativeCompositionId?.also { relativeCompositionId = it }
+//                    arguments?.drillingSetId?.also { drillingSetId = it }
 //
 //                }
                 // TODO Navigate to manage drilling activity
