@@ -1,103 +1,159 @@
 package com.wardrobes.porenut.ui.element.composition.manage
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.wardrobes.porenut.R
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.composition.CompositionRepository
 import com.wardrobes.porenut.data.composition.CompositionRestRepository
-import com.wardrobes.porenut.data.element.ElementRepository
-import com.wardrobes.porenut.data.element.ElementRestRepository
-import com.wardrobes.porenut.data.relative.RelativeDrillingCompositionRepository
-import com.wardrobes.porenut.data.relative.RelativeDrillingCompositionRestRepository
-import com.wardrobes.porenut.domain.Element
+import com.wardrobes.porenut.data.composition.ElementDrillingSetCompositionRequest
+import com.wardrobes.porenut.data.relative.RelativeDrillingSetRepository
+import com.wardrobes.porenut.data.relative.RelativeDrillingSetRestRepository
+import com.wardrobes.porenut.domain.ElementDrillingSetComposition
 import com.wardrobes.porenut.domain.Offset
-import com.wardrobes.porenut.domain.ReferenceElementRelativeDrillingCompositionLight
 import com.wardrobes.porenut.domain.RelativeDrillingSet
-import com.wardrobes.porenut.ui.vo.Result
-import io.reactivex.Observable
-import io.reactivex.functions.BiFunction
+import com.wardrobes.porenut.ui.extension.updateValue
+import com.wardrobes.porenut.ui.vo.Event
 
-class ManageCompositionViewModel(
-    private val elementRepository: ElementRepository = ElementRestRepository,
-    private val relativeDrillingCompositionRepository: RelativeDrillingCompositionRepository = RelativeDrillingCompositionRestRepository,
+class ManageElementCompositionViewModel(
+    private val relativeDrillingCompositionRepository: RelativeDrillingSetRepository = RelativeDrillingSetRestRepository,
     private val compositionRepository: CompositionRepository = CompositionRestRepository
 ) : ViewModel() {
-    val viewState: MutableLiveData<ManageCompositionViewState> = MutableLiveData()
+    val viewState: LiveData<ManageElementCompositionViewState> = MutableLiveData()
+    val errorMessageEvent: LiveData<Event<String>> = MutableLiveData()
+    val navigateBackEvent: LiveData<Event<Unit>> = MutableLiveData()
 
-    var elementId: Long = -1
-
-    var wardrobeId: Long = -1
+    var compositionId: Long? = null
         set(value) {
-            field = value
-            fetchInitialData()
+            field = value?.also { fetchComposition(it) }
+        }
+    var elementId: Long? = null
+        set(value) {
+            field = value?.also { fetchInitialData() }
         }
 
-    private var elements: List<Element> = emptyList()
-    private var drillingCompositions: List<RelativeDrillingSet> = emptyList()
+    private var drillingSets: List<RelativeDrillingSet> = emptyList()
+    private var composition: ElementDrillingSetComposition? = null
+        set(value) {
+            field = value?.also { elementId = it.element.id }
+        }
 
-    fun add(
-        drillingCompositionName: String,
-        xOffset: Offset,
-        yOffset: Offset
-    ) {
-        ReferenceElementRelativeDrillingCompositionLight(
-            relativeDrillingCompositionId = drillingCompositions.first { it.name == drillingCompositionName }.id,
-            elementId = elementId,
-            xOffset = xOffset,
-            yOffset = yOffset
-        ).also { add(it) }
+    fun manage(drillingCompositionName: String, xOffset: Offset, yOffset: Offset) {
+        elementId?.also { manage(it, drillingCompositionName, xOffset, yOffset) }
     }
 
-    private fun add(composition: ReferenceElementRelativeDrillingCompositionLight) {
+    fun remove() {
+        compositionId?.also {
+            compositionRepository.delete(it).fetchStateFullModel(
+                onLoading = { createLoadingState() },
+                onSuccess = { createSuccessState() },
+                onError = { createErrorState(it) }
+            )
+
+        }
+    }
+
+    private fun manage(elementId: Long, drillingCompositionName: String, xOffset: Offset, yOffset: Offset) {
+        drillingSets.firstOrNull { it.name == drillingCompositionName }?.id?.also { drillingSetId ->
+            ElementDrillingSetCompositionRequest(
+                drillingSetId = drillingSetId,
+                elementId = elementId,
+                xOffset = xOffset,
+                yOffset = yOffset
+            ).also { request ->
+                compositionId
+                    ?.also { update(it, request) }
+                    ?: add(request)
+            }
+        }
+    }
+
+    private fun add(composition: ElementDrillingSetCompositionRequest) {
         compositionRepository.add(composition)
             .fetchStateFullModel(
                 onLoading = { createLoadingState() },
-                onSuccess = { createResultState() },
+                onSuccess = { createSuccessState() },
+                onError = { createErrorState(it) }
+            )
+    }
+
+    private fun update(compositionId: Long, composition: ElementDrillingSetCompositionRequest) {
+        compositionRepository.update(compositionId, composition)
+            .fetchStateFullModel(
+                onLoading = { createLoadingState() },
+                onSuccess = { createSuccessState() },
                 onError = { createErrorState(it) }
             )
     }
 
     private fun fetchInitialData() {
-        Observable.zip(
-            elementRepository.getAll(wardrobeId),
-            relativeDrillingCompositionRepository.getAll(),
-            BiFunction<List<Element>, List<RelativeDrillingSet>, Pair<List<Element>, List<RelativeDrillingSet>>>(
-                function = { elements, compositions -> elements to compositions })
-        ).fetchStateFullModel(
+        relativeDrillingCompositionRepository.getAll().fetchStateFullModel(
             onLoading = { createLoadingState() },
             onSuccess = {
-                elements = it.first
-                drillingCompositions = it.second
-                createInitialState()
+                drillingSets = it
+                createInitialState(it)
             },
             onError = { createErrorState(it) }
         )
     }
 
-    private fun createLoadingState() {
-        viewState.value = ManageCompositionViewState(isLoading = true)
-    }
-
-    private fun createInitialState() {
-        viewState.value = ManageCompositionViewState(
-            elementNames = elements.map { it.name },
-            compositionNames = drillingCompositions.map { it.name }
+    private fun fetchComposition(compositionId: Long) {
+        compositionRepository.get(compositionId).fetchStateFullModel(
+            onLoading = { createLoadingState() },
+            onSuccess = { composition = it },
+            onError = { createErrorState(it) }
         )
     }
 
-    private fun createResultState() {
-        viewState.value = viewState.value?.copy(result = Result.ADDED)
+    private fun createLoadingState() {
+        viewState.updateValue(ManageElementCompositionViewState(isLoading = true))
     }
 
-    private fun createErrorState(errorMessage: String?) {
-        viewState.value = ManageCompositionViewState(errorMessage = errorMessage)
+    private fun createInitialState(drillingSets: List<RelativeDrillingSet>) {
+        val viewEntity = composition?.toViewEntity() ?: ManageElementCompositionViewEntity()
+        viewState.updateValue(
+            ManageElementCompositionViewState(
+                compositionNames = drillingSets.map { it.name },
+                isEditMode = composition != null,
+                viewEntity = viewEntity
+            )
+        )
     }
+
+    private fun createSuccessState() {
+        navigateBack()
+    }
+
+    private fun createErrorState(errorMessage: String, shouldNavigateBack: Boolean = false) {
+        errorMessageEvent.updateValue(Event(errorMessage))
+        if (shouldNavigateBack) navigateBack() else createInitialState(drillingSets)
+    }
+
+    private fun navigateBack() {
+        navigateBackEvent.updateValue(Event(Unit))
+    }
+
+    private fun ElementDrillingSetComposition.toViewEntity() = ManageElementCompositionViewEntity(
+        drillingSetPosition = drillingSets.indexOf(drillingSet),
+        xOffset = xOffset,
+        yOffset = yOffset
+    )
 }
 
-data class ManageCompositionViewState(
+class ManageElementCompositionViewState(
     val isLoading: Boolean = false,
-    val elementNames: List<String> = emptyList(),
     val compositionNames: List<String> = emptyList(),
-    val result: Result? = null,
-    val errorMessage: String? = null
+    val viewEntity: ManageElementCompositionViewEntity = ManageElementCompositionViewEntity(),
+    isEditMode: Boolean = false
+) {
+    val isRemovePossible: Boolean = isEditMode
+    val isDrillingSetPositionEnable: Boolean = !isEditMode
+    val buttonText: Int = if (isEditMode) R.string.l_save else R.string.l_add
+}
+
+data class ManageElementCompositionViewEntity(
+    val drillingSetPosition: Int = 0,
+    val xOffset: Offset = Offset(),
+    val yOffset: Offset = Offset()
 )

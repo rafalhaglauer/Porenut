@@ -7,7 +7,7 @@ import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.inflate
 import kotlinx.android.synthetic.main.drilling_list_adapter.view.*
 
-class DrillingGroupAdapter(private val onItemSelected: (DrillingGroupViewEntity) -> Unit) : RecyclerView.Adapter<DrillingGroupAdapter.ViewHolder>() {
+class DrillingGroupAdapter : RecyclerView.Adapter<DrillingGroupAdapter.ViewHolder>() {
     private val items: MutableList<DrillingGroupViewEntity> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -15,7 +15,7 @@ class DrillingGroupAdapter(private val onItemSelected: (DrillingGroupViewEntity)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position], onItemSelected)
+        holder.bind(items[position])
     }
 
     override fun getItemCount(): Int = items.size
@@ -28,19 +28,13 @@ class DrillingGroupAdapter(private val onItemSelected: (DrillingGroupViewEntity)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: DrillingGroupViewEntity, onItemSelected: (DrillingGroupViewEntity) -> Unit): View =
+        fun bind(item: DrillingGroupViewEntity): View =
             itemView.apply {
                 with(item) {
                     txtXPosition.text = xPosition
                     txtYPosition.text = yPosition
                     txtDiameter.text = diameter
                     txtDepth.text = depth
-                    isClickable = !isBlocked
-                    if (isBlocked) {
-                        setBackgroundColor(context.getColor(R.color.divider))
-                    } else {
-                        setOnClickListener { onItemSelected(this) }
-                    }
                 }
             }
     }

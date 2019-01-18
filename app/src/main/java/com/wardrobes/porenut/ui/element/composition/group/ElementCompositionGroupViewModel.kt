@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.composition.CompositionRepository
 import com.wardrobes.porenut.data.composition.CompositionRestRepository
+import com.wardrobes.porenut.domain.ElementDrillingSetComposition
 import com.wardrobes.porenut.ui.extension.updateValue
 import com.wardrobes.porenut.ui.vo.Event
 
@@ -22,13 +23,7 @@ class ElementCompositionGroupViewModel(private val compositionRepository: Compos
         compositionRepository.getAll(elementId)
             .fetchStateFullModel(
                 onLoading = { viewState.updateValue(ElementCompositionViewState(isLoading = true)) },
-                onSuccess = { compositions ->
-                    viewState.updateValue(
-                        ElementCompositionViewState(isEmptyListNotificationVisible = compositions.isEmpty(), names = compositions.map {
-                            it.drillingSet.name
-                        })
-                    )
-                },
+                onSuccess = { viewState.updateValue(ElementCompositionViewState(isEmptyListNotificationVisible = it.isEmpty(), compositions = it)) },
                 onError = { errorEvent.updateValue(Event(it)) }
             )
     }
@@ -36,6 +31,6 @@ class ElementCompositionGroupViewModel(private val compositionRepository: Compos
 
 class ElementCompositionViewState(
     val isLoading: Boolean = false,
-    val names: List<String> = emptyList(),
+    val compositions: List<ElementDrillingSetComposition> = emptyList(),
     val isEmptyListNotificationVisible: Boolean = false
 )

@@ -1,24 +1,13 @@
 package com.wardrobes.porenut.domain
 
-data class ReferenceElementRelativeDrillingCompositionLight(
-    val relativeDrillingCompositionId: Long,
-    val elementId: Long,
-    val xOffset: Offset,
-    val yOffset: Offset
-)
+import com.google.gson.annotations.SerializedName
 
-data class ReferenceElementRelativeDrillingComposition(
+data class ElementDrillingSetComposition(
     val id: Long,
     val drillingSet: RelativeDrillingSet,
     val element: Element,
-    val xOffset: Offset,
-    val yOffset: Offset
+    @SerializedName("xoffset") val xOffset: Offset,
+    @SerializedName("yoffset") val yOffset: Offset
 )
 
-data class RelativeDrillingCompositionLight(
-    val name: String,
-    val suggestXReferenceValue: String,
-    val suggestYReferenceValue: String
-)
-
-data class RelativeDrillingSet(val id: Long, val name: String)
+data class RelativeDrillingSet(val id: Long? = null, val name: String)

@@ -23,11 +23,7 @@ class ManageRelativeCompositionActivity : AppCompatActivity() {
         observeViewModel()
         btnManageRelativeComposition.setOnClickListener {
             it.hideKeyboard()
-            viewModel.add(
-                name = txtRelativeCompositionName.string(),
-                xReferenceType = spinnerXReferenceLength.selectedItem as String,
-                yReferenceType = spinnerYReferenceLength.selectedItem as String
-            )
+            viewModel.add(name = txtRelativeCompositionName.string())
         }
     }
 

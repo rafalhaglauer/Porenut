@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
+import com.wardrobes.porenut.domain.ElementDrillingSetComposition
+import com.wardrobes.porenut.ui.element.composition.manage.ManageElementCompositionFragment
 import com.wardrobes.porenut.ui.extension.*
 import kotlinx.android.synthetic.main.fragment_element_composition_group.*
 
@@ -15,6 +17,9 @@ private const val KEY_ELEMENT_ID = "key-element-id"
 
 class ElementCompositionGroupFragment : Fragment() {
     private lateinit var viewModel: ElementCompositionGroupViewModel
+
+    private val elementId: Long?
+        get() = arguments?.let { args -> args.getLong(KEY_ELEMENT_ID).takeIf { args.containsKey(KEY_ELEMENT_ID) } }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         container?.inflate(R.layout.fragment_element_composition_group)
@@ -29,7 +34,7 @@ class ElementCompositionGroupFragment : Fragment() {
 
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(this)[ElementCompositionGroupViewModel::class.java]
-        viewModel.elementId = arguments?.let { args -> args.getLong(KEY_ELEMENT_ID).takeIf { args.containsKey(KEY_ELEMENT_ID) } }
+        viewModel.elementId = elementId
     }
 
     private fun observeViewModel() {
@@ -38,7 +43,7 @@ class ElementCompositionGroupFragment : Fragment() {
                 progressElementCompositionGroup isVisibleWhen isLoading
                 contentElementCompositionGroup isVisibleWhen !isLoading
                 emptyListNotificationElementCompositionGroup isVisibleWhen isEmptyListNotificationVisible
-                bind(names)
+                bind(compositions)
             }
         viewModel.errorEvent
             .observeEvent(viewLifecycleOwner) {
@@ -46,8 +51,8 @@ class ElementCompositionGroupFragment : Fragment() {
             }
     }
 
-    fun bind(compositionNames: List<String>) {
-        (contentElementCompositionGroup.adapter as ElementCompositionGroupAdapter).setItems(compositionNames)
+    fun bind(compositions: List<ElementDrillingSetComposition>) {
+        (contentElementCompositionGroup.adapter as ElementCompositionGroupAdapter).setItems(compositions)
     }
 
     private fun setupAdapter() {
@@ -55,19 +60,16 @@ class ElementCompositionGroupFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             setDivider(R.drawable.divider)
             adapter = ElementCompositionGroupAdapter {
-                // launchActivity<ManageCompositionActivity>(REQUEST_MANAGE_COMPOSITION) {
-                //      arguments?.elementId?.also { elementId = it }
-                // }
+                navigateTo(R.id.elementCompositionGroupFragmentToManageElementComposition, ManageElementCompositionFragment.createManageExtras(it))
             }
         }
     }
 
     private fun setupActionButton() {
         btnAddElementComposition.setOnClickListener {
-            //            launchActivity<ManageCompositionActivity>(REQUEST_MANAGE_COMPOSITION) {
-//                arguments?.elementId?.also { elementId = it }
-//                arguments?.wardrobeId?.also { wardrobeId = it }
-//            }
+            elementId?.also { id ->
+                navigateTo(R.id.elementCompositionGroupFragmentToManageElementComposition, ManageElementCompositionFragment.createAddExtras(id))
+            }
         }
     }
 

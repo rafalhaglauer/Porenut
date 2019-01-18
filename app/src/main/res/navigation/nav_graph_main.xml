@@ -135,7 +135,13 @@
 
     <fragment
         android:id="@+id/elementCompositionGroupFragment"
-        android:name="com.wardrobes.porenut.ui.element.composition.group.ElementCompositionGroupFragment" />
+        android:name="com.wardrobes.porenut.ui.element.composition.group.ElementCompositionGroupFragment">
+
+        <action
+            android:id="@+id/elementCompositionGroupFragmentToManageElementComposition"
+            app:destination="@id/manageElementCompositionFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/elementDetailsFragment"
@@ -146,5 +152,9 @@
             app:destination="@id/manageElementFragment" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/manageElementCompositionFragment"
+        android:name="com.wardrobes.porenut.ui.element.composition.manage.ManageElementCompositionFragment" />
 
 </navigation>

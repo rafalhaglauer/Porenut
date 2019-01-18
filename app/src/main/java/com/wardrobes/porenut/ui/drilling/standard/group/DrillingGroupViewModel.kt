@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.drilling.DrillingRepository
 import com.wardrobes.porenut.data.drilling.DrillingRestRepository
-import com.wardrobes.porenut.domain.CreationType
 import com.wardrobes.porenut.domain.Drilling
 import com.wardrobes.porenut.ui.extension.updateValue
 import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
@@ -19,34 +18,23 @@ class DrillingGroupViewModel(
     private val measureFormatter: MeasureFormatter = DefaultMeasureFormatter
 ) : ViewModel() {
     val viewState: LiveData<DrillingGroupViewState> = MutableLiveData()
-    val messageEvent: LiveData<Event<String>> = MutableLiveData()
-    val navigateUpEvent: LiveData<Event<Unit>> = MutableLiveData()
+    val errorEvent: LiveData<Event<String>> = MutableLiveData()
 
     var elementId: Long? = null
         set(value) {
             field = value?.also { showDrillingGroup(it) }
         }
 
-    private var drillingGroup: List<Drilling> = emptyList()
-
     private fun showDrillingGroup(elementId: Long) {
         drillingRepository.getAll(elementId)
             .fetchStateFullModel(
                 onLoading = { viewState.updateValue(DrillingGroupViewState(isLoading = true)) },
                 onSuccess = {
-                    drillingGroup = it
-                    viewState.updateValue(
-                        DrillingGroupViewState(isEmptyListNotificationVisible = it.isEmpty(), viewEntities = it.toViewEntities())
-                    )
+                    viewState.updateValue(DrillingGroupViewState(isEmptyListNotificationVisible = it.isEmpty(), viewEntities = it.toViewEntities()))
                 },
-                onError = {
-                    messageEvent.updateValue(Event(it))
-                    navigateUpEvent.updateValue(Event(Unit))
-                }
+                onError = { errorEvent.updateValue(Event(it)) }
             )
     }
-
-    fun getDrillingId(viewEntity: DrillingGroupViewEntity): Long = drillingGroup.first { it.toViewEntity() == viewEntity }.id
 
     private fun List<Drilling>.toViewEntities() = map { it.toViewEntity() }
 
@@ -54,8 +42,7 @@ class DrillingGroupViewModel(
         xPosition = xPosition.formattedValue,
         yPosition = yPosition.formattedValue,
         diameter = diameter.formattedValue,
-        depth = depth.formattedValue,
-        isBlocked = type == CreationType.GENERATE
+        depth = depth.formattedValue
     )
 
     private val Float.formattedValue: String
@@ -72,6 +59,5 @@ data class DrillingGroupViewEntity(
     val xPosition: String,
     val yPosition: String,
     val diameter: String,
-    val depth: String,
-    val isBlocked: Boolean
+    val depth: String
 )

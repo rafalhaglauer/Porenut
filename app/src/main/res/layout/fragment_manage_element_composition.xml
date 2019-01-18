@@ -13,68 +13,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutRelativeCompositionName"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtDrillingSet"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:hint="@string/l_name"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Grupa wierceń"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtRelativeCompositionName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textShortMessage" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtXReferenceLength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:text="@string/l_x_reference_type"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutRelativeCompositionName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerXReferenceLength"
-        android:layout_width="match_parent"
+        android:id="@+id/spinnerDrillingSet"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:entries="@array/a_reference_types"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtXReferenceLength" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDrillingSet" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtYReferenceLength"
+    <com.wardrobes.porenut.ui.common.OffsetView
+        android:id="@+id/viewXOffset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:text="Pozycja X"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerDrillingSet" />
+
+    <com.wardrobes.porenut.ui.common.OffsetView
+        android:id="@+id/viewYOffset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:text="Pozycja Y"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewXOffset" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRemoveComposition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:text="@string/l_y_reference_type"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerXReferenceLength" />
-
-    <Spinner
-        android:id="@+id/spinnerYReferenceLength"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:entries="@array/a_reference_types"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtYReferenceLength" />
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_delete"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/btnManageComposition"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <FrameLayout
-        android:id="@+id/btnManageRelativeComposition"
+        android:id="@+id/btnManageComposition"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@color/colorAccent"
@@ -85,7 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtManageComposition"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -101,6 +97,6 @@
         android:id="@+id/layoutContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:constraint_referenced_ids="layoutRelativeCompositionName, txtXReferenceLength, spinnerXReferenceLength, txtYReferenceLength, spinnerYReferenceLength, btnManageRelativeComposition" />
+        app:constraint_referenced_ids="txtDrillingSet, spinnerDrillingSet, viewXOffset, viewYOffset, btnManageComposition, btnRemoveComposition" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,8 +8,8 @@ import retrofit2.http.*
 
 interface RelativeDrillingInterface {
 
-    @GET("/drilling/relative/all/{relativeDrillingCompositionId}")
-    fun getAll(@Path("relativeDrillingCompositionId") compositionId: Long): Observable<List<RelativeDrilling>>
+    @GET("/drilling/relative/all/{drillingSetId}")
+    fun getAll(@Path("drillingSetId") compositionId: Long): Observable<List<RelativeDrilling>>
 
     @GET("/drilling/relative/{id}")
     fun get(@Path("id") drillingId: Long): Observable<RelativeDrilling>

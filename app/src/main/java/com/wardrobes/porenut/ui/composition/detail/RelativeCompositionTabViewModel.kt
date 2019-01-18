@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
-import com.wardrobes.porenut.data.relative.RelativeDrillingCompositionRepository
-import com.wardrobes.porenut.data.relative.RelativeDrillingCompositionRestRepository
 import com.wardrobes.porenut.data.relative.RelativeDrillingRepository
 import com.wardrobes.porenut.data.relative.RelativeDrillingRestRepository
+import com.wardrobes.porenut.data.relative.RelativeDrillingSetRepository
+import com.wardrobes.porenut.data.relative.RelativeDrillingSetRestRepository
 import com.wardrobes.porenut.domain.RelativeDrilling
 import com.wardrobes.porenut.domain.RelativeDrillingSet
 import com.wardrobes.porenut.ui.extension.updateValue
@@ -15,7 +15,7 @@ import com.wardrobes.porenut.ui.vo.Event
 
 class RelativeCompositionTabViewModel(
     private val relativeDrillingRepository: RelativeDrillingRepository = RelativeDrillingRestRepository,
-    private val relativeDrillingCompositionRepository: RelativeDrillingCompositionRepository = RelativeDrillingCompositionRestRepository
+    private val relativeDrillingCompositionRepository: RelativeDrillingSetRepository = RelativeDrillingSetRestRepository
 
 
 ) : ViewModel() {
@@ -124,11 +124,11 @@ class RelativeCompositionTabViewModel(
                         }
                     },
                     onSuccess = {
-                        messageEvent.updateValue(Event("Pomyślnie usunięto element!"))
+                        errorEvent.updateValue(Event("Pomyślnie usunięto element!"))
                         navigateUpEvent.updateValue(Event(Unit))
                     },
                     onError = {
-                        messageEvent.updateValue(Event(it))
+                        errorEvent.updateValue(Event(it))
                         elementDetailViewState.value?.also {
                             elementDetailViewState.updateValue(it.copy(isLoading = false))
                         }

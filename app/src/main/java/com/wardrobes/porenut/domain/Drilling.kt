@@ -11,12 +11,10 @@ data class DrillingLight(
 )
 
 data class Drilling(
-    val id: Long,
     @SerializedName("xposition") val xPosition: Float,
     @SerializedName("yposition") val yPosition: Float,
     val diameter: Float,
-    val depth: Float,
-    val type: CreationType
+    val depth: Float
 )
 
 data class RelativeDrillingLight(

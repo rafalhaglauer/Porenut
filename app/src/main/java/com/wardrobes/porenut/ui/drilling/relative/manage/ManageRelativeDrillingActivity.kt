@@ -23,7 +23,7 @@ class ManageRelativeDrillingActivity : AppCompatActivity() {
         }
         viewModel = ViewModelProviders.of(this)[ManageRelativeDrillingViewModel::class.java]
         observeViewModel()
-        btnManageRelativeDrilling.setOnClickListener {
+        btnManageComposition.setOnClickListener {
             it.hideKeyboard()
             viewModel.manage(
                 name = txtName.string(),

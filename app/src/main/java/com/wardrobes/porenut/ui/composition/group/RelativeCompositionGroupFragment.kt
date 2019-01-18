@@ -13,7 +13,6 @@ import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.composition.manage.ManageRelativeCompositionActivity
 import com.wardrobes.porenut.ui.extension.*
 import com.wardrobes.porenut.ui.vo.Result
-import com.wardrobes.porenut.ui.vo.relativeCompositionId
 import kotlinx.android.synthetic.main.view_relative_composition_group.*
 
 private const val ADD_RELATIVE_COMPOSITION_REQUEST_CODE = 1
@@ -46,7 +45,8 @@ class RelativeCompositionGroupFragment : Fragment() {
             setDivider(R.drawable.divider)
             adapter = RelativeCompositionGroupAdapter {
                 navigateTo(R.id.drillingSectionToRelativeCompositionTab) {
-                    relativeCompositionId = viewModel.getRelativeCompositionId(it)
+                    //                    relativeCompositionId = viewModel.getRelativeCompositionId(it)
+//                TODO!!
                 }
             }
         }

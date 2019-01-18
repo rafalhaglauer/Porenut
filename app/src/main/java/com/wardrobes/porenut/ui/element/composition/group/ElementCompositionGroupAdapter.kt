@@ -4,14 +4,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wardrobes.porenut.R
+import com.wardrobes.porenut.domain.ElementDrillingSetComposition
 import com.wardrobes.porenut.ui.extension.inflate
 import kotlinx.android.synthetic.main.element_composition_list_adapter.view.*
 
 
 class ElementCompositionGroupAdapter(
-    private val onItemSelected: (String) -> Unit
+    private val onItemSelected: (Long) -> Unit
 ) : RecyclerView.Adapter<ElementCompositionGroupAdapter.ViewHolder>() {
-    private val items: MutableList<String> = mutableListOf()
+    private val items: MutableList<ElementDrillingSetComposition> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(parent.inflate(R.layout.element_composition_list_adapter))
@@ -23,7 +24,7 @@ class ElementCompositionGroupAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    fun setItems(items: List<String>) {
+    fun setItems(items: List<ElementDrillingSetComposition>) {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
@@ -31,9 +32,9 @@ class ElementCompositionGroupAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: String, onItemSelected: (String) -> Unit): View = itemView.apply {
-            txtElementCompositionName.text = item
-            setOnClickListener { onItemSelected(item) }
+        fun bind(item: ElementDrillingSetComposition, onItemSelected: (Long) -> Unit): View = itemView.apply {
+            txtElementCompositionName.text = item.drillingSet.name
+            setOnClickListener { onItemSelected(item.id) }
         }
     }
 }

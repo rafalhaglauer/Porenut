@@ -84,7 +84,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <FrameLayout
-        android:id="@+id/btnManageRelativeDrilling"
+        android:id="@+id/btnManageComposition"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@color/colorAccent"
@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@drawable/ic_delete"
-        app:layout_constraintBottom_toTopOf="@id/btnManageRelativeDrilling"
+        app:layout_constraintBottom_toTopOf="@id/btnManageComposition"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.Group

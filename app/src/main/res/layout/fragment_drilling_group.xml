@@ -39,17 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/icEmptyListDrillingGroup"
             android:gravity="center"
-            android:text="Nie zostało jeszcze utworzone żadne wiercenie dla tego elementu."
+            android:text="Nie zostało jeszcze dodane żadne wiercenie do tego elementu."
             android:textSize="@dimen/textMedium" />
 
     </RelativeLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAddDrilling"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_add" />
 
 </FrameLayout>

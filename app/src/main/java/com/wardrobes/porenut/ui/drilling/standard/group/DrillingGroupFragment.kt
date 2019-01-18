@@ -26,7 +26,6 @@ class DrillingGroupFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setupViewModel()
         setupAdapter()
-        setupActionButton()
         observeViewModel()
     }
 
@@ -36,20 +35,17 @@ class DrillingGroupFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.messageEvent
-            .observeEvent(viewLifecycleOwner) {
-                showMessage(it)
-            }
-        viewModel.navigateUpEvent
-            .observeEvent(viewLifecycleOwner) {
-                navigateUp()
-            }
         viewModel.viewState
             .observe(viewLifecycleOwner) {
                 progressDrillingGroup isVisibleWhen isLoading
                 contentDrillingGroup isVisibleWhen !isLoading
                 emptyListNotificationDrillingGroup isVisibleWhen isEmptyListNotificationVisible
                 bind(viewEntities)
+            }
+        viewModel.errorEvent
+            .observeEvent(viewLifecycleOwner) {
+                showMessage(it)
+                navigateUp()
             }
     }
 
@@ -61,20 +57,7 @@ class DrillingGroupFragment : Fragment() {
         contentDrillingGroup.apply {
             layoutManager = LinearLayoutManager(context)
             setDivider(R.drawable.divider)
-            adapter = DrillingGroupAdapter {
-                //                launchActivity<ManageDrillingActivity>(REQUEST_MANAGE_DRILLING) {
-//                    arguments?.elementId?.also { elementId = it }
-//                    drillingId = viewModel.getDrillingId(it)
-//                }
-            }
-        }
-    }
-
-    private fun setupActionButton() {
-        btnAddDrilling.setOnClickListener {
-            //            launchActivity<ManageDrillingActivity>(REQUEST_MANAGE_DRILLING) {
-//                arguments?.elementId?.also { elementId = it }
-//            }
+            adapter = DrillingGroupAdapter()
         }
     }
 
