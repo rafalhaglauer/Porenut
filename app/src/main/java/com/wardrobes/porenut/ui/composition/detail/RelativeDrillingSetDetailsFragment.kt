@@ -8,9 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.ui.drilling.relative.manage.ManageRelativeDrillingActivity
+import com.wardrobes.porenut.ui.drilling.relative.manage.ManageRelativeDrillingFragment
 import com.wardrobes.porenut.ui.extension.*
-import com.wardrobes.porenut.ui.vo.relativeCompositionId
 import kotlinx.android.synthetic.main.fragment_relative_drilling_set_details.*
 
 private const val KEY_DRILLING_SET_ID = "key-drilling-set-id"
@@ -41,7 +40,7 @@ class RelativeDrillingSetDetailsFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.viewState
             .observe(viewLifecycleOwner) {
-                bind(drillingNames)
+                bind(drillings)
                 progressRelativeDrillingGroup isVisibleWhen isLoading
                 contentRelativeDrillingGroup isVisibleWhen !isLoading
                 emptyListNotificationRelativeDrillingGroup isVisibleWhen isEmptyListNotificationVisible
@@ -60,8 +59,8 @@ class RelativeDrillingSetDetailsFragment : Fragment() {
 
     private fun setupButton() {
         btnAddRelativeDrillingGroup.setOnClickListener {
-            launchActivity<ManageRelativeDrillingActivity> {
-                arguments?.relativeCompositionId?.also { relativeCompositionId = it }
+            drillingSetId?.also { id ->
+                navigateTo(R.id.relativeDrillingSetDetailsFragmentToManageRelativeDrillingFragment, ManageRelativeDrillingFragment.createAddExtras(id))
             }
         }
     }
@@ -71,15 +70,12 @@ class RelativeDrillingSetDetailsFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             setDivider(R.drawable.divider)
             adapter = RelativeDrillingGroupAdapter {
-                launchActivity<ManageRelativeDrillingActivity> {
-                    arguments?.relativeCompositionId?.also { relativeCompositionId = it }
-//                    relativeDrillingId = viewModel.getDrillingId(it)
-                }
+                navigateTo(R.id.relativeDrillingSetDetailsFragmentToManageRelativeDrillingFragment, ManageRelativeDrillingFragment.createManageExtras(it))
             }
         }
     }
 
-    fun bind(drillingNames: List<String>) {
+    fun bind(drillingNames: List<RelativeDrillingGroupViewEntity>) {
         (contentRelativeDrillingGroup.adapter as RelativeDrillingGroupAdapter).setItems(drillingNames)
     }
 

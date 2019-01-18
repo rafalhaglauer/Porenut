@@ -7,8 +7,8 @@ import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.inflate
 import kotlinx.android.synthetic.main.relative_drilling_list_adapter.view.*
 
-class RelativeDrillingGroupAdapter(private val onItemSelected: (String) -> Unit) : RecyclerView.Adapter<RelativeDrillingGroupAdapter.ViewHolder>() {
-    private val drillingNames: MutableList<String> = mutableListOf()
+class RelativeDrillingGroupAdapter(private val onItemSelected: (Long) -> Unit) : RecyclerView.Adapter<RelativeDrillingGroupAdapter.ViewHolder>() {
+    private val drillingNames: MutableList<RelativeDrillingGroupViewEntity> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(parent.inflate(R.layout.relative_drilling_list_adapter))
@@ -20,7 +20,7 @@ class RelativeDrillingGroupAdapter(private val onItemSelected: (String) -> Unit)
 
     override fun getItemCount(): Int = drillingNames.size
 
-    fun setItems(drillingNames: List<String>) {
+    fun setItems(drillingNames: List<RelativeDrillingGroupViewEntity>) {
         this.drillingNames.clear()
         this.drillingNames.addAll(drillingNames)
         notifyDataSetChanged()
@@ -28,9 +28,9 @@ class RelativeDrillingGroupAdapter(private val onItemSelected: (String) -> Unit)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: String, onItemSelected: (String) -> Unit): View = itemView.apply {
-            txtRelativeDrillingName.text = item
-            setOnClickListener { onItemSelected(item) }
+        fun bind(item: RelativeDrillingGroupViewEntity, onItemSelected: (Long) -> Unit): View = itemView.apply {
+            txtRelativeDrillingName.text = item.name
+            setOnClickListener { onItemSelected(item.id) }
         }
     }
 }

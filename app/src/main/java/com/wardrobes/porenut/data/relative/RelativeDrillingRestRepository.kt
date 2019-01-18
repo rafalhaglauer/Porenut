@@ -18,7 +18,7 @@ object RelativeDrillingRestRepository : RelativeDrillingRepository {
 
     override fun delete(id: Long): Completable = drillingInterface.delete(id)
 
-    override fun add(drillingSetId: Long, relativeDrilling: RelativeDrilling): Observable<Long> =
+    override fun add(drillingSetId: Long, relativeDrilling: RelativeDrilling): Completable =
         drillingInterface.add(drillingSetId, relativeDrilling)
 
     override fun update(id: Long, relativeDrilling: RelativeDrilling): Completable =

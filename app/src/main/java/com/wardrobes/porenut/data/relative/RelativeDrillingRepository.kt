@@ -10,7 +10,7 @@ interface RelativeDrillingRepository {
 
     fun get(drillingId: Long): Observable<RelativeDrilling>
 
-    fun add(drillingSetId: Long, relativeDrilling: RelativeDrilling): Observable<Long>
+    fun add(drillingSetId: Long, relativeDrilling: RelativeDrilling): Completable
 
     fun update(id: Long, relativeDrilling: RelativeDrilling): Completable
 

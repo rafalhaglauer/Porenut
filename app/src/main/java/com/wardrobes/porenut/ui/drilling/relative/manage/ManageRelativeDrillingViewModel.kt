@@ -9,9 +9,10 @@ import com.wardrobes.porenut.data.relative.RelativeDrillingRepository
 import com.wardrobes.porenut.data.relative.RelativeDrillingRestRepository
 import com.wardrobes.porenut.domain.Offset
 import com.wardrobes.porenut.domain.RelativeDrilling
+import com.wardrobes.porenut.ui.extension.updateValue
 import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
+import com.wardrobes.porenut.ui.vo.Event
 import com.wardrobes.porenut.ui.vo.MeasureFormatter
-import com.wardrobes.porenut.ui.vo.Result
 
 class ManageRelativeDrillingViewModel(
     private val relativeDrillingRepository: RelativeDrillingRepository = RelativeDrillingRestRepository,
@@ -21,9 +22,10 @@ class ManageRelativeDrillingViewModel(
         MutableLiveData<ManageRelativeDrillingViewState>().apply {
             value = ManageRelativeDrillingViewState()
         }
+    val errorMessageEvent: LiveData<Event<String>> = MutableLiveData()
+    val navigateBackEvent: LiveData<Event<Unit>> = MutableLiveData()
 
     var relativeDrillingSetId: Long? = null
-
     var relativeDrillingId: Long? = null
         set(value) {
             field = value
@@ -37,45 +39,43 @@ class ManageRelativeDrillingViewModel(
     }
 
     fun delete() {
-        relativeDrillingId?.also {
-            relativeDrillingRepository.delete(it)
+        relativeDrillingId?.also { id ->
+            relativeDrillingRepository.delete(id)
                 .fetchStateFullModel(
                     onLoading = { createLoadingState() },
-                    onSuccess = { createResultState() },
+                    onSuccess = { navigateBack() },
                     onError = { createErrorState(it) }
                 )
         }
     }
 
     private fun add(drilling: RelativeDrilling) {
-        relativeDrillingSetId?.also {
-            relativeDrillingRepository.add(it, drilling)
+        relativeDrillingSetId?.also { id ->
+            relativeDrillingRepository.add(id, drilling)
                 .fetchStateFullModel(
                     onLoading = { createLoadingState() },
-                    onSuccess = { createResultState() },
+                    onSuccess = { navigateBack() },
                     onError = { createErrorState(it) }
                 )
         }
     }
 
     private fun update(drilling: RelativeDrilling) {
-        relativeDrillingId?.also {
-            relativeDrillingRepository.update(it, drilling)
+        relativeDrillingId?.also { id ->
+            relativeDrillingRepository.update(id, drilling)
                 .fetchStateFullModel(
                     onLoading = { createLoadingState() },
-                    onSuccess = { createResultState() },
+                    onSuccess = { navigateBack() },
                     onError = { createErrorState(it) }
                 )
         }
     }
 
     private fun getDetails() {
-        relativeDrillingId?.also {
-            relativeDrillingRepository.get(it)
+        relativeDrillingId?.also { id ->
+            relativeDrillingRepository.get(id)
                 .fetchStateFullModel(
-                    onLoading = {
-                        createLoadingState()
-                    },
+                    onLoading = { createLoadingState() },
                     onSuccess = {
                         viewState.updateValue(
                             ManageRelativeDrillingViewState(
@@ -85,9 +85,7 @@ class ManageRelativeDrillingViewModel(
                             )
                         )
                     },
-                    onError = {
-                        createErrorState(it)
-                    }
+                    onError = { createErrorState(it, shouldNavigateBack = true) }
                 )
         }
     }
@@ -96,16 +94,13 @@ class ManageRelativeDrillingViewModel(
         viewState.updateValue(ManageRelativeDrillingViewState(isLoading = true))
     }
 
-    private fun createResultState() {
-        viewState.updateValue(ManageRelativeDrillingViewState(result = Result.ADDED))
+    private fun createErrorState(errorMessage: String, shouldNavigateBack: Boolean = false) {
+        errorMessageEvent.updateValue(Event(errorMessage))
+        if (shouldNavigateBack) navigateBack() else getDetails()
     }
 
-    private fun createErrorState(errorMessage: String?) {
-        viewState.updateValue(ManageRelativeDrillingViewState(errorMessage = errorMessage))
-    }
-
-    private fun LiveData<ManageRelativeDrillingViewState>.updateValue(viewState: ManageRelativeDrillingViewState) {
-        (this as MutableLiveData).value = viewState
+    private fun navigateBack() {
+        navigateBackEvent.updateValue(Event(Unit))
     }
 
     private fun RelativeDrilling.toViewEntity(): RelativeDrillingViewEntity {
@@ -122,16 +117,14 @@ class ManageRelativeDrillingViewModel(
 class ManageRelativeDrillingViewState(
     val isLoading: Boolean = false,
     val isDeleteButtonVisible: Boolean = false,
-    val errorMessage: String? = null,
-    val result: Result? = null,
-    val viewEntity: RelativeDrillingViewEntity? = null,
+    val viewEntity: RelativeDrillingViewEntity = RelativeDrillingViewEntity(),
     val manageText: Int = R.string.l_add
 )
 
 class RelativeDrillingViewEntity(
-    val name: String,
-    val xOffset: Offset,
-    val yOffset: Offset,
-    val diameter: String,
-    val depth: String
+    val name: String = "",
+    val xOffset: Offset = Offset(),
+    val yOffset: Offset = Offset(),
+    val diameter: String = "",
+    val depth: String = ""
 )

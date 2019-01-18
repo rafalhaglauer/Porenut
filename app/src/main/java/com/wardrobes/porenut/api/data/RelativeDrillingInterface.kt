@@ -14,7 +14,7 @@ interface RelativeDrillingInterface {
     fun get(@Path("id") drillingId: Long): Observable<RelativeDrilling>
 
     @POST("/drilling/relative/{drillingSetId}")
-    fun add(@Path("drillingSetId") drillingSetId: Long, @Body relativeDrilling: RelativeDrilling): Observable<Long>
+    fun add(@Path("drillingSetId") drillingSetId: Long, @Body relativeDrilling: RelativeDrilling): Completable
 
     @PUT("/drilling/relative/{id}")
     fun update(@Path("id") id: Long, @Body relativeDrilling: RelativeDrilling): Completable

@@ -42,7 +42,7 @@ class RelativeDrillingSetDetailsViewModel(
                     viewState.updateValue(
                         RelativeDrillingSetDetailsViewState(
                             drillingSetName = drillingSet.name,
-                            drillingNames = drillingGroup.map { it.name },
+                            drillings = drillingGroup.mapNotNull { it.id?.let { id -> RelativeDrillingGroupViewEntity(id, it.name) } },
                             isEmptyListNotificationVisible = drillingGroup.isEmpty()
                         )
                     )
@@ -75,6 +75,8 @@ class RelativeDrillingSetDetailsViewModel(
 class RelativeDrillingSetDetailsViewState(
     val isLoading: Boolean = false,
     val drillingSetName: String = "",
-    val drillingNames: List<String> = emptyList(),
+    val drillings: List<RelativeDrillingGroupViewEntity> = emptyList(),
     val isEmptyListNotificationVisible: Boolean = false
 )
+
+class RelativeDrillingGroupViewEntity(val id: Long, val name: String)
