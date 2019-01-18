@@ -32,8 +32,6 @@ class RelativeCompositionDetailView(context: Context, attrs: AttributeSet?) :
     fun bind(viewEntity: RelativeCompositionDetailViewEntity) {
         with(viewEntity) {
             txtRelativeCompositionName.text = name
-            txtXReferenceLength.text = xReferenceLength
-            txtYReferenceLength.text = yReferenceLength
         }
     }
 

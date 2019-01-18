@@ -31,11 +31,10 @@ class ManageElementViewModel(
         }
 
     fun manage(elementViewEntity: ElementViewEntity) {
-        elementViewEntity.toElement()?.also { element ->
-            elementId
-                ?.also { update(element, it) }
-                ?: add(element)
-        }
+        val element = elementViewEntity.toElement()
+        elementId
+            ?.also { update(element, it) }
+            ?: add(element)
     }
 
     private fun fetchDetails(elementId: Long) {
@@ -48,12 +47,14 @@ class ManageElementViewModel(
     }
 
     private fun add(element: Element) {
-        elementRepository.add(element)
-            .fetchStateFullModel(
-                onLoading = { setLoading() },
-                onSuccess = { navigateBack() },
-                onError = { createErrorState(it, shouldNavigateBack = false) }
-            )
+        wardrobeId?.also { wardrobeId ->
+            elementRepository.add(wardrobeId, element)
+                .fetchStateFullModel(
+                    onLoading = { setLoading() },
+                    onSuccess = { navigateBack() },
+                    onError = { createErrorState(it, shouldNavigateBack = false) }
+                )
+        }
     }
 
     private fun update(element: Element, elementId: Long) {
@@ -89,15 +90,12 @@ class ManageElementViewModel(
         height = height.formattedValue
     )
 
-    private fun ElementViewEntity.toElement() = wardrobeId?.let {
-        Element(
-            name = name,
-            length = length.toFloat(),
-            width = width.toFloat(),
-            height = height.toFloat(),
-            wardrobeId = it
-        )
-    }
+    private fun ElementViewEntity.toElement() = Element(
+        name = name,
+        length = length.toFloat(),
+        width = width.toFloat(),
+        height = height.toFloat()
+    )
 
     private fun String.toFloat() = measureFormatter.toFloat(this)
 

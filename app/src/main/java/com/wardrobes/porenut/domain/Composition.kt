@@ -9,7 +9,7 @@ data class ReferenceElementRelativeDrillingCompositionLight(
 
 data class ReferenceElementRelativeDrillingComposition(
     val id: Long,
-    val relativeDrillingComposition: RelativeDrillingComposition,
+    val drillingSet: RelativeDrillingSet,
     val element: Element,
     val xOffset: Offset,
     val yOffset: Offset
@@ -21,9 +21,4 @@ data class RelativeDrillingCompositionLight(
     val suggestYReferenceValue: String
 )
 
-data class RelativeDrillingComposition(
-    val id: Long,
-    val name: String,
-    val suggestXReferenceValue: String,
-    val suggestYReferenceValue: String
-)
+data class RelativeDrillingSet(val id: Long, val name: String)

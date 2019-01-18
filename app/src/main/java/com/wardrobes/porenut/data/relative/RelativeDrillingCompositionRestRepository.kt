@@ -2,8 +2,8 @@ package com.wardrobes.porenut.data.relative
 
 import com.wardrobes.porenut.api.base.BaseProvider
 import com.wardrobes.porenut.api.data.RelativeDrillingCompositionInterface
-import com.wardrobes.porenut.domain.RelativeDrillingComposition
 import com.wardrobes.porenut.domain.RelativeDrillingCompositionLight
+import com.wardrobes.porenut.domain.RelativeDrillingSet
 import io.reactivex.Completable
 import io.reactivex.Observable
 
@@ -11,10 +11,10 @@ object RelativeDrillingCompositionRestRepository : RelativeDrillingCompositionRe
     private val compositionInterface =
         BaseProvider.retrofit.create(RelativeDrillingCompositionInterface::class.java)
 
-    override fun getAll(): Observable<List<RelativeDrillingComposition>> =
+    override fun getAll(): Observable<List<RelativeDrillingSet>> =
         compositionInterface.getAll()
 
-    override fun get(compositionId: Long): Observable<RelativeDrillingComposition> =
+    override fun get(compositionId: Long): Observable<RelativeDrillingSet> =
         compositionInterface.get(compositionId)
 
     override fun add(relativeDrillingComposition: RelativeDrillingCompositionLight): Observable<Long> =

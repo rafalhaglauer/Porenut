@@ -5,6 +5,5 @@ data class Element(
     val name: String,
     val width: Float,
     val length: Float,
-    val height: Float,
-    val wardrobeId: Long
+    val height: Float
 )

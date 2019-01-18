@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.element.detail
+package com.wardrobes.porenut.ui.drilling.standard.group
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.extension.inflate
 import kotlinx.android.synthetic.main.drilling_list_adapter.view.*
-
 
 class DrillingGroupAdapter(private val onItemSelected: (DrillingGroupViewEntity) -> Unit) : RecyclerView.Adapter<DrillingGroupAdapter.ViewHolder>() {
     private val items: MutableList<DrillingGroupViewEntity> = mutableListOf()

@@ -100,9 +100,12 @@ class ManageElementFragment : Fragment() {
 
     companion object {
 
-        fun createExtras(wardrobeId: Long, elementId: Long? = null): Bundle = Bundle().apply {
+        fun createAddExtras(wardrobeId: Long): Bundle = Bundle().apply {
             putLong(KEY_WARDROBE_ID, wardrobeId)
-            elementId?.also { putLong(KEY_ELEMENT_ID, it) }
+        }
+
+        fun createManageExtras(elementId: Long): Bundle = Bundle().apply {
+            putLong(KEY_ELEMENT_ID, elementId)
         }
     }
 }

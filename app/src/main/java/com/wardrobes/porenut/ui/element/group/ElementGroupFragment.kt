@@ -86,7 +86,7 @@ class ElementGroupFragment : Fragment() {
     private fun setupActionButton() {
         btnAddElement.setOnClickListener {
             wardrobeId?.also { id ->
-                navigateTo(R.id.elementGroupFragmentToManageElement, ManageElementFragment.createExtras(id))
+                navigateTo(R.id.elementGroupFragmentToManageElement, ManageElementFragment.createAddExtras(id))
             }
         }
     }

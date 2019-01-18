@@ -13,9 +13,9 @@ object ElementRestRepository : ElementRepository {
 
     override fun getAll(wardrobeId: Long): Observable<List<Element>> = elementInterface.getAll(wardrobeId)
 
-    override fun add(element: Element): Observable<Long> = elementInterface.add(element, element.wardrobeId)
+    override fun add(wardrobeId: Long, element: Element): Observable<Long> = elementInterface.add(element, wardrobeId)
 
-    override fun update(elementId: Long, element: Element): Observable<Unit> = elementInterface.update(elementId, element)
+    override fun update(elementId: Long, element: Element): Completable = elementInterface.update(elementId, element)
 
     override fun delete(elementId: Long): Completable = elementInterface.delete(elementId)
 }

@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
+import com.wardrobes.porenut.ui.drilling.standard.group.DrillingGroupFragment
+import com.wardrobes.porenut.ui.element.composition.group.ElementCompositionGroupFragment
+import com.wardrobes.porenut.ui.element.detail.ElementDetailsFragment
 import com.wardrobes.porenut.ui.extension.*
 import kotlinx.android.synthetic.main.fragment_element_dashboard.*
 
@@ -48,22 +51,24 @@ class ElementDashboardFragment : Fragment() {
 
     private fun setupListeners() {
         btnElementDetails.setOnClickListener {
-//            wardrobeId?.also { id ->
-//                navigateTo(R.id.wardrobeDashboardFragmentToWardrobeDetails, WardrobeDetailsFragment.createExtras(id))
-//            }
+            elementId?.also { id ->
+                navigateTo(R.id.elementDashboardFragmentToElementDetails, ElementDetailsFragment.createExtras(id))
+            }
         }
         btnDrillings.setOnClickListener {
-//            wardrobeId?.also { id ->
-//                navigateTo(R.id.wardrobeDashboardFragmentToElementGroupFragment, ElementGroupFragment.createExtras(id))
-//            }
+            elementId?.also { id ->
+                navigateTo(R.id.elementDashboardFragmentToDrillingGroup, DrillingGroupFragment.createExtras(id))
+            }
         }
         btnDrillingSets.setOnClickListener {
-//            wardrobeId?.also { id ->
-//                navigateTo(R.id.wardrobeDashboardFragmentToWardrobeGallery, WardrobeGalleryFragment.createExtras(id))
-//            }
+            elementId?.also { id ->
+                navigateTo(R.id.elementDashboardFragmentToElementCompositionGroup, ElementCompositionGroupFragment.createExtras(id))
+            }
         }
         btnRemoveElement.setOnClickListener {
-            elementId?.also { viewModel.deleteElement(it) }
+            elementId?.also { id ->
+                viewModel.deleteElement(id)
+            }
         }
     }
 

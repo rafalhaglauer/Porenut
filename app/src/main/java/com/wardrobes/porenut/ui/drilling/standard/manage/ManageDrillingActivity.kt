@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.drilling.standard
+package com.wardrobes.porenut.ui.drilling.standard.manage
 
 import android.os.Bundle
 import android.view.MenuItem

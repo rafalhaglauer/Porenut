@@ -9,7 +9,7 @@ import com.wardrobes.porenut.data.relative.RelativeDrillingCompositionRestReposi
 import com.wardrobes.porenut.data.relative.RelativeDrillingRepository
 import com.wardrobes.porenut.data.relative.RelativeDrillingRestRepository
 import com.wardrobes.porenut.domain.RelativeDrilling
-import com.wardrobes.porenut.domain.RelativeDrillingComposition
+import com.wardrobes.porenut.domain.RelativeDrillingSet
 import com.wardrobes.porenut.ui.extension.updateValue
 import com.wardrobes.porenut.ui.vo.Event
 
@@ -106,12 +106,8 @@ class RelativeCompositionTabViewModel(
         }
     }
 
-    private fun RelativeDrillingComposition.toViewEntity(): RelativeCompositionDetailViewEntity {
-        return RelativeCompositionDetailViewEntity(
-            name = name,
-            xReferenceLength = suggestXReferenceValue,
-            yReferenceLength = suggestYReferenceValue
-        )
+    private fun RelativeDrillingSet.toViewEntity(): RelativeCompositionDetailViewEntity {
+        return RelativeCompositionDetailViewEntity(name = name)
     }
 }
 
@@ -154,11 +150,7 @@ data class RelativeCompositionDetailViewState(
     val viewEntity: RelativeCompositionDetailViewEntity? = null
 )
 
-class RelativeCompositionDetailViewEntity(
-    val name: String,
-    val xReferenceLength: String,
-    val yReferenceLength: String
-)
+class RelativeCompositionDetailViewEntity(val name: String)
 
 class RelativeDrillingGroupViewState(
     val isLoading: Boolean = false,

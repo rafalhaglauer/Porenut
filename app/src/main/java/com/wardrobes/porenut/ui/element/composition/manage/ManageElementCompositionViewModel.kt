@@ -12,7 +12,7 @@ import com.wardrobes.porenut.data.relative.RelativeDrillingCompositionRestReposi
 import com.wardrobes.porenut.domain.Element
 import com.wardrobes.porenut.domain.Offset
 import com.wardrobes.porenut.domain.ReferenceElementRelativeDrillingCompositionLight
-import com.wardrobes.porenut.domain.RelativeDrillingComposition
+import com.wardrobes.porenut.domain.RelativeDrillingSet
 import com.wardrobes.porenut.ui.vo.Result
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
@@ -33,7 +33,7 @@ class ManageCompositionViewModel(
         }
 
     private var elements: List<Element> = emptyList()
-    private var drillingCompositions: List<RelativeDrillingComposition> = emptyList()
+    private var drillingCompositions: List<RelativeDrillingSet> = emptyList()
 
     fun add(
         drillingCompositionName: String,
@@ -61,7 +61,7 @@ class ManageCompositionViewModel(
         Observable.zip(
             elementRepository.getAll(wardrobeId),
             relativeDrillingCompositionRepository.getAll(),
-            BiFunction<List<Element>, List<RelativeDrillingComposition>, Pair<List<Element>, List<RelativeDrillingComposition>>>(
+            BiFunction<List<Element>, List<RelativeDrillingSet>, Pair<List<Element>, List<RelativeDrillingSet>>>(
                 function = { elements, compositions -> elements to compositions })
         ).fetchStateFullModel(
             onLoading = { createLoadingState() },

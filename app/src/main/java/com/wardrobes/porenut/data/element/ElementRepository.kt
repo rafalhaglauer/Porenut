@@ -10,9 +10,9 @@ interface ElementRepository {
 
     fun getAll(wardrobeId: Long): Observable<List<Element>>
 
-    fun add(element: Element): Observable<Long>
+    fun add(wardrobeId: Long, element: Element): Observable<Long>
 
-    fun update(elementId: Long, element: Element): Observable<Unit>
+    fun update(elementId: Long, element: Element): Completable
 
     fun delete(elementId: Long): Completable
 }

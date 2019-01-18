@@ -17,7 +17,7 @@ interface ElementInterface {
     fun add(@Body element: Element, @Path("wardrobeId") wardrobeId: Long): Observable<Long>
 
     @PUT("/element/{id}")
-    fun update(@Path("id") elementId: Long, @Body element: Element): Observable<Unit>
+    fun update(@Path("id") elementId: Long, @Body element: Element): Completable
 
     @DELETE("/element/{id}")
     fun delete(@Path("id") elementId: Long): Completable

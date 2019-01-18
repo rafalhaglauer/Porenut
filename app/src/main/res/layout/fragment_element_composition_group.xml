@@ -47,13 +47,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/icEmptyList"
             android:gravity="center"
-            android:text="Żadna kompozycja nie została jeszcze dodana do tego elementu."
+            android:text="Żadnen zestaw wierceń nie został jeszcze dodany do tego elementu."
             android:textSize="@dimen/textMedium" />
 
     </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnActionElementCompositionGroup"
+        android:id="@+id/btnAddElementComposition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

@@ -33,7 +33,7 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name="com.wardrobes.porenut.ui.drilling.standard.ManageDrillingActivity"
+            android:name="com.wardrobes.porenut.ui.drilling.standard.manage.ManageDrillingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/contentElementDetail"
@@ -79,13 +80,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
-    <com.leinardi.android.speeddial.SpeedDialView
-        android:id="@+id/btnActionElementDetail"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnManageElement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:visibility="gone"
-        app:sdMainFabClosedSrc="@drawable/ic_add" />
+        android:src="@drawable/ic_edit" />
 
-</merge>
+</FrameLayout>

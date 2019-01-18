@@ -32,20 +32,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/wardrobeTabFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.detail.WardrobeTabFragment">
-
-        <action
-            android:id="@+id/wardrobeTabToElementTab"
-            app:destination="@id/elementTabFragment" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/elementTabFragment"
-        android:name="com.wardrobes.porenut.ui.element.detail.ElementTabFragment" />
-
-    <fragment
         android:id="@+id/relativeDrillingGroupFragment"
         android:name="com.wardrobes.porenut.ui.drilling.relative.group.RelativeDrillingGroupFragment">
 
@@ -125,10 +111,40 @@
         android:id="@+id/elementDashboardFragment"
         android:name="com.wardrobes.porenut.ui.element.dashboard.ElementDashboardFragment">
 
+        <action
+            android:id="@+id/elementDashboardFragmentToElementDetails"
+            app:destination="@id/elementDetailsFragment" />
+
+        <action
+            android:id="@+id/elementDashboardFragmentToDrillingGroup"
+            app:destination="@id/drillingGroupFragment" />
+
+        <action
+            android:id="@+id/elementDashboardFragmentToElementCompositionGroup"
+            app:destination="@id/elementCompositionGroupFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/manageElementFragment"
         android:name="com.wardrobes.porenut.ui.element.manage.ManageElementFragment" />
+
+    <fragment
+        android:id="@+id/drillingGroupFragment"
+        android:name="com.wardrobes.porenut.ui.drilling.standard.group.DrillingGroupFragment" />
+
+    <fragment
+        android:id="@+id/elementCompositionGroupFragment"
+        android:name="com.wardrobes.porenut.ui.element.composition.group.ElementCompositionGroupFragment" />
+
+    <fragment
+        android:id="@+id/elementDetailsFragment"
+        android:name="com.wardrobes.porenut.ui.element.detail.ElementDetailsFragment">
+
+        <action
+            android:id="@+id/elementDetailsFragmentToManageElement"
+            app:destination="@id/manageElementFragment" />
+
+    </fragment>
 
 </navigation>

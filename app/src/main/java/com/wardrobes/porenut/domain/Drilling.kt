@@ -17,11 +17,7 @@ data class Drilling(
     val diameter: Float,
     val depth: Float,
     val type: CreationType
-) {
-    enum class CreationType {
-        CUSTOM, GENERATED
-    }
-}
+)
 
 data class RelativeDrillingLight(
     val name: String,

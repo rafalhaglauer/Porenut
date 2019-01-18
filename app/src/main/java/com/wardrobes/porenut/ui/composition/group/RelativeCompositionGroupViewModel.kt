@@ -6,14 +6,14 @@ import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.relative.RelativeDrillingCompositionRepository
 import com.wardrobes.porenut.data.relative.RelativeDrillingCompositionRestRepository
-import com.wardrobes.porenut.domain.RelativeDrillingComposition
+import com.wardrobes.porenut.domain.RelativeDrillingSet
 
 class RelativeCompositionGroupViewModel(
     private val relativeDrillingCompositionRepository: RelativeDrillingCompositionRepository = RelativeDrillingCompositionRestRepository
 ) : ViewModel() {
     val viewState: LiveData<RelativeCompositionGroupViewState> = MutableLiveData()
 
-    private var compositions: List<RelativeDrillingComposition> = emptyList()
+    private var compositions: List<RelativeDrillingSet> = emptyList()
 
     fun startObserving() {
         getCompositions()
