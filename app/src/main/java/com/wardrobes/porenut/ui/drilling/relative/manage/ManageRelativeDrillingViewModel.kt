@@ -9,7 +9,6 @@ import com.wardrobes.porenut.data.relative.RelativeDrillingRepository
 import com.wardrobes.porenut.data.relative.RelativeDrillingRestRepository
 import com.wardrobes.porenut.domain.Offset
 import com.wardrobes.porenut.domain.RelativeDrilling
-import com.wardrobes.porenut.domain.RelativeDrillingLight
 import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
 import com.wardrobes.porenut.ui.vo.MeasureFormatter
 import com.wardrobes.porenut.ui.vo.Result
@@ -23,7 +22,7 @@ class ManageRelativeDrillingViewModel(
             value = ManageRelativeDrillingViewState()
         }
 
-    var relativeCompositionId: Long? = null
+    var relativeDrillingSetId: Long? = null
 
     var relativeDrillingId: Long? = null
         set(value) {
@@ -32,10 +31,8 @@ class ManageRelativeDrillingViewModel(
         }
 
     fun manage(name: String, xOffset: Offset, yOffset: Offset, diameter: Float, depth: Float) {
-        relativeCompositionId?.also {
-            RelativeDrillingLight(name, xOffset, yOffset, diameter, depth, it).also {
-                if (relativeDrillingId == null) add(it) else update(it)
-            }
+        RelativeDrilling(name = name, xOffset = xOffset, yOffset = yOffset, diameter = diameter, depth = depth).also { drilling ->
+            if (relativeDrillingId == null) add(drilling) else update(drilling)
         }
     }
 
@@ -50,16 +47,18 @@ class ManageRelativeDrillingViewModel(
         }
     }
 
-    private fun add(drilling: RelativeDrillingLight) {
-        relativeDrillingRepository.add(drilling)
-            .fetchStateFullModel(
-                onLoading = { createLoadingState() },
-                onSuccess = { createResultState() },
-                onError = { createErrorState(it) }
-            )
+    private fun add(drilling: RelativeDrilling) {
+        relativeDrillingSetId?.also {
+            relativeDrillingRepository.add(it, drilling)
+                .fetchStateFullModel(
+                    onLoading = { createLoadingState() },
+                    onSuccess = { createResultState() },
+                    onError = { createErrorState(it) }
+                )
+        }
     }
 
-    private fun update(drilling: RelativeDrillingLight) {
+    private fun update(drilling: RelativeDrilling) {
         relativeDrillingId?.also {
             relativeDrillingRepository.update(it, drilling)
                 .fetchStateFullModel(

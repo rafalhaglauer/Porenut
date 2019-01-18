@@ -22,12 +22,16 @@
     </fragment>
 
     <fragment
-        android:id="@+id/drillingSectionFragment"
+        android:id="@+id/relativeDrillingSetGroupFragment"
         android:name="com.wardrobes.porenut.ui.composition.group.RelativeDrillingSetGroupFragment">
 
         <action
-            android:id="@+id/drillingSectionToRelativeDrillingSetDetails"
+            android:id="@+id/relativeDrillingSetGroupFragmentToRelativeDrillingSetDetails"
             app:destination="@id/relativeDrillingSetDetailsFragment" />
+
+        <action
+            android:id="@+id/relativeDrillingSetGroupFragmentToCreateRelativeDrillingSet"
+            app:destination="@id/createRelativeDrillingSetFragment" />
 
     </fragment>
 
@@ -156,5 +160,9 @@
     <fragment
         android:id="@+id/manageElementCompositionFragment"
         android:name="com.wardrobes.porenut.ui.element.composition.manage.ManageElementCompositionFragment" />
+
+    <fragment
+        android:id="@+id/createRelativeDrillingSetFragment"
+        android:name="com.wardrobes.porenut.ui.composition.manage.CreateRelativeDrillingSetFragment" />
 
 </navigation>

@@ -31,48 +31,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtXReferenceLength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:text="@string/l_x_reference_type"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutRelativeCompositionName" />
-
-    <Spinner
-        android:id="@+id/spinnerXReferenceLength"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:entries="@array/a_reference_types"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtXReferenceLength" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtYReferenceLength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:text="@string/l_y_reference_type"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerXReferenceLength" />
-
-    <Spinner
-        android:id="@+id/spinnerYReferenceLength"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:entries="@array/a_reference_types"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtYReferenceLength" />
-
     <FrameLayout
         android:id="@+id/btnManageRelativeComposition"
         android:layout_width="0dp"
@@ -101,6 +59,6 @@
         android:id="@+id/layoutContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:constraint_referenced_ids="layoutRelativeCompositionName, txtXReferenceLength, spinnerXReferenceLength, txtYReferenceLength, spinnerYReferenceLength, btnManageRelativeComposition" />
+        app:constraint_referenced_ids="layoutRelativeCompositionName, btnManageRelativeComposition" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

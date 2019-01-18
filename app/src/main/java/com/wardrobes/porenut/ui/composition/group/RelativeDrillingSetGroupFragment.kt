@@ -10,11 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.RelativeDrillingSet
 import com.wardrobes.porenut.ui.composition.detail.RelativeDrillingSetDetailsFragment
-import com.wardrobes.porenut.ui.composition.manage.ManageRelativeCompositionActivity
 import com.wardrobes.porenut.ui.extension.*
 import kotlinx.android.synthetic.main.fragment_relative_drilling_set_group.*
-
-private const val ADD_RELATIVE_COMPOSITION_REQUEST_CODE = 1
 
 class RelativeDrillingSetGroupFragment : Fragment() {
     private lateinit var viewModel: RelativeDrillingSetGroupViewModel
@@ -55,14 +52,14 @@ class RelativeDrillingSetGroupFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             setDivider(R.drawable.divider)
             adapter = RelativeDrillingSetGroupAdapter {
-                navigateTo(R.id.drillingSectionToRelativeDrillingSetDetails, RelativeDrillingSetDetailsFragment.createExtras(it))
+                navigateTo(R.id.relativeDrillingSetGroupFragmentToRelativeDrillingSetDetails, RelativeDrillingSetDetailsFragment.createExtras(it))
             }
         }
     }
 
     private fun setupButton() {
         btnAddRelativeDrillingSet.setOnClickListener {
-            launchActivity<ManageRelativeCompositionActivity>(ADD_RELATIVE_COMPOSITION_REQUEST_CODE)
+            navigateTo(R.id.relativeDrillingSetGroupFragmentToCreateRelativeDrillingSet)
         }
     }
 

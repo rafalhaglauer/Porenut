@@ -3,7 +3,6 @@ package com.wardrobes.porenut.data.relative
 import com.wardrobes.porenut.api.base.BaseProvider
 import com.wardrobes.porenut.api.data.RelativeDrillingInterface
 import com.wardrobes.porenut.domain.RelativeDrilling
-import com.wardrobes.porenut.domain.RelativeDrillingLight
 import io.reactivex.Completable
 import io.reactivex.Observable
 
@@ -19,9 +18,9 @@ object RelativeDrillingRestRepository : RelativeDrillingRepository {
 
     override fun delete(id: Long): Completable = drillingInterface.delete(id)
 
-    override fun add(relativeDrilling: RelativeDrillingLight): Observable<Long> =
-        drillingInterface.add(relativeDrilling)
+    override fun add(drillingSetId: Long, relativeDrilling: RelativeDrilling): Observable<Long> =
+        drillingInterface.add(drillingSetId, relativeDrilling)
 
-    override fun update(id: Long, relativeDrilling: RelativeDrillingLight): Completable =
+    override fun update(id: Long, relativeDrilling: RelativeDrilling): Completable =
         drillingInterface.update(id, relativeDrilling)
 }

@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                 setDisplayHomeAsUpEnabled(
                     destination.id != R.id.wardrobeCollectionSectionFragment
                             && destination.id != R.id.wardrobeSectionFragment
-                            && destination.id != R.id.drillingSectionFragment
+                        && destination.id != R.id.relativeDrillingSetGroupFragment
                 )
             }
         }

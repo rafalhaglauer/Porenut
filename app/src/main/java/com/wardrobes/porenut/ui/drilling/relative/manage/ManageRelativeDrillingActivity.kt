@@ -54,7 +54,7 @@ class ManageRelativeDrillingActivity : AppCompatActivity() {
             showMessage(errorMessage)
             txtManageRelativeDrilling.text = getString(manageText)
         }
-        viewModel.relativeCompositionId = intent.relativeCompositionId
+        viewModel.relativeDrillingSetId = intent.relativeCompositionId
         viewModel.relativeDrillingId = intent.relativeDrillingId
     }
 

@@ -12,7 +12,7 @@
         android:title="Szafy" />
 
     <item
-        android:id="@+id/drillingSectionFragment"
+        android:id="@+id/relativeDrillingSetGroupFragment"
         android:icon="@drawable/ic_drilling"
         android:title="Wiercenia" />
 
