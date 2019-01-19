@@ -11,12 +11,12 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.wardrobes.porenut.FileUtils
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.api.base.BaseProvider
-import com.wardrobes.porenut.api.data.AttachmentInterface
+import com.wardrobes.porenut.api.data.AttachmentService
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
-import com.wardrobes.porenut.ui.extension.showMessage
+import com.wardrobes.porenut.file.FileUtils
+import com.wardrobes.porenut.ui.common.extension.showMessage
 import com.wardrobes.porenut.ui.viewer.model.Model
 import com.wardrobes.porenut.ui.viewer.model.ObjModel
 import okhttp3.MediaType
@@ -86,12 +86,12 @@ class ModelActivity : AppCompatActivity() {
     }
 
     private fun dupa(uri: Uri) {
-        val service = BaseProvider.retrofit.create(AttachmentInterface::class.java)
+        val service = BaseProvider.retrofit.create(AttachmentService::class.java)
         val file = FileUtils.getFile(this, uri)
         val requestFile = RequestBody.create(MediaType.parse(contentResolver.getType(uri)), file)
         val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
         intent.getLongExtra("key-wardrobe-id", -1).takeIf { it != -1L }?.also {
-            service.upload(body, it)
+            service.uploadPhoto(body, it)
                 .fetchStateFullModel(
                     onLoading = { showMessage("Loading") },
                     onSuccess = { showMessage("Done") },

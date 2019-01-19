@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.CreationType
-import com.wardrobes.porenut.ui.extension.inflate
-import com.wardrobes.porenut.ui.extension.navigateTo
+import com.wardrobes.porenut.ui.common.extension.inflate
+import com.wardrobes.porenut.ui.common.extension.navigateTo
 import kotlinx.android.synthetic.main.fragment_wardrobe_creation_type.*
 
 class WardrobeCreationTypeFragment : Fragment() {

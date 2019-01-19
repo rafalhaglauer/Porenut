@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.ui.extension.inflate
+import com.wardrobes.porenut.ui.common.extension.inflate
 import kotlinx.android.synthetic.main.relative_drilling_list_adapter.view.*
 
 class RelativeDrillingGroupAdapter(private val onItemSelected: (Long) -> Unit) : RecyclerView.Adapter<RelativeDrillingGroupAdapter.ViewHolder>() {

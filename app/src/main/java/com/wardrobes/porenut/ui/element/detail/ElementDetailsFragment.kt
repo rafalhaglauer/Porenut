@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.element.manage.ManageElementFragment
-import com.wardrobes.porenut.ui.extension.*
+import com.wardrobes.porenut.ui.common.extension.*
 import kotlinx.android.synthetic.main.fragment_element_details.*
 
 private const val KEY_ELEMENT_ID = "key-element-id"

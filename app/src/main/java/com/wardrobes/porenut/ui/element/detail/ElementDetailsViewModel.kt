@@ -7,10 +7,10 @@ import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.element.ElementRepository
 import com.wardrobes.porenut.data.element.ElementRestRepository
 import com.wardrobes.porenut.domain.Element
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
-import com.wardrobes.porenut.ui.vo.Event
-import com.wardrobes.porenut.ui.vo.MeasureFormatter
+import com.wardrobes.porenut.ui.common.DefaultMeasureFormatter
+import com.wardrobes.porenut.ui.common.Event
+import com.wardrobes.porenut.ui.common.MeasureFormatter
+import com.wardrobes.porenut.ui.common.extension.updateValue
 
 class ElementDetailsViewModel(
     private val elementRepository: ElementRepository = ElementRestRepository,

@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.ui.extension.*
+import com.wardrobes.porenut.ui.common.extension.*
 import kotlinx.android.synthetic.main.fragment_manage_element_composition.*
 
 private const val KEY_ELEMENT_ID = "key-element-id"
@@ -38,11 +38,7 @@ class ManageElementCompositionFragment : Fragment() {
         viewModel.viewState.observe(viewLifecycleOwner) {
             progress isVisibleWhen isLoading
             layoutContent isVisibleWhen !isLoading
-            spinnerDrillingSet.adapter = ArrayAdapter<String>(
-                context,
-                android.R.layout.simple_list_item_1,
-                compositionNames
-            ) // TODO refactor this sheet
+            spinnerDrillingSet.adapter = context?.let { ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, compositionNames) }
             txtManageComposition.text = getString(buttonText)
             btnRemoveComposition isVisibleWhen isRemovePossible
             spinnerDrillingSet.isEnabled = isDrillingSetPositionEnable

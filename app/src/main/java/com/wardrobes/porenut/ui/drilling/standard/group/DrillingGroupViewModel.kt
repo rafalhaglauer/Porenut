@@ -5,13 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
-import com.wardrobes.porenut.data.drilling.DrillingRepository
-import com.wardrobes.porenut.data.drilling.DrillingRestRepository
+import com.wardrobes.porenut.data.drilling.standard.DrillingRepository
+import com.wardrobes.porenut.data.drilling.standard.DrillingRestRepository
 import com.wardrobes.porenut.domain.Drilling
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
-import com.wardrobes.porenut.ui.vo.Event
-import com.wardrobes.porenut.ui.vo.MeasureFormatter
+import com.wardrobes.porenut.ui.common.DefaultMeasureFormatter
+import com.wardrobes.porenut.ui.common.Event
+import com.wardrobes.porenut.ui.common.MeasureFormatter
+import com.wardrobes.porenut.ui.common.extension.updateValue
 
 class DrillingGroupViewModel(
     private val drillingRepository: DrillingRepository = DrillingRestRepository,

@@ -10,7 +10,7 @@ import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.drilling.standard.group.DrillingGroupFragment
 import com.wardrobes.porenut.ui.element.composition.group.ElementCompositionGroupFragment
 import com.wardrobes.porenut.ui.element.detail.ElementDetailsFragment
-import com.wardrobes.porenut.ui.extension.*
+import com.wardrobes.porenut.ui.common.extension.*
 import kotlinx.android.synthetic.main.fragment_element_dashboard.*
 
 private const val KEY_ELEMENT_ID = "key-element-id"

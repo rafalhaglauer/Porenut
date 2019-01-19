@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.wardrobe.WardrobeRepository
 import com.wardrobes.porenut.data.wardrobe.WardrobeRestRepository
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.Event
+import com.wardrobes.porenut.ui.common.Event
+import com.wardrobes.porenut.ui.common.extension.updateValue
 
 class WardrobeDashboardViewModel(private val wardrobeRepository: WardrobeRepository = WardrobeRestRepository) : ViewModel() {
     val loadingState: LiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }

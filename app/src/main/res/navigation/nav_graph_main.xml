@@ -4,8 +4,8 @@
     app:startDestination="@id/wardrobeSectionFragment">
 
     <fragment
-        android:id="@+id/wardrobeCollectionSectionFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment" />
+        android:id="@+id/wardrobeCollectionDashboardFragment"
+        android:name="com.wardrobes.porenut.ui.collection.WardrobeCollectionDashboardFragment" />
 
     <fragment
         android:id="@+id/wardrobeSectionFragment"
@@ -163,7 +163,7 @@
 
     <fragment
         android:id="@+id/createRelativeDrillingSetFragment"
-        android:name="com.wardrobes.porenut.ui.composition.manage.CreateRelativeDrillingSetFragment" />
+        android:name="com.wardrobes.porenut.ui.composition.create.CreateRelativeDrillingSetFragment" />
 
     <fragment
         android:id="@+id/manageRelativeDrillingFragment"

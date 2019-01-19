@@ -5,20 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
-import com.wardrobes.porenut.data.composition.CompositionRepository
-import com.wardrobes.porenut.data.composition.CompositionRestRepository
+import com.wardrobes.porenut.data.composition.ElementDrillingSetCompositionRepository
 import com.wardrobes.porenut.data.composition.ElementDrillingSetCompositionRequest
-import com.wardrobes.porenut.data.relative.RelativeDrillingSetRepository
-import com.wardrobes.porenut.data.relative.RelativeDrillingSetRestRepository
+import com.wardrobes.porenut.data.composition.ElementDrillingSetCompositionRestRepository
+import com.wardrobes.porenut.data.drilling.set.RelativeDrillingSetRepository
+import com.wardrobes.porenut.data.drilling.set.RelativeDrillingSetRestRepository
 import com.wardrobes.porenut.domain.ElementDrillingSetComposition
 import com.wardrobes.porenut.domain.Offset
 import com.wardrobes.porenut.domain.RelativeDrillingSet
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.Event
+import com.wardrobes.porenut.ui.common.Event
+import com.wardrobes.porenut.ui.common.extension.updateValue
 
 class ManageElementCompositionViewModel(
     private val relativeDrillingCompositionRepository: RelativeDrillingSetRepository = RelativeDrillingSetRestRepository,
-    private val compositionRepository: CompositionRepository = CompositionRestRepository
+    private val compositionRepository: ElementDrillingSetCompositionRepository = ElementDrillingSetCompositionRestRepository
 ) : ViewModel() {
     val viewState: LiveData<ManageElementCompositionViewState> = MutableLiveData()
     val errorMessageEvent: LiveData<Event<String>> = MutableLiveData()
@@ -44,8 +44,8 @@ class ManageElementCompositionViewModel(
     }
 
     fun remove() {
-        compositionId?.also {
-            compositionRepository.delete(it).fetchStateFullModel(
+        compositionId?.also { id ->
+            compositionRepository.delete(id).fetchStateFullModel(
                 onLoading = { createLoadingState() },
                 onSuccess = { createSuccessState() },
                 onError = { createErrorState(it) }

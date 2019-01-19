@@ -1,6 +1,8 @@
 package com.wardrobes.porenut.ui.wardrobe.gallery
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,9 +17,12 @@ import com.squareup.picasso.Picasso
 import com.stfalcon.imageviewer.StfalconImageViewer
 import com.stfalcon.imageviewer.loader.ImageLoader
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.ui.extension.*
+import com.wardrobes.porenut.ui.common.extension.*
+import com.wardrobes.porenut.ui.photo.PhotoActivity
 import kotlinx.android.synthetic.main.fragment_wardrobe_gallery.*
+import java.io.File
 
+private const val REQUEST_CODE_TAKE_PHOTO = 1
 private const val KEY_WARDROBE_ID = "key-wardrobe-id"
 
 class WardrobeGalleryFragment : Fragment() {
@@ -44,7 +49,29 @@ class WardrobeGalleryFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         setupViewModel()
         observeViewModel()
+        setupTakePhotoButton()
         unpackArguments()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
+            PhotoActivity.getPhotoPath(data)?.also { path ->
+                //                val file = File(path)
+//                val service = BaseProvider.retrofit.create(AttachmentService::class.java)
+//                val requestFile = RequestBody.create(MediaType.parse(path), file)
+//                val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+//                arguments?.getLong(KEY_WARDROBE_ID).takeIf { it != -1L }?.also {
+//                    service.uploadPhoto(body, it)
+//                        .fetchStateFullModel(
+//                            onLoading = { showMessage("Loading") },
+//                            onSuccess = { showMessage("Done") },
+//                            onError = { showMessage("Error") }
+//                        )
+//                }
+                viewModel.uploadPhoto(File(path))
+            }
+        }
     }
 
     private fun setupViewModel() {
@@ -79,6 +106,13 @@ class WardrobeGalleryFragment : Fragment() {
             .withTransitionFrom(target)
             .withImageChangeListener { viewer.updateTransitionImage(imageViews[it]) }
             .show()
+    }
+
+    private fun setupTakePhotoButton() {
+        btnTakePhoto.setOnClickListener {
+            val intent = Intent(it.context, PhotoActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE_TAKE_PHOTO)
+        }
     }
 
     private fun unpackArguments() {

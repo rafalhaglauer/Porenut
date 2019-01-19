@@ -11,7 +11,7 @@ import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.element.dashboard.ElementDashboardFragment
 import com.wardrobes.porenut.ui.element.detail.ElementViewEntity
 import com.wardrobes.porenut.ui.element.manage.ManageElementFragment
-import com.wardrobes.porenut.ui.extension.*
+import com.wardrobes.porenut.ui.common.extension.*
 import kotlinx.android.synthetic.main.fragment_element_group.*
 
 private const val KEY_WARDROBE_ID = "key-wardrobe-id"

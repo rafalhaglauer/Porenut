@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
-import com.wardrobes.porenut.data.relative.RelativeDrillingRepository
-import com.wardrobes.porenut.data.relative.RelativeDrillingRestRepository
-import com.wardrobes.porenut.data.relative.RelativeDrillingSetRepository
-import com.wardrobes.porenut.data.relative.RelativeDrillingSetRestRepository
+import com.wardrobes.porenut.data.drilling.relative.RelativeDrillingRepository
+import com.wardrobes.porenut.data.drilling.relative.RelativeDrillingRestRepository
+import com.wardrobes.porenut.data.drilling.set.RelativeDrillingSetRepository
+import com.wardrobes.porenut.data.drilling.set.RelativeDrillingSetRestRepository
 import com.wardrobes.porenut.domain.RelativeDrilling
 import com.wardrobes.porenut.domain.RelativeDrillingSet
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.Event
+import com.wardrobes.porenut.ui.common.Event
+import com.wardrobes.porenut.ui.common.extension.updateValue
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 

@@ -1,6 +1,5 @@
 package com.wardrobes.porenut.ui.wardrobe.group
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,19 +9,15 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.Wardrobe
-import com.wardrobes.porenut.ui.extension.*
-import com.wardrobes.porenut.ui.vo.Result
+import com.wardrobes.porenut.ui.common.extension.*
 import com.wardrobes.porenut.ui.wardrobe.dashboard.WardrobeDashboardFragment
 import kotlinx.android.synthetic.main.fragment_wardrobe_group.*
-
-private const val REQUEST_ADD_WARDROBE = 1
 
 class WardrobeGroupFragment : Fragment() {
     private lateinit var viewModel: WardrobeGroupViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return container?.inflate(R.layout.fragment_wardrobe_group)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        container?.inflate(R.layout.fragment_wardrobe_group)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -31,13 +26,6 @@ class WardrobeGroupFragment : Fragment() {
         observeViewModel()
         setupWardrobeSwitch()
         setupFab()
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_ADD_WARDROBE && resultCode == Result.ADDED.value) {
-            switchWardrobeGroup.checkedTogglePosition = switchWardrobeGroup.checkedTogglePosition
-        }
     }
 
     private fun setupLayoutContent() {
@@ -54,7 +42,7 @@ class WardrobeGroupFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.viewState
-            .observe(this) {
+            .observe(viewLifecycleOwner) {
                 progressWardrobeGroup.isVisibleWhen(isLoading)
                 emptyListNotificationWardrobeGroup.isVisibleWhen(isEmptyListNotificationVisible)
                 bind(viewEntities)

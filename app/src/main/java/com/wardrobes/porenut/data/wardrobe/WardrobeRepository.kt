@@ -11,11 +11,10 @@ interface WardrobeRepository {
 
     fun get(wardrobeId: Long): Observable<Wardrobe>
 
-    fun add(wardrobe: Wardrobe, creationType: CreationType): Observable<Long>
+    fun add(wardrobe: Wardrobe, creationType: CreationType): Completable
 
     fun delete(wardrobeId: Long): Completable
 
     fun update(wardrobeId: Long, wardrobe: Wardrobe): Completable
 
-//    fun copy(wardrobeId: Long, symbol: String): Observable<Long>
 }

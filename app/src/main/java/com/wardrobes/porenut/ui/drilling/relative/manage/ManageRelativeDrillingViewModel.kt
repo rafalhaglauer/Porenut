@@ -5,14 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
-import com.wardrobes.porenut.data.relative.RelativeDrillingRepository
-import com.wardrobes.porenut.data.relative.RelativeDrillingRestRepository
+import com.wardrobes.porenut.data.drilling.relative.RelativeDrillingRepository
+import com.wardrobes.porenut.data.drilling.relative.RelativeDrillingRestRepository
 import com.wardrobes.porenut.domain.Offset
 import com.wardrobes.porenut.domain.RelativeDrilling
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
-import com.wardrobes.porenut.ui.vo.Event
-import com.wardrobes.porenut.ui.vo.MeasureFormatter
+import com.wardrobes.porenut.ui.common.DefaultMeasureFormatter
+import com.wardrobes.porenut.ui.common.Event
+import com.wardrobes.porenut.ui.common.MeasureFormatter
+import com.wardrobes.porenut.ui.common.extension.updateValue
 
 class ManageRelativeDrillingViewModel(
     private val relativeDrillingRepository: RelativeDrillingRepository = RelativeDrillingRestRepository,

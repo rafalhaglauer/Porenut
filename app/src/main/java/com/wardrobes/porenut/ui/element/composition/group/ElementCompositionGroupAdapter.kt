@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.ElementDrillingSetComposition
-import com.wardrobes.porenut.ui.extension.inflate
+import com.wardrobes.porenut.ui.common.extension.inflate
 import kotlinx.android.synthetic.main.element_composition_list_adapter.view.*
 
 

@@ -7,9 +7,9 @@ import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.wardrobe.WardrobeRepository
 import com.wardrobes.porenut.data.wardrobe.WardrobeRestRepository
 import com.wardrobes.porenut.domain.Wardrobe
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
-import com.wardrobes.porenut.ui.vo.MeasureFormatter
+import com.wardrobes.porenut.ui.common.DefaultMeasureFormatter
+import com.wardrobes.porenut.ui.common.MeasureFormatter
+import com.wardrobes.porenut.ui.common.extension.updateValue
 
 class WardrobeGroupViewModel(
     private val wardrobeRepository: WardrobeRepository = WardrobeRestRepository,
@@ -44,13 +44,7 @@ class WardrobeGroupViewModel(
     }
 
     private fun createSuccessState(wardrobes: List<Wardrobe>) {
-        if (wardrobes.isEmpty()) {
-            WardrobeGroupViewState(isEmptyListNotificationVisible = true)
-        } else {
-            WardrobeGroupViewState(viewEntities = wardrobes.toViewEntity())
-        }.also {
-            viewState.updateValue(it)
-        }
+        viewState.updateValue(WardrobeGroupViewState(isEmptyListNotificationVisible = wardrobes.isEmpty(), viewEntities = wardrobes.toViewEntity()))
     }
 
     private fun createErrorState(message: String) {

@@ -27,8 +27,11 @@ ext.arch_runtime_version = "1.1.1"
 ext.arch_version = "1.1.1"
 
 dependencies {
+
+    // External JARs
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Support library
@@ -57,9 +60,6 @@ dependencies {
     implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha09'
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0-alpha09'
 
-    // Floating action menu
-    implementation "com.leinardi.android:speed-dial:1.0.2"
-
     // Toggle switch
     implementation 'us.belka:androidtoggleswitch:1.2.2'
 
@@ -69,6 +69,9 @@ dependencies {
     // Gallery
     implementation 'com.github.stfalcon:stfalcon-imageviewer:0.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // Photo
+    implementation 'io.fotoapparat:fotoapparat:2.6.1'
     
     // Tests
     testImplementation 'junit:junit:4.12'

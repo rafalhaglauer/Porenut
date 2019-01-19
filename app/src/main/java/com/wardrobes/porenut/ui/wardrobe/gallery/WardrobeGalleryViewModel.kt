@@ -7,8 +7,9 @@ import com.wardrobes.porenut.api.base.BaseProvider
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.attachment.AttachmentRepository
 import com.wardrobes.porenut.data.attachment.AttachmentRestRepository
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.Event
+import com.wardrobes.porenut.ui.common.Event
+import com.wardrobes.porenut.ui.common.extension.updateValue
+import java.io.File
 
 class WardrobeGalleryViewModel(
     private val attachmentRepository: AttachmentRepository = AttachmentRestRepository
@@ -23,13 +24,35 @@ class WardrobeGalleryViewModel(
             field = value?.also { fetchPhotos(it) }
         }
 
+    fun uploadPhoto(photo: File) {
+        wardrobeId?.also { id ->
+            attachmentRepository.uploadPhoto(id, photo).fetchStateFullModel(
+                onLoading = { showLoading() },
+                onSuccess = { fetchPhotos(id) },
+                onError = { showError(it) }
+            )
+        }
+    }
+
     private fun fetchPhotos(wardrobeId: Long) {
         attachmentRepository.getPhotoUrls(wardrobeId)
             .fetchStateFullModel(
-                onLoading = { viewState.updateValue(WardrobeGalleryViewState(isLoading = true)) },
-                onSuccess = { viewState.updateValue(WardrobeGalleryViewState(photoUrls = it.map { "${BaseProvider.retrofit.baseUrl()}/$it" })) },
-                onError = { errorState.updateValue(Event(it)) }
+                onLoading = { showLoading() },
+                onSuccess = { showGallery(it) },
+                onError = { showError(it) }
             )
+    }
+
+    private fun showLoading() {
+        viewState.updateValue(WardrobeGalleryViewState(isLoading = true))
+    }
+
+    private fun showGallery(urls: List<String>) {
+        viewState.updateValue(WardrobeGalleryViewState(photoUrls = urls.map { "${BaseProvider.retrofit.baseUrl()}/$it" }))
+    }
+
+    private fun showError(message: String) {
+        errorState.updateValue(Event(message))
     }
 }
 

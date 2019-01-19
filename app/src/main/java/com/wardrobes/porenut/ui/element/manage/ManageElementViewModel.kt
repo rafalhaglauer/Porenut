@@ -8,11 +8,11 @@ import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.element.ElementRepository
 import com.wardrobes.porenut.data.element.ElementRestRepository
 import com.wardrobes.porenut.domain.Element
+import com.wardrobes.porenut.ui.common.DefaultMeasureFormatter
+import com.wardrobes.porenut.ui.common.Event
+import com.wardrobes.porenut.ui.common.MeasureFormatter
 import com.wardrobes.porenut.ui.element.detail.ElementViewEntity
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
-import com.wardrobes.porenut.ui.vo.Event
-import com.wardrobes.porenut.ui.vo.MeasureFormatter
+import com.wardrobes.porenut.ui.common.extension.updateValue
 
 class ManageElementViewModel(
     private val elementRepository: ElementRepository = ElementRestRepository,
@@ -101,10 +101,6 @@ class ManageElementViewModel(
 
     private val Float.formattedValue: String
         get() = measureFormatter.format(this)
-
-    private fun LiveData<ManageElementViewState>.updateValue(elementViewState: ManageElementViewState) {
-        (this as? MutableLiveData)?.value = elementViewState
-    }
 }
 
 class ManageElementViewState(

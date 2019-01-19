@@ -4,13 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
-import com.wardrobes.porenut.data.composition.CompositionRepository
-import com.wardrobes.porenut.data.composition.CompositionRestRepository
+import com.wardrobes.porenut.data.composition.ElementDrillingSetCompositionRepository
+import com.wardrobes.porenut.data.composition.ElementDrillingSetCompositionRestRepository
 import com.wardrobes.porenut.domain.ElementDrillingSetComposition
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.Event
+import com.wardrobes.porenut.ui.common.Event
+import com.wardrobes.porenut.ui.common.extension.updateValue
 
-class ElementCompositionGroupViewModel(private val compositionRepository: CompositionRepository = CompositionRestRepository) : ViewModel() {
+class ElementCompositionGroupViewModel(private val compositionRepository: ElementDrillingSetCompositionRepository = ElementDrillingSetCompositionRestRepository) :
+    ViewModel() {
     val viewState: LiveData<ElementCompositionViewState> = MutableLiveData()
     val errorEvent: LiveData<Event<String>> = MutableLiveData()
 

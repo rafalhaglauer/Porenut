@@ -7,9 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.pdf.DefaultPdfGenerator
-import com.wardrobes.porenut.ui.element.detail.ElementViewEntity
-import com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailViewEntity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,53 +18,16 @@ class MainActivity : AppCompatActivity() {
         mainNavController.addOnDestinationChangedListener { _, destination, _ ->
             supportActionBar?.apply {
                 setDisplayHomeAsUpEnabled(
-                    destination.id != R.id.wardrobeCollectionSectionFragment
-                            && destination.id != R.id.wardrobeSectionFragment
+                    destination.id != R.id.wardrobeCollectionDashboardFragment
+                        && destination.id != R.id.wardrobeSectionFragment
                         && destination.id != R.id.relativeDrillingSetGroupFragment
                 )
             }
         }
+        // TODO Hide NavController
+        // TODO Configure Toolbar
         bottomNavigation.setupWithNavController(mainNavController)
-        requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
-
-        val testWardrobe = WardrobeDetailViewEntity(
-            symbol = "DSG",
-            width = "600",
-            height = "716",
-            depth = "320",
-            type = R.string.l_upper
-        )
-        val el1 = ElementViewEntity(
-            name = "Wieniec górny",
-            length = "564",
-            width = "300",
-            height = "18"
-        )
-        val el2 = ElementViewEntity(
-            name = "Wieniec dolny",
-            length = "564",
-            width = "300",
-            height = "18"
-        )
-        val el3 = ElementViewEntity(
-            name = "Bok lewy",
-            length = "716",
-            width = "320",
-            height = "18"
-        )
-        val el4 = ElementViewEntity(
-            name = "Bok prawy",
-            length = "716",
-            width = "320",
-            height = "18"
-        )
-        val el5 = ElementViewEntity(
-            name = "Półka",
-            length = "563",
-            width = "270",
-            height = "18"
-        )
-        DefaultPdfGenerator(this).generate(testWardrobe, listOf(el1, el2, el3, el4, el5, el5, el5))
+        requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0) // TODO Proper manage of permissions
     }
 
     override fun onOptionsItemSelected(item: MenuItem?) =

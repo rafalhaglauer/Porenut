@@ -15,21 +15,21 @@ import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
+// TODO REFACTOR!!!
+// TODO ADD GENERATOR TO WARDROBE
+
 interface PdfGenerator {
 
     fun generate(wardrobe: WardrobeDetailViewEntity, elements: List<ElementViewEntity>)
-
 }
 
 class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
-
     private val baseFont = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.EMBEDDED)
     private val boldFont = Font(baseFont, 32F, Font.BOLD)
     private val normalFont = Font(baseFont, 12F, Font.NORMAL)
 
     override fun generate(wardrobe: WardrobeDetailViewEntity, elements: List<ElementViewEntity>) {
         val filePath = "${Environment.getExternalStorageDirectory()}/${wardrobe.symbol}.pdf"
-
         try {
             val document = Document()
             val writer = PdfWriter.getInstance(document, FileOutputStream(filePath))
@@ -50,12 +50,12 @@ class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
     }
 
     private fun Document.addTopSection(title: String) {
-        val paragraph = Paragraph()
-        val currentDate = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(Date())
-        paragraph.addText(currentDate, normalFont, Element.ALIGN_RIGHT)
-        paragraph.addEmptyLine(numberOfLines = 3)
-        paragraph.addText(title, boldFont, Element.ALIGN_CENTER)
-        add(paragraph)
+        Paragraph().apply {
+            val currentDate = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(Date())
+            addText(currentDate, normalFont, Element.ALIGN_RIGHT)
+            addEmptyLine(numberOfLines = 3)
+            addText(title, boldFont, Element.ALIGN_CENTER)
+        }.also { add(it) }
     }
 
     private fun Document.addWardrobe(wardrobe: WardrobeDetailViewEntity) {

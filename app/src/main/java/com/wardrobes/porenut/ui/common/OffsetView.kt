@@ -9,9 +9,9 @@ import android.widget.FrameLayout
 import android.widget.SeekBar
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.Offset
-import com.wardrobes.porenut.ui.extension.float
-import com.wardrobes.porenut.ui.extension.inflate
-import com.wardrobes.porenut.ui.extension.string
+import com.wardrobes.porenut.ui.common.extension.float
+import com.wardrobes.porenut.ui.common.extension.inflate
+import com.wardrobes.porenut.ui.common.extension.string
 import kotlinx.android.synthetic.main.view_offset.view.*
 import java.util.*
 import kotlin.math.roundToInt

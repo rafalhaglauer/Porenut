@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.domain.RelativeDrillingSet
 import com.wardrobes.porenut.ui.composition.detail.RelativeDrillingSetDetailsFragment
-import com.wardrobes.porenut.ui.extension.*
+import com.wardrobes.porenut.ui.common.extension.*
 import kotlinx.android.synthetic.main.fragment_relative_drilling_set_group.*
 
 class RelativeDrillingSetGroupFragment : Fragment() {

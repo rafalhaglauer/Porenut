@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.element.group.ElementGroupFragment
-import com.wardrobes.porenut.ui.extension.*
+import com.wardrobes.porenut.ui.common.extension.*
 import com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailsFragment
 import com.wardrobes.porenut.ui.wardrobe.gallery.WardrobeGalleryFragment
 import kotlinx.android.synthetic.main.fragment_wardrobe_dashboard.*

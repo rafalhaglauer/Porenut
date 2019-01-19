@@ -9,10 +9,10 @@ import com.wardrobes.porenut.data.wardrobe.WardrobeRepository
 import com.wardrobes.porenut.data.wardrobe.WardrobeRestRepository
 import com.wardrobes.porenut.domain.CreationType
 import com.wardrobes.porenut.domain.Wardrobe
-import com.wardrobes.porenut.ui.extension.updateValue
-import com.wardrobes.porenut.ui.vo.DefaultMeasureFormatter
-import com.wardrobes.porenut.ui.vo.Event
-import com.wardrobes.porenut.ui.vo.MeasureFormatter
+import com.wardrobes.porenut.ui.common.DefaultMeasureFormatter
+import com.wardrobes.porenut.ui.common.Event
+import com.wardrobes.porenut.ui.common.MeasureFormatter
+import com.wardrobes.porenut.ui.common.extension.updateValue
 
 class ManageWardrobeViewModel(
     private val wardrobeRepository: WardrobeRepository = WardrobeRestRepository,
