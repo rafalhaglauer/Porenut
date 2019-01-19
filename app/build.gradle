@@ -31,6 +31,9 @@ dependencies {
     // External JARs
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    // min3d
+    implementation project(':min3d')
+
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
@@ -72,7 +75,7 @@ dependencies {
 
     // Photo
     implementation 'io.fotoapparat:fotoapparat:2.6.1'
-    
+
     // Tests
     testImplementation 'junit:junit:4.12'
 

@@ -5,7 +5,8 @@
 
     <fragment
         android:id="@+id/wardrobeCollectionDashboardFragment"
-        android:name="com.wardrobes.porenut.ui.collection.WardrobeCollectionDashboardFragment" />
+        android:name="com.wardrobes.porenut.ui.wardrobe.model.WardrobeModelFragment" />
+    // TODO
 
     <fragment
         android:id="@+id/wardrobeSectionFragment"
