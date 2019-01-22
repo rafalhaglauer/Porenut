@@ -15,16 +15,12 @@ class ModelController(private val model: Object3dContainer) {
         }
         MotionEvent.ACTION_MOVE -> {
             if (event.pointerCount == 1) {
-                val x = event.x
-                val y = event.y
-                val dx = x - previousX
-                val dy = y - previousY
-                previousX = x
-                previousY = y
                 model.rotation()?.apply {
-                    this.y += dx / 4
-                    this.x += dy / 4
+                    this.y += (event.x - previousX) / 4
+                    this.x += (event.y - previousY) / 4
                 }
+                previousX = event.x
+                previousY = event.y
             }
             true
         }

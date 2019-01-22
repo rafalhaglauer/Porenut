@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/wardrobeSectionFragment">
 
     <fragment
         android:id="@+id/wardrobeCollectionDashboardFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.model.WardrobeModelFragment" />
-    // TODO
+        android:name="com.wardrobes.porenut.ui.wardrobe.model.WardrobeModelFragment"
+        tools:layout="@layout/fragment_wardrobe_collection_dashboard" />
 
     <fragment
         android:id="@+id/wardrobeSectionFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment">
+        android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment"
+        tools:layout="@layout/fragment_wardrobe_group">
 
         <action
             android:id="@+id/wardrobeSectionToWardrobeDashboard"
@@ -24,7 +26,8 @@
 
     <fragment
         android:id="@+id/relativeDrillingSetGroupFragment"
-        android:name="com.wardrobes.porenut.ui.composition.group.RelativeDrillingSetGroupFragment">
+        android:name="com.wardrobes.porenut.ui.composition.group.RelativeDrillingSetGroupFragment"
+        tools:layout="@layout/fragment_relative_drilling_set_group">
 
         <action
             android:id="@+id/relativeDrillingSetGroupFragmentToRelativeDrillingSetDetails"
@@ -38,7 +41,8 @@
 
     <fragment
         android:id="@+id/relativeDrillingSetDetailsFragment"
-        android:name="com.wardrobes.porenut.ui.composition.detail.RelativeDrillingSetDetailsFragment">
+        android:name="com.wardrobes.porenut.ui.composition.detail.RelativeDrillingSetDetailsFragment"
+        tools:layout="@layout/fragment_relative_drilling_set_details">
 
         <action
             android:id="@+id/relativeDrillingSetDetailsFragmentToManageRelativeDrillingFragment"
@@ -48,7 +52,8 @@
 
     <fragment
         android:id="@+id/wardrobeCreationTypeFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.manage.WardrobeCreationTypeFragment">
+        android:name="com.wardrobes.porenut.ui.wardrobe.manage.WardrobeCreationTypeFragment"
+        tools:layout="@layout/fragment_wardrobe_creation_type">
 
         <action
             android:id="@+id/wardrobeCreationTypeFragmentToManageWardrobeFragment"
@@ -58,7 +63,8 @@
 
     <fragment
         android:id="@+id/manageWardrobeFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.manage.ManageWardrobeFragment">
+        android:name="com.wardrobes.porenut.ui.wardrobe.manage.ManageWardrobeFragment"
+        tools:layout="@layout/fragment_manage_wardrobe">
 
         <action
             android:id="@+id/manageWardrobeFragmentToWardrobeSection"
@@ -68,7 +74,8 @@
 
     <fragment
         android:id="@+id/wardrobeDashboardFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.dashboard.WardrobeDashboardFragment">
+        android:name="com.wardrobes.porenut.ui.wardrobe.dashboard.WardrobeDashboardFragment"
+        tools:layout="@layout/fragment_wardrobe_dashboard">
 
         <action
             android:id="@+id/wardrobeDashboardFragmentToElementGroupFragment"
@@ -86,7 +93,8 @@
 
     <fragment
         android:id="@+id/elementGroupFragment"
-        android:name="com.wardrobes.porenut.ui.element.group.ElementGroupFragment">
+        android:name="com.wardrobes.porenut.ui.element.group.ElementGroupFragment"
+        tools:layout="@layout/fragment_element_group">
 
         <action
             android:id="@+id/elementGroupFragmentToElementDashboard"
@@ -100,7 +108,8 @@
 
     <fragment
         android:id="@+id/wardrobeDetailsFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailsFragment">
+        android:name="com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailsFragment"
+        tools:layout="@layout/fragment_wardrobe_details">
 
         <action
             android:id="@+id/wardrobeDetailsFragmentToManageWardrobe"
@@ -110,11 +119,13 @@
 
     <fragment
         android:id="@+id/wardrobeGalleryFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.gallery.WardrobeGalleryFragment" />
+        android:name="com.wardrobes.porenut.ui.wardrobe.gallery.WardrobeGalleryFragment"
+        tools:layout="@layout/fragment_wardrobe_gallery" />
 
     <fragment
         android:id="@+id/elementDashboardFragment"
-        android:name="com.wardrobes.porenut.ui.element.dashboard.ElementDashboardFragment">
+        android:name="com.wardrobes.porenut.ui.element.dashboard.ElementDashboardFragment"
+        tools:layout="@layout/fragment_element_dashboard">
 
         <action
             android:id="@+id/elementDashboardFragmentToElementDetails"
@@ -132,15 +143,18 @@
 
     <fragment
         android:id="@+id/manageElementFragment"
-        android:name="com.wardrobes.porenut.ui.element.manage.ManageElementFragment" />
+        android:name="com.wardrobes.porenut.ui.element.manage.ManageElementFragment"
+        tools:layout="@layout/fragment_manage_element" />
 
     <fragment
         android:id="@+id/drillingGroupFragment"
-        android:name="com.wardrobes.porenut.ui.drilling.standard.group.DrillingGroupFragment" />
+        android:name="com.wardrobes.porenut.ui.drilling.standard.group.DrillingGroupFragment"
+        tools:layout="@layout/fragment_drilling_group" />
 
     <fragment
         android:id="@+id/elementCompositionGroupFragment"
-        android:name="com.wardrobes.porenut.ui.element.composition.group.ElementCompositionGroupFragment">
+        android:name="com.wardrobes.porenut.ui.element.composition.group.ElementCompositionGroupFragment"
+        tools:layout="@layout/fragment_element_composition_group">
 
         <action
             android:id="@+id/elementCompositionGroupFragmentToManageElementComposition"
@@ -150,7 +164,8 @@
 
     <fragment
         android:id="@+id/elementDetailsFragment"
-        android:name="com.wardrobes.porenut.ui.element.detail.ElementDetailsFragment">
+        android:name="com.wardrobes.porenut.ui.element.detail.ElementDetailsFragment"
+        tools:layout="@layout/fragment_element_details">
 
         <action
             android:id="@+id/elementDetailsFragmentToManageElement"
@@ -160,14 +175,17 @@
 
     <fragment
         android:id="@+id/manageElementCompositionFragment"
-        android:name="com.wardrobes.porenut.ui.element.composition.manage.ManageElementCompositionFragment" />
+        android:name="com.wardrobes.porenut.ui.element.composition.manage.ManageElementCompositionFragment"
+        tools:layout="@layout/fragment_manage_element_composition" />
 
     <fragment
         android:id="@+id/createRelativeDrillingSetFragment"
-        android:name="com.wardrobes.porenut.ui.composition.create.CreateRelativeDrillingSetFragment" />
+        android:name="com.wardrobes.porenut.ui.composition.create.CreateRelativeDrillingSetFragment"
+        tools:layout="@layout/fragment_create_relative_drilling_set" />
 
     <fragment
         android:id="@+id/manageRelativeDrillingFragment"
-        android:name="com.wardrobes.porenut.ui.drilling.relative.manage.ManageRelativeDrillingFragment" />
+        android:name="com.wardrobes.porenut.ui.drilling.relative.manage.ManageRelativeDrillingFragment"
+        tools:layout="@layout/fragment_manage_relative_drilling" />
 
 </navigation>
