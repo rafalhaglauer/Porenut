@@ -5,89 +5,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.wardrobes.porenut.ui.common.DashboardButton
         android:id="@+id/btnWardrobeDetails"
-        style="@style/Text.Tertiary"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        android:background="@drawable/rounded_rectangle"
-        android:backgroundTint="@color/colorAccent"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
-        android:gravity="center"
+        android:icon="@drawable/ic_info"
         android:text="SZCZEGÓŁY"
-        android:textSize="@dimen/textBig"
+        android:tint="@color/menuDark"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@id/btnWardrobeElements"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.wardrobes.porenut.ui.common.DashboardButton
         android:id="@+id/btnWardrobeElements"
-        style="@style/Text.Tertiary"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/rounded_rectangle"
-        android:backgroundTint="@color/colorAccent"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
-        android:gravity="center"
+        android:icon="@drawable/ic_list"
         android:text="ELEMENTY"
-        android:textSize="@dimen/textBig"
+        android:tint="@color/menuDark"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnWardrobeDetails"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.wardrobes.porenut.ui.common.DashboardButton
         android:id="@+id/btnWardrobeGallery"
-        style="@style/Text.Tertiary"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
-        android:background="@drawable/rounded_rectangle"
-        android:backgroundTint="@color/colorAccent"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
-        android:gravity="center"
+        android:icon="@drawable/ic_gallery"
         android:text="GALERIA"
-        android:textSize="@dimen/textBig"
+        android:tint="@color/menuDark"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/btnRemoveWardrobe"
+        app:layout_constraintEnd_toStartOf="@id/btnGeneratePdf"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnWardrobeDetails" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/btnRemoveWardrobe"
-        style="@style/Text.Tertiary"
+    <com.wardrobes.porenut.ui.common.DashboardButton
+        android:id="@+id/btnGeneratePdf"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/rounded_rectangle"
-        android:backgroundTint="@color/error"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
-        android:gravity="center"
-        android:text="USUŃ"
-        android:textSize="@dimen/textBig"
+        android:icon="@drawable/ic_document"
+        android:text="PDF"
+        android:tint="@color/menuDark"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnWardrobeGallery"
         app:layout_constraintTop_toBottomOf="@id/btnWardrobeElements" />
+
+    <com.wardrobes.porenut.ui.common.DashboardButton
+        android:id="@+id/btnRemoveWardrobe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:icon="@drawable/ic_delete"
+        android:text="USUŃ"
+        android:tint="@color/menuDark"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGeneratePdf" />
 
     <ProgressBar
         android:id="@+id/progress"
@@ -104,6 +93,6 @@
         android:id="@+id/layoutContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:constraint_referenced_ids="btnWardrobeDetails, btnWardrobeElements, btnWardrobeGallery, btnRemoveWardrobe" />
+        app:constraint_referenced_ids="btnWardrobeDetails, btnWardrobeElements, btnWardrobeGallery, btnGeneratePdf, btnRemoveWardrobe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

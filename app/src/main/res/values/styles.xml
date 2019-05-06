@@ -12,8 +12,16 @@
         <item name="android:textColor">@color/textPrimary</item>
     </style>
 
+    <style name="Text.Primary.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="Text.Secondary">
         <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="Text.Secondary.Bold">
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Text.Tertiary">

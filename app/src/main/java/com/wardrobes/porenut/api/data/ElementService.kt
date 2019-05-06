@@ -22,3 +22,8 @@ interface ElementService {
     @DELETE("/element/{id}")
     fun delete(@Path("id") elementId: Long): Completable
 }
+
+
+
+
+

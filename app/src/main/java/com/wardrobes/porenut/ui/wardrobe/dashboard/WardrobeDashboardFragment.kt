@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.ui.element.group.ElementGroupFragment
+import com.wardrobes.porenut.pdf.DefaultPdfGenerator
 import com.wardrobes.porenut.ui.common.extension.*
+import com.wardrobes.porenut.ui.element.group.ElementGroupFragment
 import com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailsFragment
 import com.wardrobes.porenut.ui.wardrobe.gallery.WardrobeGalleryFragment
 import kotlinx.android.synthetic.main.fragment_wardrobe_dashboard.*
@@ -33,6 +34,7 @@ class WardrobeDashboardFragment : Fragment() {
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(this)[WardrobeDashboardViewModel::class.java]
         viewModel.wardrobeId = wardrobeId
+        viewModel.pdfGenerator = context?.let { DefaultPdfGenerator(it) }
     }
 
     private fun observeViewModel() {
@@ -53,18 +55,30 @@ class WardrobeDashboardFragment : Fragment() {
     private fun setupListeners() {
         btnWardrobeDetails.setOnClickListener {
             wardrobeId?.also { id ->
-                navigateTo(R.id.wardrobeDashboardFragmentToWardrobeDetails, WardrobeDetailsFragment.createExtras(id))
+                navigateTo(
+                    R.id.wardrobeDashboardFragmentToWardrobeDetails,
+                    WardrobeDetailsFragment.createExtras(id)
+                )
             }
         }
         btnWardrobeElements.setOnClickListener {
             wardrobeId?.also { id ->
-                navigateTo(R.id.wardrobeDashboardFragmentToElementGroupFragment, ElementGroupFragment.createExtras(id))
+                navigateTo(
+                    R.id.wardrobeDashboardFragmentToElementGroupFragment,
+                    ElementGroupFragment.createExtras(id)
+                )
             }
         }
         btnWardrobeGallery.setOnClickListener {
             wardrobeId?.also { id ->
-                navigateTo(R.id.wardrobeDashboardFragmentToWardrobeGallery, WardrobeGalleryFragment.createExtras(id))
+                navigateTo(
+                    R.id.wardrobeDashboardFragmentToWardrobeGallery,
+                    WardrobeGalleryFragment.createExtras(id)
+                )
             }
+        }
+        btnGeneratePdf.setOnClickListener {
+            viewModel.generatePdf()
         }
         btnRemoveWardrobe.setOnClickListener {
             viewModel.deleteWardrobe()

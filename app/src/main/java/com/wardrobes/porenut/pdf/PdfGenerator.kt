@@ -20,15 +20,19 @@ import java.util.*
 
 interface PdfGenerator {
 
-    fun generate(wardrobe: WardrobeDetailViewEntity, elements: List<ElementViewEntity>)
+    fun generate(wardrobe: WardrobeDetailViewEntity, elements: List<ElementViewEntity>): Boolean
 }
 
 class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
+
     private val baseFont = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.EMBEDDED)
     private val boldFont = Font(baseFont, 32F, Font.BOLD)
     private val normalFont = Font(baseFont, 12F, Font.NORMAL)
 
-    override fun generate(wardrobe: WardrobeDetailViewEntity, elements: List<ElementViewEntity>) {
+    override fun generate(
+        wardrobe: WardrobeDetailViewEntity,
+        elements: List<ElementViewEntity>
+    ): Boolean {
         val filePath = "${Environment.getExternalStorageDirectory()}/${wardrobe.symbol}.pdf"
         try {
             val document = Document()
@@ -44,8 +48,10 @@ class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
             document.close()
             writer.flush()
             writer.close()
+            return true
         } catch (ignored: Exception) {
             ignored.printStackTrace()
+            return false
         }
     }
 

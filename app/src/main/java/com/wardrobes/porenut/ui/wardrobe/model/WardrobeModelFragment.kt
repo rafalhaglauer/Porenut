@@ -60,6 +60,5 @@ class WardrobeModelFragment : Fragment() {
     }
 
     private fun beginLoadModel(uri: Uri) {
-        context?.also { WardrobeModelActivity.launchActivity(it, uri) }
     }
 }

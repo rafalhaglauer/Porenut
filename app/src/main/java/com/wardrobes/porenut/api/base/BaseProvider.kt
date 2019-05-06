@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object BaseProvider {
-    private const val API_URL = "http://192.168.8.106:8080"
+    private const val API_URL = "https://sisiphus.appspot.com"
 
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(API_URL)

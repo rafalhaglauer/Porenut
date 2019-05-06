@@ -5,4 +5,10 @@
         <attr name="android:text" />
     </declare-styleable>
 
+    <declare-styleable name="DashboardButton">
+        <attr name="android:text" />
+        <attr name="android:icon" />
+        <attr name="android:tint" />
+    </declare-styleable>
+
 </resources>

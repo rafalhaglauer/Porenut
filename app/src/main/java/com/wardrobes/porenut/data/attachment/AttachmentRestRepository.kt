@@ -7,6 +7,7 @@ import io.reactivex.Observable
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import java.io.File
 
 object AttachmentRestRepository : AttachmentRepository {
@@ -20,4 +21,11 @@ object AttachmentRestRepository : AttachmentRepository {
 
     override fun getPhotoUrls(wardrobeId: Long): Observable<List<String>> = service.getPhotoUrls(wardrobeId)
 
+    override fun uploadModel(wardrobeId: Long, file: File): Completable {
+        val requestFile = RequestBody.create(MediaType.parse(file.path), file)
+        val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+        return service.uploadModel(body, wardrobeId)
+    }
+
+    override fun getModel(wardrobeId: Long): Observable<ResponseBody> = service.getModel(wardrobeId)
 }

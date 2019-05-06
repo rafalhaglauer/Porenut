@@ -36,8 +36,8 @@
             custom:cornerRadius="10dp"
             custom:inactiveBgColor="@color/textTertiary"
             custom:inactiveTextColor="@android:color/black"
-            custom:textToggleLeft="TYPOWE"
-            custom:textToggleRight="NIETYPOWE"
+            custom:textToggleLeft="DOLNE"
+            custom:textToggleRight="GÓRNE"
             custom:toggleWidth="160dp" />
 
     </FrameLayout>
