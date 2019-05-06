@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.wardrobes.porenut.R
+import com.wardrobes.porenut.ui.common.extension.isVisibleWhen
+import com.wardrobes.porenut.ui.navigation.BottomBarVisibilityResolver
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,8 +25,10 @@ class MainActivity : AppCompatActivity() {
                         && destination.id != R.id.relativeDrillingSetGroupFragment
                 )
             }
+
+            bottomNavigation isVisibleWhen BottomBarVisibilityResolver.shouldBeVisible(destination.id)
         }
-        // TODO Hide NavController
+
         // TODO Configure Toolbar
         bottomNavigation.setupWithNavController(mainNavController)
         requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0) // TODO Proper manage of permissions

@@ -5,54 +5,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.wardrobes.porenut.ui.common.DashboardButton
         android:id="@+id/btnElementDetails"
-        style="@style/DashboardButton.Accent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
+        android:icon="@drawable/ic_info"
         android:text="SZCZEGÓŁY"
+        android:tint="@color/menuDark"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@id/btnDrillings"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.wardrobes.porenut.ui.common.DashboardButton
         android:id="@+id/btnDrillings"
-        style="@style/DashboardButton.Accent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:icon="@drawable/ic_list"
         android:text="WIERCENIA"
+        android:tint="@color/menuDark"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnElementDetails"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.wardrobes.porenut.ui.common.DashboardButton
         android:id="@+id/btnDrillingSets"
-        style="@style/DashboardButton.Accent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
+        android:icon="@drawable/ic_group"
         android:text="GRUPY WIERCEŃ"
+        android:tint="@color/menuDark"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@id/btnRemoveElement"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnElementDetails" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.wardrobes.porenut.ui.common.DashboardButton
         android:id="@+id/btnRemoveElement"
-        style="@style/DashboardButton.Negative"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:icon="@drawable/ic_delete"
         android:text="USUŃ"
+        android:tint="@color/menuDark"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnDrillingSets"
         app:layout_constraintTop_toBottomOf="@id/btnDrillings" />

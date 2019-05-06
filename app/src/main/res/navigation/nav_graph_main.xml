@@ -16,11 +16,19 @@
 
         <action
             android:id="@+id/wardrobeSectionToWardrobeDashboard"
-            app:destination="@id/wardrobeDashboardFragment" />
+            app:destination="@id/wardrobeDashboardFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
 
         <action
             android:id="@+id/wardrobeSectionToWardrobeCreationTypeFragment"
-            app:destination="@id/wardrobeCreationTypeFragment" />
+            app:destination="@id/wardrobeCreationTypeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 
@@ -57,7 +65,11 @@
 
         <action
             android:id="@+id/wardrobeCreationTypeFragmentToManageWardrobeFragment"
-            app:destination="@id/manageWardrobeFragment" />
+            app:destination="@id/manageWardrobeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 
@@ -79,15 +91,27 @@
 
         <action
             android:id="@+id/wardrobeDashboardFragmentToElementGroupFragment"
-            app:destination="@id/elementGroupFragment" />
+            app:destination="@id/elementGroupFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
 
         <action
             android:id="@+id/wardrobeDashboardFragmentToWardrobeDetails"
-            app:destination="@id/wardrobeDetailsFragment" />
+            app:destination="@id/wardrobeDetailsFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
 
         <action
             android:id="@+id/wardrobeDashboardFragmentToWardrobeGallery"
-            app:destination="@id/wardrobeGalleryFragment" />
+            app:destination="@id/wardrobeGalleryFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
 
     </fragment>
 
@@ -98,11 +122,19 @@
 
         <action
             android:id="@+id/elementGroupFragmentToElementDashboard"
-            app:destination="@id/elementDashboardFragment" />
+            app:destination="@id/elementDashboardFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
 
         <action
             android:id="@+id/elementGroupFragmentToManageElement"
-            app:destination="@id/manageElementFragment" />
+            app:destination="@id/manageElementFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 
@@ -113,7 +145,11 @@
 
         <action
             android:id="@+id/wardrobeDetailsFragmentToManageWardrobe"
-            app:destination="@id/manageWardrobeFragment" />
+            app:destination="@id/manageWardrobeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 
@@ -129,15 +165,27 @@
 
         <action
             android:id="@+id/elementDashboardFragmentToElementDetails"
-            app:destination="@id/elementDetailsFragment" />
+            app:destination="@id/elementDetailsFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
 
         <action
             android:id="@+id/elementDashboardFragmentToDrillingGroup"
-            app:destination="@id/drillingGroupFragment" />
+            app:destination="@id/drillingGroupFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
 
         <action
             android:id="@+id/elementDashboardFragmentToElementCompositionGroup"
-            app:destination="@id/elementCompositionGroupFragment" />
+            app:destination="@id/elementCompositionGroupFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
 
     </fragment>
 
@@ -169,7 +217,11 @@
 
         <action
             android:id="@+id/elementDetailsFragmentToManageElement"
-            app:destination="@id/manageElementFragment" />
+            app:destination="@id/manageElementFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 

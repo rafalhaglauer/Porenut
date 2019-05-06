@@ -5,6 +5,8 @@
     <dimen name="textBig">20dp</dimen>
     <dimen name="textLarge">24dp</dimen>
 
-    <dimen name="buttonWidth">160dp</dimen>
-    <dimen name="buttonHeight">50dp</dimen>
+    <dimen name="buttonWidth">250dp</dimen>
+    <dimen name="buttonHeight">60dp</dimen>
+
+    <integer name="animationDuration">700</integer>
 </resources>
