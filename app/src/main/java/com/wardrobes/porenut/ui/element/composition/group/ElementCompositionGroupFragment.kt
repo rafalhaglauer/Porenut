@@ -8,9 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.domain.ElementDrillingSetComposition
-import com.wardrobes.porenut.ui.element.composition.manage.ManageElementCompositionFragment
 import com.wardrobes.porenut.ui.common.extension.*
+import com.wardrobes.porenut.ui.element.composition.manage.ManageElementCompositionFragment
 import kotlinx.android.synthetic.main.fragment_element_composition_group.*
 
 private const val KEY_ELEMENT_ID = "key-element-id"
@@ -51,7 +50,7 @@ class ElementCompositionGroupFragment : Fragment() {
             }
     }
 
-    fun bind(compositions: List<ElementDrillingSetComposition>) {
+    fun bind(compositions: List<ElementDrillingSetCompositionItem>) {
         (contentElementCompositionGroup.adapter as ElementCompositionGroupAdapter).setItems(compositions)
     }
 

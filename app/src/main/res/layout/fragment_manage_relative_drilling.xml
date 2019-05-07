@@ -13,75 +13,85 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutName"
+    <ScrollView
+        android:id="@+id/layoutContent"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="@string/l_name"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btnManageComposition"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textShortMessage" />
+            android:orientation="vertical">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="@string/l_name">
 
-    <com.wardrobes.porenut.ui.common.OffsetView
-        android:id="@+id/viewXOffset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Pozycja X"
-        app:layout_constraintTop_toBottomOf="@id/layoutName" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textShortMessage" />
 
-    <com.wardrobes.porenut.ui.common.OffsetView
-        android:id="@+id/viewYOffset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Pozycja Y"
-        app:layout_constraintTop_toBottomOf="@id/viewXOffset" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutDiameter"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="@string/l_diameter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewYOffset">
+            <com.wardrobes.porenut.ui.common.OffsetView
+                android:id="@+id/viewXOffset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Pozycja X" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtDiameter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            <com.wardrobes.porenut.ui.common.OffsetView
+                android:id="@+id/viewYOffset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Pozycja Y" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutDiameter"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="@string/l_diameter">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutDepth"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="@string/l_depth"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutDiameter">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDiameter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtDepth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutDepth"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="@string/l_depth">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDepth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <FrameLayout
         android:id="@+id/btnManageComposition"
@@ -115,11 +125,5 @@
         android:src="@drawable/ic_delete"
         app:layout_constraintBottom_toTopOf="@id/btnManageComposition"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/layoutContent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:constraint_referenced_ids="layoutName, viewXOffset, viewYOffset, layoutDiameter, layoutDepth, btnManageRelativeDrilling" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

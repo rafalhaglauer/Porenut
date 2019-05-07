@@ -9,6 +9,9 @@ import com.wardrobes.porenut.data.drilling.set.RelativeDrillingSetRestRepository
 import com.wardrobes.porenut.domain.RelativeDrillingSet
 import com.wardrobes.porenut.ui.common.Event
 import com.wardrobes.porenut.ui.common.extension.updateValue
+import com.wardrobes.porenut.ui.element.composition.group.ElementDrillingSetCompositionHeader
+import com.wardrobes.porenut.ui.element.composition.group.ElementDrillingSetCompositionItem
+import com.wardrobes.porenut.ui.element.composition.group.ElementDrillingSetCompositionViewEntity
 
 class RelativeDrillingSetGroupViewModel(
     private val relativeDrillingCompositionRepository: RelativeDrillingSetRepository = RelativeDrillingSetRestRepository
@@ -30,7 +33,13 @@ class RelativeDrillingSetGroupViewModel(
     }
 
     private fun createSuccessState(drillingSets: List<RelativeDrillingSet>) {
-        updateState(RelativeCompositionGroupViewState(drillingSets = drillingSets))
+        val viewEntities = mutableListOf<ElementDrillingSetCompositionItem>()
+        drillingSets.groupBy { it.tag }
+            .forEach { key, value ->
+                viewEntities.add(ElementDrillingSetCompositionHeader(key))
+                value.forEach { viewEntities.add(ElementDrillingSetCompositionViewEntity(it.id ?: 0L, it.name.substringBeforeLast(" |"))) }
+            }
+        updateState(RelativeCompositionGroupViewState(drillingSets = viewEntities))
     }
 
     private fun createErrorState(errorMessage: String) {
@@ -45,5 +54,5 @@ class RelativeDrillingSetGroupViewModel(
 
 class RelativeCompositionGroupViewState(
     val isLoading: Boolean = false,
-    val drillingSets: List<RelativeDrillingSet> = emptyList()
+    val drillingSets: List<ElementDrillingSetCompositionItem> = emptyList()
 )

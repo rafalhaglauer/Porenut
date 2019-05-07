@@ -10,4 +10,8 @@ data class ElementDrillingSetComposition(
     @SerializedName("yoffset") val yOffset: Offset
 )
 
-data class RelativeDrillingSet(val id: Long? = null, val name: String)
+data class RelativeDrillingSet(val id: Long? = null, val name: String) {
+
+    val tag: String
+        get() = name.substringAfterLast("| ", "inne").capitalize()
+}

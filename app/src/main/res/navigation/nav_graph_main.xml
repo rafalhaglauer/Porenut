@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/wardrobeCollectionDashboardFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.model.WardrobeModelFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment"
         tools:layout="@layout/fragment_wardrobe_collection_dashboard" />
 
     <fragment
@@ -39,11 +39,19 @@
 
         <action
             android:id="@+id/relativeDrillingSetGroupFragmentToRelativeDrillingSetDetails"
-            app:destination="@id/relativeDrillingSetDetailsFragment" />
+            app:destination="@id/relativeDrillingSetDetailsFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
 
         <action
             android:id="@+id/relativeDrillingSetGroupFragmentToCreateRelativeDrillingSet"
-            app:destination="@id/createRelativeDrillingSetFragment" />
+            app:destination="@id/createRelativeDrillingSetFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 
@@ -54,7 +62,11 @@
 
         <action
             android:id="@+id/relativeDrillingSetDetailsFragmentToManageRelativeDrillingFragment"
-            app:destination="@id/manageRelativeDrillingFragment" />
+            app:destination="@id/manageRelativeDrillingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 
@@ -206,7 +218,11 @@
 
         <action
             android:id="@+id/elementCompositionGroupFragmentToManageElementComposition"
-            app:destination="@id/manageElementCompositionFragment" />
+            app:destination="@id/manageElementCompositionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 

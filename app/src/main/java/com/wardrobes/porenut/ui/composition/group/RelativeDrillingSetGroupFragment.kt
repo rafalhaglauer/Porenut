@@ -8,9 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.domain.RelativeDrillingSet
-import com.wardrobes.porenut.ui.composition.detail.RelativeDrillingSetDetailsFragment
 import com.wardrobes.porenut.ui.common.extension.*
+import com.wardrobes.porenut.ui.composition.detail.RelativeDrillingSetDetailsFragment
+import com.wardrobes.porenut.ui.element.composition.group.ElementCompositionGroupAdapter
+import com.wardrobes.porenut.ui.element.composition.group.ElementDrillingSetCompositionItem
 import kotlinx.android.synthetic.main.fragment_relative_drilling_set_group.*
 
 class RelativeDrillingSetGroupFragment : Fragment() {
@@ -51,7 +52,7 @@ class RelativeDrillingSetGroupFragment : Fragment() {
         contentRelativeDrillingSet.apply {
             layoutManager = LinearLayoutManager(context)
             setDivider(R.drawable.divider)
-            adapter = RelativeDrillingSetGroupAdapter {
+            adapter = ElementCompositionGroupAdapter {
                 navigateTo(R.id.relativeDrillingSetGroupFragmentToRelativeDrillingSetDetails, RelativeDrillingSetDetailsFragment.createExtras(it))
             }
         }
@@ -63,7 +64,7 @@ class RelativeDrillingSetGroupFragment : Fragment() {
         }
     }
 
-    private fun bind(drillingSets: List<RelativeDrillingSet>) {
-        (contentRelativeDrillingSet.adapter as RelativeDrillingSetGroupAdapter).setItems(drillingSets)
+    private fun bind(drillingSets: List<ElementDrillingSetCompositionItem>) {
+        (contentRelativeDrillingSet.adapter as ElementCompositionGroupAdapter).setItems(drillingSets)
     }
 }
