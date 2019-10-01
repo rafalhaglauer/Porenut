@@ -5,79 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.wardrobes.porenut.ui.common.DashboardButton
-        android:id="@+id/btnWardrobeDetails"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:icon="@drawable/ic_info"
-        android:text="SZCZEGÓŁY"
-        android:tint="@color/menuDark"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/btnWardrobeElements"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.wardrobes.porenut.ui.common.DashboardButton
-        android:id="@+id/btnWardrobeElements"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:icon="@drawable/ic_list"
-        android:text="ELEMENTY"
-        android:tint="@color/menuDark"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnWardrobeDetails"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.wardrobes.porenut.ui.common.DashboardButton
-        android:id="@+id/btnWardrobeGallery"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:icon="@drawable/ic_gallery"
-        android:text="GALERIA"
-        android:tint="@color/menuDark"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/btnGeneratePdf"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnWardrobeDetails" />
-
-    <com.wardrobes.porenut.ui.common.DashboardButton
-        android:id="@+id/btnGeneratePdf"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:icon="@drawable/ic_document"
-        android:text="PDF"
-        android:tint="@color/menuDark"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnWardrobeGallery"
-        app:layout_constraintTop_toBottomOf="@id/btnWardrobeElements" />
-
-    <com.wardrobes.porenut.ui.common.DashboardButton
-        android:id="@+id/btnRemoveWardrobe"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="10dp"
-        android:icon="@drawable/ic_delete"
-        android:text="USUŃ"
-        android:tint="@color/menuDark"
-        app:layout_constraintDimensionRatio="2:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnGeneratePdf" />
-
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
@@ -93,6 +20,75 @@
         android:id="@+id/layoutContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:constraint_referenced_ids="btnWardrobeDetails, btnWardrobeElements, btnWardrobeGallery, btnGeneratePdf, btnRemoveWardrobe" />
+        app:constraint_referenced_ids="btnWardrobeDetails,btnWardrobeElements,btnWardrobeGallery,btnGeneratePdf,btnRemoveWardrobe" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnWardrobeGallery"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:text="GALERIA"
+        android:tint="@color/menuDark"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btnGeneratePdf"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnWardrobeDetails" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGeneratePdf"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="PDF"
+        android:tint="@color/menuDark"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnWardrobeGallery"
+        app:layout_constraintTop_toBottomOf="@id/btnWardrobeElements" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRemoveWardrobe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:icon="@drawable/ic_delete"
+        android:text="USUŃ"
+        android:tint="@color/menuDark"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGeneratePdf" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnWardrobeDetails"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:text="SZCZEGÓŁY"
+        android:tint="@color/menuDark"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/btnWardrobeElements"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnWardrobeElements"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="ELEMENTY"
+        android:tint="@color/menuDark"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnWardrobeDetails"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,12 @@
 package com.wardrobes.porenut.domain
 
 data class Wardrobe(
-    val id: Long? = null,
+    val id: String = "",
     val symbol: String,
     val width: Float,
     val height: Float,
     val depth: Float,
-    val type: Wardrobe.Type
+    val type: Type
 ) {
     enum class Type { UPPER, BOTTOM }
 }

@@ -13,19 +13,19 @@ import java.io.File
 object AttachmentRestRepository : AttachmentRepository {
     private val service = BaseProvider.retrofit.create(AttachmentService::class.java)
 
-    override fun uploadPhoto(wardrobeId: Long, file: File): Completable {
+    override fun uploadPhoto(wardrobeId: String, file: File): Completable {
         val requestFile = RequestBody.create(MediaType.parse(file.path), file)
         val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
         return service.uploadPhoto(body, wardrobeId)
     }
 
-    override fun getPhotoUrls(wardrobeId: Long): Observable<List<String>> = service.getPhotoUrls(wardrobeId)
+    override fun getPhotoUrls(wardrobeId: String): Observable<List<String>> = service.getPhotoUrls(wardrobeId)
 
-    override fun uploadModel(wardrobeId: Long, file: File): Completable {
+    override fun uploadModel(wardrobeId: String, file: File): Completable {
         val requestFile = RequestBody.create(MediaType.parse(file.path), file)
         val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
         return service.uploadModel(body, wardrobeId)
     }
 
-    override fun getModel(wardrobeId: Long): Observable<ResponseBody> = service.getModel(wardrobeId)
+    override fun getModel(wardrobeId: String): Observable<ResponseBody> = service.getModel(wardrobeId)
 }

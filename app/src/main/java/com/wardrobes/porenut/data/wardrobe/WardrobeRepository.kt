@@ -7,14 +7,14 @@ import io.reactivex.Observable
 
 interface WardrobeRepository {
 
-    fun getAll(wardrobeType: Wardrobe.Type): Observable<List<Wardrobe>>
+    fun getAll(): Observable<List<Wardrobe>>
 
-    fun get(wardrobeId: Long): Observable<Wardrobe>
+    fun get(wardrobeId: String): Observable<Wardrobe>
 
     fun add(wardrobe: Wardrobe, creationType: CreationType): Completable
 
-    fun delete(wardrobeId: Long): Completable
+    fun delete(wardrobeId: String): Completable
 
-    fun update(wardrobeId: Long, wardrobe: Wardrobe): Completable
+    fun update(wardrobeId: String, wardrobe: Wardrobe): Completable
 
 }

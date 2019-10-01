@@ -61,7 +61,7 @@ class WardrobeGalleryFragment : Fragment() {
 //                val service = BaseProvider.retrofit.create(AttachmentService::class.java)
 //                val requestFile = RequestBody.create(MediaType.parse(path), file)
 //                val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
-//                arguments?.getLong(KEY_WARDROBE_ID).takeIf { it != -1L }?.also {
+//                arguments?.getString(KEY_WARDROBE_ID).takeIf { it != -1L }?.also {
 //                    service.uploadPhoto(body, it)
 //                        .fetchStateFullModel(
 //                            onLoading = { showMessage("Loading") },
@@ -101,7 +101,7 @@ class WardrobeGalleryFragment : Fragment() {
     }
 
     private fun openViewer(startPosition: Int, target: ImageView) {
-        viewer = StfalconImageViewer.Builder<String>(context, viewModel.photoUrls, ImageLoader<String> { imageView, image -> imageView?.loadImage(image) })
+        viewer = StfalconImageViewer.Builder(context, viewModel.photoUrls, ImageLoader<String> { imageView, image -> imageView?.loadImage(image) })
             .withStartPosition(startPosition)
             .withTransitionFrom(target)
             .withImageChangeListener { viewer.updateTransitionImage(imageViews[it]) }
@@ -116,7 +116,7 @@ class WardrobeGalleryFragment : Fragment() {
     }
 
     private fun unpackArguments() {
-        viewModel.wardrobeId = arguments?.getLong(KEY_WARDROBE_ID)
+        viewModel.wardrobeId = arguments?.getString(KEY_WARDROBE_ID)
     }
 
     private fun ImageView.loadPosterImage(url: String) {
@@ -131,8 +131,8 @@ class WardrobeGalleryFragment : Fragment() {
 
     companion object {
 
-        fun createExtras(wardrobeId: Long): Bundle = Bundle().apply {
-            putLong(KEY_WARDROBE_ID, wardrobeId)
+        fun createExtras(wardrobeId: String): Bundle = Bundle().apply {
+            putString(KEY_WARDROBE_ID, wardrobeId)
         }
     }
 }

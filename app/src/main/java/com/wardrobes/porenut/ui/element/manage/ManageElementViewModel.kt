@@ -24,7 +24,7 @@ class ManageElementViewModel(
     val errorStateEvent: LiveData<Event<String>> = MutableLiveData()
     val navigateBackEvent: LiveData<Event<Unit>> = MutableLiveData()
 
-    var wardrobeId: Long? = null
+    var wardrobeId: String? = null
     var elementId: Long? = null
         set(value) {
             field = value?.also { fetchDetails(it) }

@@ -77,7 +77,7 @@ class ManageElementFragment : Fragment() {
 
     private fun unpackArguments() {
         arguments?.run {
-            manageElementViewModel.wardrobeId = getLong(KEY_WARDROBE_ID)
+            manageElementViewModel.wardrobeId = getString(KEY_WARDROBE_ID)
             manageElementViewModel.elementId = getLong(KEY_ELEMENT_ID).takeIf { containsKey(KEY_ELEMENT_ID) }
         }
     }
@@ -100,8 +100,8 @@ class ManageElementFragment : Fragment() {
 
     companion object {
 
-        fun createAddExtras(wardrobeId: Long): Bundle = Bundle().apply {
-            putLong(KEY_WARDROBE_ID, wardrobeId)
+        fun createAddExtras(wardrobeId: String): Bundle = Bundle().apply {
+            putString(KEY_WARDROBE_ID, wardrobeId)
         }
 
         fun createManageExtras(elementId: Long): Bundle = Bundle().apply {

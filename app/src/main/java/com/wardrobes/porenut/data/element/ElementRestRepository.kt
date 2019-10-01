@@ -7,13 +7,14 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 
 object ElementRestRepository : ElementRepository {
+
     private val elementService = BaseProvider.retrofit.create(ElementService::class.java)
 
     override fun get(elementId: Long): Observable<Element> = elementService.get(elementId)
 
-    override fun getAll(wardrobeId: Long): Observable<List<Element>> = elementService.getAll(wardrobeId)
+    override fun getAll(wardrobeId: String): Observable<List<Element>> = elementService.getAll(wardrobeId)
 
-    override fun add(wardrobeId: Long, element: Element): Completable = elementService.add(element, wardrobeId)
+    override fun add(wardrobeId: String, element: Element): Completable = elementService.add(element, wardrobeId)
 
     override fun update(elementId: Long, element: Element): Completable = elementService.update(elementId, element)
 

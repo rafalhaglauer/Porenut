@@ -21,12 +21,12 @@ class WardrobeDetailViewModel(
     val messageEvent: LiveData<Event<String>> = MutableLiveData()
     val navigateUpEvent: LiveData<Event<Unit>> = MutableLiveData()
 
-    var wardrobeId: Long? = null
+    var wardrobeId: String? = null
         set(value) {
             field = value?.also { fetchDetails(it) }
         }
 
-    private fun fetchDetails(wardrobeId: Long) {
+    private fun fetchDetails(wardrobeId: String) {
         wardrobeRepository.get(wardrobeId)
             .fetchStateFullModel(
                 onLoading = {

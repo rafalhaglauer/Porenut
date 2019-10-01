@@ -67,7 +67,7 @@ class ManageWardrobeFragment : Fragment() {
 
     private fun unpackArguments() {
         arguments?.run {
-            if (containsKey(KEY_WARDROBE_ID)) viewModel.wardrobeId = getLong(KEY_WARDROBE_ID)
+            if (containsKey(KEY_WARDROBE_ID)) viewModel.wardrobeId = getString(KEY_WARDROBE_ID)
             if (containsKey(KEY_WARDROBE_CREATION_TYPE)) viewModel.creationType = getSerializable(KEY_WARDROBE_CREATION_TYPE) as CreationType
         }
     }
@@ -92,8 +92,8 @@ class ManageWardrobeFragment : Fragment() {
 
     companion object {
 
-        fun createExtras(wardrobeId: Long): Bundle = Bundle().apply {
-            putLong(KEY_WARDROBE_ID, wardrobeId)
+        fun createExtras(wardrobeId: String): Bundle = Bundle().apply {
+            putString(KEY_WARDROBE_ID, wardrobeId)
         }
 
         fun createExtras(creationType: CreationType, completeNavAction: Int): Bundle = Bundle().apply {

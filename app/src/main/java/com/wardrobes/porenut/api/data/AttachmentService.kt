@@ -10,16 +10,16 @@ interface AttachmentService {
 
     @Multipart
     @POST("/gallery/{wardrobeId}/uploadPhoto")
-    fun uploadPhoto(@Part file: MultipartBody.Part, @Path("wardrobeId") wardrobeId: Long): Completable
+    fun uploadPhoto(@Part file: MultipartBody.Part, @Path("wardrobeId") wardrobeId: String): Completable
 
     @GET("/gallery/{wardrobeId}")
-    fun getPhotoUrls(@Path("wardrobeId") wardrobeId: Long): Observable<List<String>>
+    fun getPhotoUrls(@Path("wardrobeId") wardrobeId: String): Observable<List<String>>
 
     @Multipart
     @POST("/model/{wardrobeId}")
-    fun uploadModel(@Part file: MultipartBody.Part, @Path("wardrobeId") wardrobeId: Long): Completable
+    fun uploadModel(@Part file: MultipartBody.Part, @Path("wardrobeId") wardrobeId: String): Completable
 
     @GET("/model/{wardrobeId}")
-    fun getModel(@Path("wardrobeId") wardrobeId: Long): Observable<ResponseBody>
+    fun getModel(@Path("wardrobeId") wardrobeId: String): Observable<ResponseBody>
 
 }

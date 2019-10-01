@@ -23,7 +23,7 @@ class ManageWardrobeViewModel(
     }
     val navigateBack: LiveData<Event<Unit>> = MutableLiveData()
 
-    var wardrobeId: Long? = null
+    var wardrobeId: String? = null
         set(value) {
             field = value?.also { fetchWardrobeDetails(it) }
         }
@@ -36,7 +36,7 @@ class ManageWardrobeViewModel(
             ?: addWardrobe(wardrobe)
     }
 
-    private fun fetchWardrobeDetails(wardrobeId: Long) {
+    private fun fetchWardrobeDetails(wardrobeId: String) {
         wardrobeRepository.get(wardrobeId)
             .fetchStateFullModel(
                 onLoading = { createLoadingState() },
@@ -54,7 +54,7 @@ class ManageWardrobeViewModel(
             )
     }
 
-    private fun updateWardrobe(wardrobe: Wardrobe, wardrobeId: Long) {
+    private fun updateWardrobe(wardrobe: Wardrobe, wardrobeId: String) {
         wardrobeRepository.update(wardrobeId, wardrobe)
             .fetchStateFullModel(
                 onLoading = { createLoadingState() },

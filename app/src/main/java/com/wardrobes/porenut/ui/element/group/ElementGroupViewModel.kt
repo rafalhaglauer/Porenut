@@ -22,7 +22,7 @@ class ElementGroupViewModel(
     val navigateUpEvent: LiveData<Event<Unit>> = MutableLiveData()
     val navigateToDetailsEvent: LiveData<Event<Long>> = MutableLiveData()
 
-    var wardrobeId: Long? = null
+    var wardrobeId: String? = null
         set(value) {
             field = value?.also { showElementGroup(value) }
         }
@@ -35,7 +35,7 @@ class ElementGroupViewModel(
         }
     }
 
-    private fun showElementGroup(wardrobeId: Long) {
+    private fun showElementGroup(wardrobeId: String) {
         elementRepository.getAll(wardrobeId)
             .fetchStateFullModel(
                 onLoading = { viewState.updateValue(ElementGroupViewState(isLoading = true)) },

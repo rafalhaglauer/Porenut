@@ -19,7 +19,7 @@ class WardrobeGalleryViewModel(
     val photoUrls: List<String>
         get() = viewState.value?.photoUrls ?: emptyList()
 
-    var wardrobeId: Long? = null
+    var wardrobeId: String? = null
         set(value) {
             field = value?.also { fetchPhotos(it) }
         }
@@ -34,7 +34,7 @@ class WardrobeGalleryViewModel(
         }
     }
 
-    private fun fetchPhotos(wardrobeId: Long) {
+    private fun fetchPhotos(wardrobeId: String) {
         attachmentRepository.getPhotoUrls(wardrobeId)
             .fetchStateFullModel(
                 onLoading = { showLoading() },

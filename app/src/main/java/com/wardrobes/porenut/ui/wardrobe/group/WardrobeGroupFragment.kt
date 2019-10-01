@@ -6,61 +6,69 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.domain.Wardrobe
 import com.wardrobes.porenut.ui.common.extension.*
 import com.wardrobes.porenut.ui.wardrobe.dashboard.WardrobeDashboardFragment
 import kotlinx.android.synthetic.main.fragment_wardrobe_group.*
 
 class WardrobeGroupFragment : Fragment() {
+
     private lateinit var viewModel: WardrobeGroupViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        container?.inflate(R.layout.fragment_wardrobe_group)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_wardrobe_group, container, false)
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this)[WardrobeGroupViewModel::class.java]
+        setupViewModel()
         setupLayoutContent()
-        observeViewModel()
-        setupWardrobeSwitch()
         setupFab()
+        observeViewModel()
+        loadWardrobes()
+    }
+
+    private fun setupViewModel() {
+        viewModel = ViewModelProviders.of(this)[WardrobeGroupViewModel::class.java]
     }
 
     private fun setupLayoutContent() {
-        contentWardrobeGroup.apply {
-            layoutManager = LinearLayoutManager(context)
+        with(contentWardrobeGroup) {
             setDivider(R.drawable.divider)
-            adapter = WardrobeGroupAdapter {
-                viewModel.getWardrobeId(it)?.also { id ->
-                    navigateTo(R.id.wardrobeSectionToWardrobeDashboard, WardrobeDashboardFragment.createExtras(id))
-                }
-            }
+            adapter = WardrobeGroupAdapter(
+                onItemSelected = { viewEntity -> viewModel.showDetails(viewEntity) },
+                onAddDescription = { viewEntity -> viewModel.addDescription(viewEntity) }
+            )
         }
     }
 
     private fun observeViewModel() {
-        viewModel.viewState
-            .observe(viewLifecycleOwner) {
+        with(viewModel) {
+            viewState.observe(viewLifecycleOwner) {
                 progressWardrobeGroup.isVisibleWhen(isLoading)
                 emptyListNotificationWardrobeGroup.isVisibleWhen(isEmptyListNotificationVisible)
                 bind(viewEntities)
-                context?.showMessage(errorMessage)
             }
-    }
-
-    private fun setupWardrobeSwitch() {
-        switchWardrobeGroup.setOnToggleSwitchChangeListener { _, _ ->
-            viewModel.wardrobeType = if (switchWardrobeGroup.checkedTogglePosition == 0) Wardrobe.Type.BOTTOM else Wardrobe.Type.UPPER
+            errorEvent.observeEvent(viewLifecycleOwner) { errorMessage ->
+                showMessage(errorMessage)
+            }
+            showDetailsEvent.observeEvent(viewLifecycleOwner) { wardrobeId ->
+                navigateTo(R.id.wardrobeSectionToWardrobeDashboard, WardrobeDashboardFragment.createExtras(wardrobeId))
+            }
+            addDescriptionEvent.observeEvent(viewLifecycleOwner) { wardrobeId ->
+                showMessage("TODO -> $wardrobeId") // TODO
+            }
         }
-        switchWardrobeGroup.checkedTogglePosition = 0
     }
 
     private fun setupFab() {
         btnActionWardrobeGroup.setOnClickListener {
             navigateTo(R.id.wardrobeSectionToWardrobeCreationTypeFragment)
         }
+    }
+
+    private fun loadWardrobes() {
+        viewModel.loadWardrobes()
     }
 
     private fun bind(viewEntities: List<WardrobeViewEntity>) {

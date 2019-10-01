@@ -5,10 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.common.extension.inflate
+import com.wardrobes.porenut.ui.common.extension.isVisibleWhen
 import kotlinx.android.synthetic.main.wardrobe_list_adapter.view.*
 
-
-class WardrobeGroupAdapter(private val onItemSelected: (WardrobeViewEntity) -> Unit) : RecyclerView.Adapter<WardrobeGroupAdapter.ViewHolder>() {
+class WardrobeGroupAdapter(
+    private val onItemSelected: (WardrobeViewEntity) -> Unit,
+    private val onAddDescription: (WardrobeViewEntity) -> Unit
+) : RecyclerView.Adapter<WardrobeGroupAdapter.ViewHolder>() {
     private val items: MutableList<WardrobeViewEntity> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -16,7 +19,7 @@ class WardrobeGroupAdapter(private val onItemSelected: (WardrobeViewEntity) -> U
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position], onItemSelected)
+        holder.bind(items[position], onItemSelected, onAddDescription)
     }
 
     override fun getItemCount(): Int = items.size
@@ -29,15 +32,13 @@ class WardrobeGroupAdapter(private val onItemSelected: (WardrobeViewEntity) -> U
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: WardrobeViewEntity, onItemSelected: (WardrobeViewEntity) -> Unit) =
+        fun bind(item: WardrobeViewEntity, onItemSelected: (WardrobeViewEntity) -> Unit, onAddDescription: (WardrobeViewEntity) -> Unit) =
             with(itemView) {
-                item.apply {
-                    txtWardrobeSymbol.text = symbol
-                    txtWardrobeWidth.text = width
-                    txtWardrobeHeight.text = height
-                    txtWardrobeDepth.text = depth
-                    setOnClickListener { onItemSelected(this) }
-                }
+                txtWardrobeSymbol.text = item.symbol
+                txtWardrobeDescription.text = item.description
+                btnAddDescription.isVisibleWhen(item.isAddDescriptionOptionVisible)
+                btnAddDescription.setOnClickListener { onAddDescription(item) }
+                setOnClickListener { onItemSelected(item) }
             }
     }
 }

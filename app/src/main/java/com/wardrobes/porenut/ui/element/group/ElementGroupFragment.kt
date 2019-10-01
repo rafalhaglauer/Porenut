@@ -19,8 +19,8 @@ private const val KEY_WARDROBE_ID = "key-wardrobe-id"
 class ElementGroupFragment : Fragment() {
     private lateinit var viewModel: ElementGroupViewModel
 
-    private val wardrobeId: Long?
-        get() = arguments?.getLong(KEY_WARDROBE_ID)
+    private val wardrobeId: String?
+        get() = arguments?.getString(KEY_WARDROBE_ID)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         container?.inflate(R.layout.fragment_element_group)
@@ -97,8 +97,8 @@ class ElementGroupFragment : Fragment() {
 
     companion object {
 
-        fun createExtras(wardrobeId: Long): Bundle = Bundle().apply {
-            putLong(KEY_WARDROBE_ID, wardrobeId)
+        fun createExtras(wardrobeId: String): Bundle = Bundle().apply {
+            putString(KEY_WARDROBE_ID, wardrobeId)
         }
     }
 }

@@ -37,7 +37,7 @@ class WardrobeDashboardViewModel(
     val navigateToModelEvent: LiveData<Event<Object3dContainer>> = MutableLiveData()
 
     var pdfGenerator: PdfGenerator? = null
-    var wardrobeId: Long? = null
+    var wardrobeId: String? = null
 
     fun generatePdf() {
         wardrobeId?.also { id ->

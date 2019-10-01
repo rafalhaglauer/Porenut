@@ -7,11 +7,11 @@ import java.io.File
 
 interface AttachmentRepository {
 
-    fun uploadPhoto(wardrobeId: Long, file: File): Completable
+    fun uploadPhoto(wardrobeId: String, file: File): Completable
 
-    fun getPhotoUrls(wardrobeId: Long): Observable<List<String>>
+    fun getPhotoUrls(wardrobeId: String): Observable<List<String>>
 
-    fun uploadModel(wardrobeId: Long, file: File): Completable
+    fun uploadModel(wardrobeId: String, file: File): Completable
 
-    fun getModel(wardrobeId: Long): Observable<ResponseBody>
+    fun getModel(wardrobeId: String): Observable<ResponseBody>
 }

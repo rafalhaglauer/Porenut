@@ -9,17 +9,17 @@ import retrofit2.http.*
 interface WardrobeService {
 
     @GET("/wardrobe")
-    fun getAll(@Query("wardrobeType") wardrobeType: Wardrobe.Type): Observable<List<Wardrobe>>
+    fun getAll(): Observable<List<Wardrobe>>
 
     @GET("/wardrobe/{id}")
-    fun get(@Path("id") wardrobeId: Long): Observable<Wardrobe>
+    fun get(@Path("id") wardrobeId: String): Observable<Wardrobe>
 
     @POST("/wardrobe")
     fun add(@Body wardrobe: Wardrobe, @Query("creationType") creationType: CreationType): Completable
 
     @DELETE("/wardrobe/{id}")
-    fun delete(@Path("id") wardrobeId: Long): Completable
+    fun delete(@Path("id") wardrobeId: String): Completable
 
     @PUT("/wardrobe/{id}")
-    fun update(@Path("id") wardrobeId: Long, @Body wardrobe: Wardrobe): Completable
+    fun update(@Path("id") wardrobeId: String, @Body wardrobe: Wardrobe): Completable
 }

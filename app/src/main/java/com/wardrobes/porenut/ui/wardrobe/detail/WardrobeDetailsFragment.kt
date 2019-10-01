@@ -68,20 +68,20 @@ class WardrobeDetailsFragment : Fragment() {
 
     private fun setupActionButton() {
         btnEditWardrobe.setOnClickListener {
-            arguments?.getLong(KEY_WARDROBE_ID)?.also { id ->
+            arguments?.getString(KEY_WARDROBE_ID)?.also { id ->
                 navigateTo(R.id.wardrobeDetailsFragmentToManageWardrobe, ManageWardrobeFragment.createExtras(id))
             }
         }
     }
 
     private fun unpackArguments() {
-        viewModel.wardrobeId = arguments?.getLong(KEY_WARDROBE_ID)
+        viewModel.wardrobeId = arguments?.getString(KEY_WARDROBE_ID)
     }
 
     companion object {
 
-        fun createExtras(wardrobeId: Long): Bundle = Bundle().apply {
-            putLong(KEY_WARDROBE_ID, wardrobeId)
+        fun createExtras(wardrobeId: String): Bundle = Bundle().apply {
+            putString(KEY_WARDROBE_ID, wardrobeId)
         }
     }
 }
