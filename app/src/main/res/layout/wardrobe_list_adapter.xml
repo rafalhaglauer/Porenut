@@ -1,0 +1,101 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtWardrobeSymbol"
+        style="@style/Text.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tool:text="DSG" />
+
+    <TextView
+        android:id="@+id/txtWardrobeWidthLabel"
+        style="@style/Text.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:gravity="center_vertical"
+        android:text="@string/l_width"
+        android:textAllCaps="true"
+        android:textSize="@dimen/textSmall"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/txtWardrobeWidth"
+        app:layout_constraintEnd_toStartOf="@id/txtWardrobeWidth"
+        app:layout_constraintTop_toTopOf="@id/txtWardrobeWidth" />
+
+    <TextView
+        android:id="@+id/txtWardrobeHeightLabel"
+        style="@style/Text.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="@string/l_height"
+        android:textAllCaps="true"
+        android:textSize="@dimen/textSmall"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/txtWardrobeHeight"
+        app:layout_constraintEnd_toEndOf="@id/txtWardrobeWidthLabel"
+        app:layout_constraintTop_toTopOf="@id/txtWardrobeHeight" />
+
+    <TextView
+        android:id="@+id/txtWardrobeDepthLabel"
+        style="@style/Text.Secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="@string/l_depth"
+        android:textAllCaps="true"
+        android:textSize="@dimen/textSmall"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/txtWardrobeDepth"
+        app:layout_constraintEnd_toEndOf="@id/txtWardrobeWidthLabel"
+        app:layout_constraintTop_toTopOf="@id/txtWardrobeDepth" />
+
+    <TextView
+        android:id="@+id/txtWardrobeWidth"
+        style="@style/Text.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:textSize="@dimen/textLarge"
+        app:layout_constraintBottom_toTopOf="@id/txtWardrobeHeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tool:text="600" />
+
+    <TextView
+        android:id="@+id/txtWardrobeHeight"
+        style="@style/Text.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textLarge"
+        app:layout_constraintBottom_toTopOf="@id/txtWardrobeDepth"
+        app:layout_constraintStart_toStartOf="@id/txtWardrobeWidth"
+        app:layout_constraintTop_toBottomOf="@id/txtWardrobeWidth"
+        tool:text="700" />
+
+    <TextView
+        android:id="@+id/txtWardrobeDepth"
+        style="@style/Text.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textLarge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/txtWardrobeWidth"
+        app:layout_constraintTop_toBottomOf="@id/txtWardrobeHeight"
+        tool:text="400" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

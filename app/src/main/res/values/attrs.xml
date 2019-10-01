@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="OffsetView">
+        <attr name="android:text" />
+    </declare-styleable>
+
+    <declare-styleable name="DashboardButton">
+        <attr name="android:text" />
+        <attr name="android:icon" />
+        <attr name="android:tint" />
+    </declare-styleable>
+
+</resources>

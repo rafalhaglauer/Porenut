@@ -1,11 +1,50 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Text" />
+
+    <style name="Text.Primary">
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="Text.Primary.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Secondary">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="Text.Secondary.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Tertiary">
+        <item name="android:textColor">@color/textTertiary</item>
+    </style>
+
+    <style name="DashboardButton">
+        <item name="android:background">@drawable/rounded_rectangle</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/textBig</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+        <item name="android:textColor">@color/textTertiary</item>
+    </style>
+
+    <style name="DashboardButton.Accent">
+        <item name="android:backgroundTint">@color/colorAccent</item>
+    </style>
+
+    <style name="DashboardButton.Negative">
+        <item name="android:backgroundTint">@color/error</item>
     </style>
 
 </resources>

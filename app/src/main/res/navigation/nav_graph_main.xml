@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/wardrobeSectionFragment">
+
+    <fragment
+        android:id="@+id/wardrobeCollectionDashboardFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment"
+        tools:layout="@layout/fragment_wardrobe_collection_dashboard" />
+
+    <fragment
+        android:id="@+id/wardrobeSectionFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment"
+        tools:layout="@layout/fragment_wardrobe_group">
+
+        <action
+            android:id="@+id/wardrobeSectionToWardrobeDashboard"
+            app:destination="@id/wardrobeDashboardFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+
+        <action
+            android:id="@+id/wardrobeSectionToWardrobeCreationTypeFragment"
+            app:destination="@id/wardrobeCreationTypeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/relativeDrillingSetGroupFragment"
+        android:name="com.wardrobes.porenut.ui.composition.group.RelativeDrillingSetGroupFragment"
+        tools:layout="@layout/fragment_relative_drilling_set_group">
+
+        <action
+            android:id="@+id/relativeDrillingSetGroupFragmentToRelativeDrillingSetDetails"
+            app:destination="@id/relativeDrillingSetDetailsFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+
+        <action
+            android:id="@+id/relativeDrillingSetGroupFragmentToCreateRelativeDrillingSet"
+            app:destination="@id/createRelativeDrillingSetFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/relativeDrillingSetDetailsFragment"
+        android:name="com.wardrobes.porenut.ui.composition.detail.RelativeDrillingSetDetailsFragment"
+        tools:layout="@layout/fragment_relative_drilling_set_details">
+
+        <action
+            android:id="@+id/relativeDrillingSetDetailsFragmentToManageRelativeDrillingFragment"
+            app:destination="@id/manageRelativeDrillingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/wardrobeCreationTypeFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.manage.WardrobeCreationTypeFragment"
+        tools:layout="@layout/fragment_wardrobe_creation_type">
+
+        <action
+            android:id="@+id/wardrobeCreationTypeFragmentToManageWardrobeFragment"
+            app:destination="@id/manageWardrobeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/manageWardrobeFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.manage.ManageWardrobeFragment"
+        tools:layout="@layout/fragment_manage_wardrobe">
+
+        <action
+            android:id="@+id/manageWardrobeFragmentToWardrobeSection"
+            app:popUpTo="@id/wardrobeSectionFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/wardrobeDashboardFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.dashboard.WardrobeDashboardFragment"
+        tools:layout="@layout/fragment_wardrobe_dashboard">
+
+        <action
+            android:id="@+id/wardrobeDashboardFragmentToElementGroupFragment"
+            app:destination="@id/elementGroupFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+
+        <action
+            android:id="@+id/wardrobeDashboardFragmentToWardrobeDetails"
+            app:destination="@id/wardrobeDetailsFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+
+        <action
+            android:id="@+id/wardrobeDashboardFragmentToWardrobeGallery"
+            app:destination="@id/wardrobeGalleryFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/elementGroupFragment"
+        android:name="com.wardrobes.porenut.ui.element.group.ElementGroupFragment"
+        tools:layout="@layout/fragment_element_group">
+
+        <action
+            android:id="@+id/elementGroupFragmentToElementDashboard"
+            app:destination="@id/elementDashboardFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+
+        <action
+            android:id="@+id/elementGroupFragmentToManageElement"
+            app:destination="@id/manageElementFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/wardrobeDetailsFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailsFragment"
+        tools:layout="@layout/fragment_wardrobe_details">
+
+        <action
+            android:id="@+id/wardrobeDetailsFragmentToManageWardrobe"
+            app:destination="@id/manageWardrobeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/wardrobeGalleryFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.gallery.WardrobeGalleryFragment"
+        tools:layout="@layout/fragment_wardrobe_gallery" />
+
+    <fragment
+        android:id="@+id/elementDashboardFragment"
+        android:name="com.wardrobes.porenut.ui.element.dashboard.ElementDashboardFragment"
+        tools:layout="@layout/fragment_element_dashboard">
+
+        <action
+            android:id="@+id/elementDashboardFragmentToElementDetails"
+            app:destination="@id/elementDetailsFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+
+        <action
+            android:id="@+id/elementDashboardFragmentToDrillingGroup"
+            app:destination="@id/drillingGroupFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+
+        <action
+            android:id="@+id/elementDashboardFragmentToElementCompositionGroup"
+            app:destination="@id/elementCompositionGroupFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/manageElementFragment"
+        android:name="com.wardrobes.porenut.ui.element.manage.ManageElementFragment"
+        tools:layout="@layout/fragment_manage_element" />
+
+    <fragment
+        android:id="@+id/drillingGroupFragment"
+        android:name="com.wardrobes.porenut.ui.drilling.standard.group.DrillingGroupFragment"
+        tools:layout="@layout/fragment_drilling_group" />
+
+    <fragment
+        android:id="@+id/elementCompositionGroupFragment"
+        android:name="com.wardrobes.porenut.ui.element.composition.group.ElementCompositionGroupFragment"
+        tools:layout="@layout/fragment_element_composition_group">
+
+        <action
+            android:id="@+id/elementCompositionGroupFragmentToManageElementComposition"
+            app:destination="@id/manageElementCompositionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/elementDetailsFragment"
+        android:name="com.wardrobes.porenut.ui.element.detail.ElementDetailsFragment"
+        tools:layout="@layout/fragment_element_details">
+
+        <action
+            android:id="@+id/elementDetailsFragmentToManageElement"
+            app:destination="@id/manageElementFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/manageElementCompositionFragment"
+        android:name="com.wardrobes.porenut.ui.element.composition.manage.ManageElementCompositionFragment"
+        tools:layout="@layout/fragment_manage_element_composition" />
+
+    <fragment
+        android:id="@+id/createRelativeDrillingSetFragment"
+        android:name="com.wardrobes.porenut.ui.composition.create.CreateRelativeDrillingSetFragment"
+        tools:layout="@layout/fragment_create_relative_drilling_set" />
+
+    <fragment
+        android:id="@+id/manageRelativeDrillingFragment"
+        android:name="com.wardrobes.porenut.ui.drilling.relative.manage.ManageRelativeDrillingFragment"
+        tools:layout="@layout/fragment_manage_relative_drilling" />
+
+</navigation>

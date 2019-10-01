@@ -1,0 +1,56 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/progressElementGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contentElementGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/element_list_adapter" />
+
+    <RelativeLayout
+        android:id="@+id/emptyListNotificationElementGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icEmptyListElementGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="40dp"
+            custom:srcCompat="@drawable/ic_empty_list"
+            custom:tint="@color/colorAccent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Text.Primary"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/icEmptyListElementGroup"
+            android:gravity="center"
+            android:text="Nie został jeszcze utworzony żaden element dla tej szafy."
+            android:textSize="@dimen/textMedium" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddElement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add"
+        android:visibility="gone" />
+
+</FrameLayout>
