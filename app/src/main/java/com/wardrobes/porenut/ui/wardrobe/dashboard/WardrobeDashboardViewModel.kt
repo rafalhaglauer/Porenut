@@ -32,12 +32,30 @@ class WardrobeDashboardViewModel(
     private val measureFormatter: MeasureFormatter = DefaultMeasureFormatter
 ) : ViewModel() {
     val loadingState: LiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
+    val viewState: LiveData<WardrobeDetailViewEntity> = MutableLiveData()
     val messageEvent: LiveData<Event<String>> = MutableLiveData()
     val navigateUpEvent: LiveData<Event<Unit>> = MutableLiveData()
     val navigateToModelEvent: LiveData<Event<Object3dContainer>> = MutableLiveData()
 
     var pdfGenerator: PdfGenerator? = null
-    var wardrobeId: String? = null
+
+    private var wardrobeId: String? = null
+
+    fun loadWardrobe(wardrobeId: String) {
+        this.wardrobeId = wardrobeId
+        wardrobeRepository.get(wardrobeId)
+            .fetchStateFullModel(
+                onLoading = { loadingState.updateValue(true) },
+                onSuccess = { wardrobe ->
+                    viewState.updateValue(wardrobe.toViewEntity())
+                    loadingState.updateValue(false)
+                },
+                onError = {
+                    messageEvent.updateValue(Event(it))
+                    loadingState.updateValue(false)
+                }
+            )
+    }
 
     fun generatePdf() {
         wardrobeId?.also { id ->

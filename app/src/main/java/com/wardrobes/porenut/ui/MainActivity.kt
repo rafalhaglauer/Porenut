@@ -30,11 +30,10 @@ class MainActivity : AppCompatActivity() {
         requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0) // TODO Proper manage of permissions
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?) =
-        when (item?.itemId) {
-            android.R.id.home -> onBackPressed().run { true }
-            else -> super.onOptionsItemSelected(item)
-        }
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        android.R.id.home -> onBackPressed().run { true }
+        else -> super.onOptionsItemSelected(item)
+    }
 
     override fun onBackPressed() {
         findNavController(R.id.navHostMain).navigateUp()

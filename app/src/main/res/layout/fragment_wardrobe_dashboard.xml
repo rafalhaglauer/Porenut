@@ -1,94 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/wardrobe_dashboard_behavior">
 
-    <ProgressBar
-        android:id="@+id/progress"
+    <FrameLayout
+        android:id="@+id/layoutWardrobeDashboardGrip"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/imgWardrobeDashboardGrip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imgWardrobeDashboardGrip" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/layoutWardrobeDashboardGrip" />
+
+    <ImageView
+        android:id="@+id/imgWardrobeDashboardGrip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:padding="@dimen/spacingSmall"
+        android:src="@drawable/ic_arrow_up"
+        android:tint="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarWardrobeDetails"
+        tools:ignore="ContentDescription" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbarWardrobeDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/dividerTopDescription"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="@dimen/spacingMedium"
+            android:background="@color/divider"
+            app:layout_constraintTop_toBottomOf="@id/txtWardrobeDepth" />
+
+        <View
+            android:id="@+id/dividerBottomDescription"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="@dimen/spacingMedium"
+            android:background="@color/divider"
+            app:layout_constraintTop_toBottomOf="@id/txtWardrobeDescription" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGeneratePdf"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PDF"
+            android:textSize="@dimen/textSmall"
+            app:layout_constraintEnd_toStartOf="@id/btnWardrobeElements"
+            app:layout_constraintTop_toTopOf="@id/btnWardrobeElements" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWardrobeElements"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacingMedium"
+            android:layout_marginEnd="@dimen/spacingMedium"
+            android:text="Elementy"
+            android:textSize="@dimen/textSmall"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividerBottomDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtWardrobeHeight"
+            style="@style/Text.Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacingMedium"
+            android:text="Wysokość: 700"
+            android:textAllCaps="true"
+            android:textSize="@dimen/textSmall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtWardrobeWidth" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtWardrobeDepth"
+            style="@style/Text.Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacingMedium"
+            android:text="Głębokość: 320"
+            android:textAllCaps="true"
+            android:textSize="@dimen/textSmall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtWardrobeHeight" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtWardrobeDescription"
+            style="@style/Text.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacingMedium"
+            android:text="Drzwi przesuwne zapewniają więcej przestrzeni na meble, bo nie zajmują miejsca po otwarciu."
+            android:textSize="@dimen/textSmall"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividerTopDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtWardrobeWidth"
+            style="@style/Text.Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacingMedium"
+            android:text="Szerokość: 600"
+            android:textAllCaps="true"
+            android:textSize="@dimen/textSmall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/layoutGallery"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toBottomOf="@id/layoutWardrobeDashboardGrip" />
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/layoutContent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:constraint_referenced_ids="btnWardrobeDetails,btnWardrobeElements,btnWardrobeGallery,btnGeneratePdf,btnRemoveWardrobe" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnTakePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_photo_camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnWardrobeGallery"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:text="GALERIA"
-        android:tint="@color/menuDark"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/btnGeneratePdf"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnWardrobeDetails" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnGeneratePdf"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="PDF"
-        android:tint="@color/menuDark"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnWardrobeGallery"
-        app:layout_constraintTop_toBottomOf="@id/btnWardrobeElements" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRemoveWardrobe"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="10dp"
-        android:icon="@drawable/ic_delete"
-        android:text="USUŃ"
-        android:tint="@color/menuDark"
-        app:layout_constraintDimensionRatio="2:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnGeneratePdf" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnWardrobeDetails"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:text="SZCZEGÓŁY"
-        android:tint="@color/menuDark"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@id/btnWardrobeElements"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnWardrobeElements"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="ELEMENTY"
-        android:tint="@color/menuDark"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnWardrobeDetails"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

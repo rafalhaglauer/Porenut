@@ -1,8 +1,11 @@
 package com.wardrobes.porenut.ui.common.extension
 
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 
@@ -20,3 +23,9 @@ fun Fragment.navigateTo(@IdRes actionId: Int, bundle: Bundle? = null) {
 fun Fragment.showMessage(message: String) {
     context?.showMessage(message)
 }
+
+fun Fragment.setTitle(title: String) {
+    activity?.title = title
+}
+
+inline fun <reified T : ViewModel> Fragment.injectViewModel(): Lazy<T> = lazy { ViewModelProviders.of(this)[T::class.java] }

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_wardrobe_group.*
 
 class WardrobeGroupFragment : Fragment() {
 
-    private lateinit var viewModel: WardrobeGroupViewModel
+    private val viewModel: WardrobeGroupViewModel by injectViewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_wardrobe_group, container, false)
@@ -21,18 +21,18 @@ class WardrobeGroupFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setupViewModel()
-        setupLayoutContent()
+        setupToolbar()
+        setupContent()
         setupFab()
         observeViewModel()
         loadWardrobes()
     }
 
-    private fun setupViewModel() {
-        viewModel = ViewModelProviders.of(this)[WardrobeGroupViewModel::class.java]
+    private fun setupToolbar() {
+        setTitle(getString(R.string.app_name)) // TODO
     }
 
-    private fun setupLayoutContent() {
+    private fun setupContent() {
         with(contentWardrobeGroup) {
             setDivider(R.drawable.divider)
             adapter = WardrobeGroupAdapter(
