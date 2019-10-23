@@ -11,19 +11,17 @@ import com.wardrobes.porenut.data.element.ElementRepository
 import com.wardrobes.porenut.data.element.ElementRestRepository
 import com.wardrobes.porenut.data.wardrobe.WardrobeRepository
 import com.wardrobes.porenut.data.wardrobe.WardrobeRestRepository
-import com.wardrobes.porenut.domain.CustomObjParser
 import com.wardrobes.porenut.domain.Element
 import com.wardrobes.porenut.domain.Wardrobe
 import com.wardrobes.porenut.pdf.PdfGenerator
+import com.wardrobes.porenut.pdf.WardrobeDetailsViewEntity
 import com.wardrobes.porenut.ui.common.DefaultMeasureFormatter
 import com.wardrobes.porenut.ui.common.Event
 import com.wardrobes.porenut.ui.common.MeasureFormatter
 import com.wardrobes.porenut.ui.common.extension.updateValue
 import com.wardrobes.porenut.ui.element.detail.ElementViewEntity
-import com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailViewEntity
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
-import min3d.core.Object3dContainer
 
 class WardrobeDashboardViewModel(
     private val wardrobeRepository: WardrobeRepository = WardrobeRestRepository,
@@ -32,10 +30,9 @@ class WardrobeDashboardViewModel(
     private val measureFormatter: MeasureFormatter = DefaultMeasureFormatter
 ) : ViewModel() {
     val loadingState: LiveData<Boolean> = MutableLiveData<Boolean>().apply { value = false }
-    val viewState: LiveData<WardrobeDetailViewEntity> = MutableLiveData()
+    val viewState: LiveData<WardrobeDetailsViewEntity> = MutableLiveData()
     val messageEvent: LiveData<Event<String>> = MutableLiveData()
     val navigateUpEvent: LiveData<Event<Unit>> = MutableLiveData()
-    val navigateToModelEvent: LiveData<Event<Object3dContainer>> = MutableLiveData()
 
     var pdfGenerator: PdfGenerator? = null
 
@@ -98,24 +95,7 @@ class WardrobeDashboardViewModel(
         }
     }
 
-    fun show3dModel() {
-        wardrobeId?.also { id ->
-            attachmentRepository.getModel(id)
-                .fetchStateFullModel(
-                    onLoading = { loadingState.updateValue(true) },
-                    onSuccess = {
-                        navigateToModelEvent.updateValue(Event(CustomObjParser.parse(it.byteStream())))
-                        loadingState.updateValue(false)
-                    },
-                    onError = {
-                        messageEvent.updateValue(Event(it))
-                        loadingState.updateValue(false)
-                    }
-                )
-        }
-    }
-
-    private fun Wardrobe.toViewEntity() = WardrobeDetailViewEntity(
+    private fun Wardrobe.toViewEntity() = WardrobeDetailsViewEntity(
         symbol = symbol,
         width = width.format(),
         height = height.format(),

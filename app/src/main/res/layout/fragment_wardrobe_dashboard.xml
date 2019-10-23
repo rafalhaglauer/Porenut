@@ -86,11 +86,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacingMedium"
-            android:text="Wysokość: 700"
             android:textAllCaps="true"
             android:textSize="@dimen/textSmall"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtWardrobeWidth" />
+            app:layout_constraintTop_toBottomOf="@id/txtWardrobeWidth"
+            tools:text="Wysokość: 700" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtWardrobeDepth"
@@ -98,11 +98,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacingMedium"
-            android:text="Głębokość: 320"
             android:textAllCaps="true"
             android:textSize="@dimen/textSmall"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtWardrobeHeight" />
+            app:layout_constraintTop_toBottomOf="@id/txtWardrobeHeight"
+            tools:text="Głębokość: 320" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txtWardrobeDescription"
@@ -122,11 +122,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacingMedium"
-            android:text="Szerokość: 600"
             android:textAllCaps="true"
             android:textSize="@dimen/textSmall"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Szerokość: 600" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.wardrobe.group
+package com.wardrobes.porenut.ui.pattern.group
 
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +8,11 @@ import com.wardrobes.porenut.ui.common.extension.inflate
 import com.wardrobes.porenut.ui.common.extension.isVisibleWhen
 import kotlinx.android.synthetic.main.wardrobe_pattern_list_adapter.view.*
 
-class WardrobeGroupAdapter(
-    private val onItemSelected: (WardrobeViewEntity) -> Unit,
-    private val onAddDescription: (WardrobeViewEntity) -> Unit
-) : RecyclerView.Adapter<WardrobeGroupAdapter.ViewHolder>() {
-    private val items: MutableList<WardrobeViewEntity> = mutableListOf()
+class WardrobePatternGroupAdapter(
+    private val onItemSelected: (WardrobePatternViewEntity) -> Unit,
+    private val onAddDescription: (WardrobePatternViewEntity) -> Unit
+) : RecyclerView.Adapter<WardrobePatternGroupAdapter.ViewHolder>() {
+    private val items: MutableList<WardrobePatternViewEntity> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(parent.inflate(R.layout.wardrobe_pattern_list_adapter))
@@ -24,7 +24,7 @@ class WardrobeGroupAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    fun setItems(items: List<WardrobeViewEntity>) {
+    fun setItems(items: List<WardrobePatternViewEntity>) {
         this.items.clear()
         this.items.addAll(items)
         notifyDataSetChanged()
@@ -32,7 +32,7 @@ class WardrobeGroupAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: WardrobeViewEntity, onItemSelected: (WardrobeViewEntity) -> Unit, onAddDescription: (WardrobeViewEntity) -> Unit) =
+        fun bind(item: WardrobePatternViewEntity, onItemSelected: (WardrobePatternViewEntity) -> Unit, onAddDescription: (WardrobePatternViewEntity) -> Unit) =
             with(itemView) {
                 txtWardrobeSymbol.text = item.symbol
                 txtWardrobeDescription.text = item.description

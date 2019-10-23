@@ -5,14 +5,34 @@
     app:startDestination="@id/wardrobeSectionFragment">
 
     <fragment
-        android:id="@+id/wardrobeCollectionDashboardFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment"
-        tools:layout="@layout/fragment_wardrobe_collection_dashboard" />
+        android:id="@+id/wardrobePatternGroupFragment"
+        android:name="com.wardrobes.porenut.ui.pattern.group.WardrobePatternGroupFragment"
+        tools:layout="@layout/fragment_wardrobe_pattern_group">
+
+        <action
+            android:id="@+id/wardrobePatternGroupToManageWardrobePattern"
+            app:destination="@id/manageWardrobePatternFragment" />
+
+        <action
+            android:id="@+id/wardrobePatternGroupToWardrobePatternDetails"
+            app:destination="@id/wardrobePatternDetailsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/wardrobePatternDetailsFragment"
+        android:name="com.wardrobes.porenut.ui.pattern.details.WardrobePatternDetailsFragment"
+        tools:layout="@layout/fragment_wardrobe_pattern_details" />
+
+    <fragment
+        android:id="@+id/manageWardrobePatternFragment"
+        android:name="com.wardrobes.porenut.ui.pattern.manage.ManageWardrobePatternFragment"
+        tools:layout="@layout/fragment_manage_wardrobe_pattern" />
 
     <fragment
         android:id="@+id/wardrobeSectionFragment"
         android:name="com.wardrobes.porenut.ui.wardrobe.group.WardrobeGroupFragment"
-        tools:layout="@layout/fragment_wardrobe_group">
+        tools:layout="@layout/fragment_wardrobe_pattern_group">
 
         <action
             android:id="@+id/wardrobeSectionToWardrobeDashboard"
@@ -82,8 +102,8 @@
             app:destination="@id/elementGroupFragment" />
 
         <action
-            android:id="@+id/wardrobeDashboardFragmentToWardrobeDetails"
-            app:destination="@id/wardrobeDetailsFragment" />
+            android:id="@+id/wardrobeDashboardFragmentToManageWardrobe"
+            app:destination="@id/manageWardrobeFragment" />
 
         <action
             android:id="@+id/wardrobeDashboardFragmentToWardrobeGallery"
@@ -103,17 +123,6 @@
         <action
             android:id="@+id/elementGroupFragmentToManageElement"
             app:destination="@id/manageElementFragment" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/wardrobeDetailsFragment"
-        android:name="com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailsFragment"
-        tools:layout="@layout/fragment_wardrobe_details">
-
-        <action
-            android:id="@+id/wardrobeDetailsFragmentToManageWardrobe"
-            app:destination="@id/manageWardrobeFragment" />
 
     </fragment>
 

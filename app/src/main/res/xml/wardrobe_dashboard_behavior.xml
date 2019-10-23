@@ -41,8 +41,7 @@
 
         <OnSwipe
             app:dragDirection="dragUp"
-            app:touchAnchorId="@id/layoutWardrobeDashboardGrip"
-            app:touchRegionId="@id/layoutWardrobeDashboardGrip" />
+            app:touchAnchorId="@id/layoutWardrobeDashboardGrip" />
 
     </Transition>
 

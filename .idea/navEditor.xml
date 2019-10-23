@@ -188,6 +188,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="manageWardrobePatternFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="relativeDrillingSetDetailsFragment">
                     <value>
                       <LayoutPositions>
@@ -235,18 +247,6 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="wardrobeCollectionDashboardFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="wardrobeCreationTypeFragment">
                     <value>
                       <LayoutPositions>
@@ -284,33 +284,12 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="wardrobeDashboardFragmentToWardrobeDetails">
+                            <entry key="wardrobeDashboardFragmentToManageWardrobe">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="wardrobeDashboardFragmentToWardrobeGallery">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="wardrobeDetailsFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="1476" />
-                            <option name="y" value="306" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="wardrobeDetailsFragmentToManageWardrobe">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -328,6 +307,44 @@
                             <option name="x" value="1476" />
                             <option name="y" value="1018" />
                           </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="wardrobePatternDetailsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="wardrobePatternGroupFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="wardrobePatternGroupToManageWardrobePattern">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="wardrobePatternGroupToWardrobePatternDetails">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

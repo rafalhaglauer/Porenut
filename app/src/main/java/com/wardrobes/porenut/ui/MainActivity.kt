@@ -2,7 +2,6 @@ package com.wardrobes.porenut.ui
 
 import android.Manifest
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -15,24 +14,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val mainNavController = findNavController(R.id.navHostMain)
-        mainNavController.addOnDestinationChangedListener { _, destination, _ ->
-            supportActionBar?.apply {
-                setDisplayHomeAsUpEnabled(
-                    destination.id != R.id.wardrobeCollectionDashboardFragment
-                        && destination.id != R.id.wardrobeSectionFragment
-                        && destination.id != R.id.relativeDrillingSetGroupFragment
-                )
-            }
-        }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "DSG"
 
         // TODO Configure Toolbar
         bottomNavigation.setupWithNavController(mainNavController)
         requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0) // TODO Proper manage of permissions
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        android.R.id.home -> onBackPressed().run { true }
-        else -> super.onOptionsItemSelected(item)
     }
 
     override fun onBackPressed() {

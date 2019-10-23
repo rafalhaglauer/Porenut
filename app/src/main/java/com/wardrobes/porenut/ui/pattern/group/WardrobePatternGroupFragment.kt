@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.wardrobe.group
+package com.wardrobes.porenut.ui.pattern.group
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.common.extension.*
-import com.wardrobes.porenut.ui.wardrobe.dashboard.WardrobeDashboardFragment
+import com.wardrobes.porenut.ui.pattern.details.WardrobePatternDetailsFragment
 import kotlinx.android.synthetic.main.fragment_wardrobe_pattern_group.*
 
-class WardrobeGroupFragment : Fragment() {
+class WardrobePatternGroupFragment : Fragment() {
 
-    private val viewModel: WardrobeGroupViewModel by injectViewModel()
+    private val viewModel: WardrobePatternGroupViewModel by injectViewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_wardrobe_pattern_group, container, false)
@@ -34,7 +34,7 @@ class WardrobeGroupFragment : Fragment() {
     private fun setupContent() {
         with(contentWardrobeGroup) {
             setDivider(R.drawable.divider)
-            adapter = WardrobeGroupAdapter(
+            adapter = WardrobePatternGroupAdapter(
                 onItemSelected = { viewEntity -> viewModel.showDetails(viewEntity) },
                 onAddDescription = { viewEntity -> viewModel.addDescription(viewEntity) }
             )
@@ -51,18 +51,18 @@ class WardrobeGroupFragment : Fragment() {
             errorEvent.observeEvent(viewLifecycleOwner) { errorMessage ->
                 showMessage(errorMessage)
             }
-            showDetailsEvent.observeEvent(viewLifecycleOwner) { wardrobeId ->
-                navigateTo(R.id.wardrobeSectionToWardrobeDashboard, WardrobeDashboardFragment.createExtras(wardrobeId))
+            showDetailsEvent.observeEvent(viewLifecycleOwner) { patternId ->
+                navigateTo(R.id.wardrobePatternGroupToWardrobePatternDetails, WardrobePatternDetailsFragment.createExtras(patternId)) // TODO patternId!
             }
-            addDescriptionEvent.observeEvent(viewLifecycleOwner) { wardrobeId ->
-                showMessage("TODO -> $wardrobeId") // TODO
+            addDescriptionEvent.observeEvent(viewLifecycleOwner) { patternId ->
+                TODO("Not implemented yet!")
             }
         }
     }
 
     private fun setupFab() {
         btnActionWardrobeGroup.setOnClickListener {
-            navigateTo(R.id.wardrobeSectionToWardrobeCreationTypeFragment)
+            navigateTo(R.id.wardrobePatternGroupToManageWardrobePattern)
         }
     }
 
@@ -70,7 +70,7 @@ class WardrobeGroupFragment : Fragment() {
         viewModel.loadWardrobes()
     }
 
-    private fun bind(viewEntities: List<WardrobeViewEntity>) {
-        (contentWardrobeGroup.adapter as WardrobeGroupAdapter).setItems(viewEntities)
+    private fun bind(viewEntities: List<WardrobePatternViewEntity>) {
+        (contentWardrobeGroup.adapter as WardrobePatternGroupAdapter).setItems(viewEntities)
     }
 }

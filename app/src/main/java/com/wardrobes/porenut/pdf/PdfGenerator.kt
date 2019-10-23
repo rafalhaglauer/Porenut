@@ -10,7 +10,6 @@ import com.itextpdf.text.pdf.BaseFont
 import com.itextpdf.text.pdf.PdfWriter
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.element.detail.ElementViewEntity
-import com.wardrobes.porenut.ui.wardrobe.detail.WardrobeDetailViewEntity
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,7 +19,7 @@ import java.util.*
 
 interface PdfGenerator {
 
-    fun generate(wardrobe: WardrobeDetailViewEntity, elements: List<ElementViewEntity>): Boolean
+    fun generate(wardrobe: WardrobeDetailsViewEntity, elements: List<ElementViewEntity>): Boolean
 }
 
 class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
@@ -30,7 +29,7 @@ class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
     private val normalFont = Font(baseFont, 12F, Font.NORMAL)
 
     override fun generate(
-        wardrobe: WardrobeDetailViewEntity,
+        wardrobe: WardrobeDetailsViewEntity,
         elements: List<ElementViewEntity>
     ): Boolean {
         val filePath = "${Environment.getExternalStorageDirectory()}/${wardrobe.symbol}.pdf"
@@ -64,7 +63,7 @@ class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
         }.also { add(it) }
     }
 
-    private fun Document.addWardrobe(wardrobe: WardrobeDetailViewEntity) {
+    private fun Document.addWardrobe(wardrobe: WardrobeDetailsViewEntity) {
         Paragraph().apply {
             addText("${context.getString(R.string.l_width)}: ${wardrobe.width}", normalFont)
             addText("${context.getString(R.string.l_height)}: ${wardrobe.height}", normalFont)
@@ -98,3 +97,12 @@ class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
 
     private fun emptyLine() = Paragraph(" ")
 }
+
+// TODO
+class WardrobeDetailsViewEntity(
+    val symbol: String,
+    val width: String,
+    val height: String,
+    val depth: String,
+    val type: Int // TODO
+)

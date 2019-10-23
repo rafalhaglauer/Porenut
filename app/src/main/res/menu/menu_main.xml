@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/wardrobeCollectionDashboardFragment"
+        android:id="@+id/wardrobePatternGroupFragment"
         android:icon="@drawable/ic_kitchen"
-        android:title="Kolekcje" />
+        android:title="Wzory" />
 
     <item
         android:id="@+id/wardrobeSectionFragment"

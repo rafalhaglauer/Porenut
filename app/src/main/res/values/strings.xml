@@ -19,6 +19,9 @@
     <string name="l_x_position">Pozycja X</string>
     <string name="l_y_position">Pozycja Y</string>
     <string name="l_diameter">Średnica</string>
+    <string name="l_description">Opis</string>
+    <string name="l_elements">Elementy</string>
+    <string name="l_3d_model">Model</string>
 
     <string name="l_direction">Kierunek</string>
     <string name="l_offset">Przesunięcie</string>

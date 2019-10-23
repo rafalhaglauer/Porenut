@@ -1,33 +1,33 @@
-package com.wardrobes.porenut.ui.wardrobe.group
+package com.wardrobes.porenut.ui.pattern.group
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
-import com.wardrobes.porenut.data.wardrobe.WardrobeRepository
-import com.wardrobes.porenut.data.wardrobe.WardrobeRestRepository
-import com.wardrobes.porenut.domain.Wardrobe
+import com.wardrobes.porenut.data.pattern.WardrobePatternRepository
+import com.wardrobes.porenut.data.pattern.WardrobePatternRestRepository
+import com.wardrobes.porenut.domain.WardrobePattern
 import com.wardrobes.porenut.ui.common.Event
 import com.wardrobes.porenut.ui.common.extension.updateValue
 
-class WardrobeGroupViewModel(
-    private val wardrobeRepository: WardrobeRepository = WardrobeRestRepository
+class WardrobePatternGroupViewModel(
+    private val wardrobePatternRepository: WardrobePatternRepository = WardrobePatternRestRepository
 ) : ViewModel() {
 
-    val viewState: LiveData<WardrobeGroupViewState> = MutableLiveData()
+    val viewState: LiveData<WardrobePatternGroupViewState> = MutableLiveData()
     val errorEvent: LiveData<Event<String>> = MutableLiveData()
     val showDetailsEvent: LiveData<Event<String>> = MutableLiveData()
     val addDescriptionEvent: LiveData<Event<String>> = MutableLiveData()
 
-    private var wardrobes: List<Wardrobe> = emptyList()
+    private var patterns: List<WardrobePattern> = emptyList()
 
     fun loadWardrobes() {
-        wardrobeRepository.getAll()
+        wardrobePatternRepository.getAll()
             .fetchStateFullModel(
                 onLoading = { showLoading(true) },
                 onSuccess = {
-                    wardrobes = it
-                    showWardrobes(it)
+                    patterns = it
+                    showPatterns(it)
                 },
                 onError = {
                     showLoading(false)
@@ -36,23 +36,23 @@ class WardrobeGroupViewModel(
             )
     }
 
-    fun showDetails(viewEntity: WardrobeViewEntity) {
+    fun showDetails(viewEntity: WardrobePatternViewEntity) {
         showLoading(true)
-        showDetailsEvent.updateValue(Event(findWardrobe(viewEntity).id))
+        showDetailsEvent.updateValue(Event(findWardrobe(viewEntity).symbol)) // TODO patternId
     }
 
-    fun addDescription(viewEntity: WardrobeViewEntity) {
+    fun addDescription(viewEntity: WardrobePatternViewEntity) {
         showLoading(true)
         addDescriptionEvent.updateValue(Event(findWardrobe(viewEntity).id))
     }
 
     private fun showLoading(isLoading: Boolean) {
-        viewState.updateValue(WardrobeGroupViewState(isLoading = isLoading))
+        viewState.updateValue(WardrobePatternGroupViewState(isLoading = isLoading))
     }
 
-    private fun showWardrobes(wardrobes: List<Wardrobe>) {
+    private fun showPatterns(wardrobes: List<WardrobePattern>) {
         viewState.updateValue(
-            WardrobeGroupViewState(
+            WardrobePatternGroupViewState(
                 isEmptyListNotificationVisible = wardrobes.isEmpty(),
                 viewEntities = map(wardrobes)
             )
@@ -63,21 +63,21 @@ class WardrobeGroupViewModel(
         errorEvent.updateValue(Event(message))
     }
 
-    private fun findWardrobe(viewEntity: WardrobeViewEntity) = wardrobes.first { it.symbol == viewEntity.symbol }
+    private fun findWardrobe(viewEntity: WardrobePatternViewEntity) = patterns.first { it.symbol == viewEntity.symbol }
 
-    private fun map(wardrobes: List<Wardrobe>): List<WardrobeViewEntity> = wardrobes.map {
-        WardrobeViewEntity(it.symbol, if (it.symbol == "DSG") "Jakiś krótki opis szafy." else "") // TODO!
+    private fun map(wardrobes: List<WardrobePattern>): List<WardrobePatternViewEntity> = wardrobes.map {
+        WardrobePatternViewEntity(it.symbol, it.description)
     }
 
 }
 
-class WardrobeGroupViewState(
+class WardrobePatternGroupViewState(
     val isLoading: Boolean = false,
-    val viewEntities: List<WardrobeViewEntity> = emptyList(),
+    val viewEntities: List<WardrobePatternViewEntity> = emptyList(),
     val isEmptyListNotificationVisible: Boolean = false
 )
 
-data class WardrobeViewEntity(
+data class WardrobePatternViewEntity(
     val symbol: String,
     val description: String
 ) {
