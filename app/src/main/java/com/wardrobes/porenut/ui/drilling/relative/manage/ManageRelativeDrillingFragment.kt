@@ -41,7 +41,7 @@ class ManageRelativeDrillingFragment : Fragment() {
                 layoutContent isVisibleWhen !isLoading
                 btnDeleteRelativeDrilling isVisibleWhen isDeleteButtonVisible
                 bind(viewEntity)
-                txtManageRelativeDrilling.text = getString(manageText)
+                btnManageRelativeDrilling.text = getString(manageText)
             }
         viewModel.errorMessageEvent
             .observeEvent(viewLifecycleOwner) {
@@ -54,7 +54,7 @@ class ManageRelativeDrillingFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        btnManageComposition.setOnClickListener {
+        btnManageRelativeDrilling.setOnClickListener {
             it.hideKeyboard()
             viewModel.manage(
                 name = txtName.string(),

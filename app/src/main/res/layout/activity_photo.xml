@@ -51,7 +51,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="50dp"
-            android:textColor="@color/textTertiary"
             android:textSize="@dimen/textBig"
             tools:text="1.0" />
 

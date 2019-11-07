@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.pattern.group
+package com.wardrobes.porenut.ui.pattern.wardrobe.group
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -38,7 +38,7 @@ class WardrobePatternGroupViewModel(
 
     fun showDetails(viewEntity: WardrobePatternViewEntity) {
         showLoading(true)
-        showDetailsEvent.updateValue(Event(findWardrobe(viewEntity).symbol)) // TODO patternId
+        showDetailsEvent.updateValue(Event(findWardrobe(viewEntity).id))
     }
 
     fun addDescription(viewEntity: WardrobePatternViewEntity) {

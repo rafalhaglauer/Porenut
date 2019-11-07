@@ -39,7 +39,7 @@ class ManageElementCompositionFragment : Fragment() {
             progress isVisibleWhen isLoading
             layoutContent isVisibleWhen !isLoading
             spinnerDrillingSet.adapter = context?.let { ArrayAdapter<String>(it, android.R.layout.simple_list_item_1, compositionNames) }
-            txtManageComposition.text = getString(buttonText)
+            btnManageComposition.text = getString(buttonText)
             btnRemoveComposition isVisibleWhen isRemovePossible
             spinnerDrillingSet.isEnabled = isDrillingSetPositionEnable
             bind(viewEntity)

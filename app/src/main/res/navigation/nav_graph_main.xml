@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/wardrobePatternGroupFragment"
-        android:name="com.wardrobes.porenut.ui.pattern.group.WardrobePatternGroupFragment"
+        android:name="com.wardrobes.porenut.ui.pattern.wardrobe.group.WardrobePatternGroupFragment"
         tools:layout="@layout/fragment_wardrobe_pattern_group">
 
         <action
@@ -21,12 +21,18 @@
 
     <fragment
         android:id="@+id/wardrobePatternDetailsFragment"
-        android:name="com.wardrobes.porenut.ui.pattern.details.WardrobePatternDetailsFragment"
-        tools:layout="@layout/fragment_wardrobe_pattern_details" />
+        android:name="com.wardrobes.porenut.ui.pattern.wardrobe.details.WardrobePatternDetailsFragment"
+        tools:layout="@layout/fragment_wardrobe_pattern_details">
+
+        <action
+            android:id="@+id/wardrobePatternDetailsToManageWardrobePattern"
+            app:destination="@id/manageWardrobePatternFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/manageWardrobePatternFragment"
-        android:name="com.wardrobes.porenut.ui.pattern.manage.ManageWardrobePatternFragment"
+        android:name="com.wardrobes.porenut.ui.pattern.wardrobe.manage.ManageWardrobePatternFragment"
         tools:layout="@layout/fragment_manage_wardrobe_pattern" />
 
     <fragment

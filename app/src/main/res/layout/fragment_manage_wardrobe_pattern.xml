@@ -20,6 +20,7 @@
         android:id="@+id/layoutContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@id/btnManageWardrobePattern"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +37,6 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacingMedium"
                 android:hint="@string/l_symbol">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -52,15 +52,17 @@
                 android:id="@+id/layoutWardrobePatternDescription"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacingMedium"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/spacingMedium"
+                android:layout_weight="1"
                 android:hint="@string/l_description"
                 app:counterMaxLength="255">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editWardrobePatternDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
                     android:inputType="textMultiLine" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -71,9 +73,8 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnManageWardrobePattern"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="@dimen/buttonHeight"
         android:layout_margin="@dimen/spacingMedium"
         android:text="@string/l_add"
         app:layout_constraintBottom_toBottomOf="parent"

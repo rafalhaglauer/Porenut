@@ -27,7 +27,7 @@
             android:layout_centerInParent="true"
             android:layout_margin="40dp"
             app:srcCompat="@drawable/ic_empty_list"
-            app:tint="@color/colorAccent" />
+            app:tint="?attr/colorSecondary" />
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/Text.Primary"

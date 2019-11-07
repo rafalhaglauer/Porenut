@@ -57,7 +57,7 @@ class ManageElementFragment : Fragment() {
         manageElementViewModel.viewState.observe(viewLifecycleOwner) {
             progress isVisibleWhen isLoading
             layoutContent isVisibleWhen !isLoading
-            txtManageElement.text = getString(btnTextMessage)
+            btnManageElement.text = getString(btnTextMessage)
             bind(viewEntity)
         }
         manageElementViewModel.errorStateEvent.observeEvent(viewLifecycleOwner) {

@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.pattern.manage
+package com.wardrobes.porenut.ui.pattern.wardrobe.manage
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -26,6 +26,15 @@ class ManageWardrobePatternViewModel(
     fun manageWardrobe(viewEntity: ManageWardrobePatternViewEntity) {
         val pattern = createPattern(viewEntity)
         if (patternId.isEmpty()) addPattern(pattern) else updatePattern(pattern)
+    }
+
+    fun deletePattern() {
+        wardrobePatternRepository.delete(patternId)
+            .fetchStateFullModel(
+                onLoading = { createLoadingState() },
+                onSuccess = { navigateBack() },
+                onError = { createErrorState(it) }
+            )
     }
 
     private fun fetchPatternDetails(patternId: String) {

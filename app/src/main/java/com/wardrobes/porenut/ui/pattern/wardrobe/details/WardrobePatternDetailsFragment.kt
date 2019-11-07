@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.pattern.details
+package com.wardrobes.porenut.ui.pattern.wardrobe.details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.wardrobes.porenut.R
+import com.wardrobes.porenut.ui.common.extension.navigateTo
+import com.wardrobes.porenut.ui.common.extension.setTitle
+import com.wardrobes.porenut.ui.pattern.wardrobe.manage.ManageWardrobePatternFragment
 import kotlinx.android.synthetic.main.fragment_wardrobe_pattern_details.*
 
 
-private const val KEY_WARDROBE_PATTERN_SYMBOL = "key-wardrobe-pattern-symbol"
+private const val KEY_WARDROBE_PATTERN_ID = "key-wardrobe-pattern-id"
 
 class WardrobePatternDetailsFragment : Fragment() {
+
+    private val patternId: String
+        get() = arguments?.getString(KEY_WARDROBE_PATTERN_ID)!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_wardrobe_pattern_details, container, false)
@@ -19,7 +25,10 @@ class WardrobePatternDetailsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        activity?.actionBar?.title = arguments?.getString(KEY_WARDROBE_PATTERN_SYMBOL)
+        setTitle(patternId)
+        btnManageWardrobePattern.setOnClickListener {
+            navigateTo(R.id.wardrobePatternDetailsToManageWardrobePattern, ManageWardrobePatternFragment.createExtras(patternId))
+        }
         layoutGallery.adapter = WardrobePatternGalleryAdapter().apply {
             setItem(
                 listOf(
@@ -34,8 +43,8 @@ class WardrobePatternDetailsFragment : Fragment() {
 
     companion object {
 
-        fun createExtras(patternSymbol: String): Bundle = Bundle().apply {
-            putString(KEY_WARDROBE_PATTERN_SYMBOL, patternSymbol)
+        fun createExtras(patternId: String): Bundle = Bundle().apply {
+            putString(KEY_WARDROBE_PATTERN_ID, patternId)
         }
     }
 }

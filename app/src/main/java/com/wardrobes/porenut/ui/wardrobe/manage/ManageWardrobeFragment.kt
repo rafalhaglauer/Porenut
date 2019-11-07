@@ -43,7 +43,7 @@ class ManageWardrobeFragment : Fragment() {
             .observe(viewLifecycleOwner) {
                 progress isVisibleWhen isLoading
                 layoutContent isVisibleWhen !isLoading
-                txtManageWardrobe.text = getString(btnActionText)
+                btnManageWardrobe.text = getString(btnActionText)
                 showMessage(errorMessage)
                 bind(viewEntity)
             }
@@ -53,7 +53,7 @@ class ManageWardrobeFragment : Fragment() {
         viewModel.navigateBack
             .observeEvent(viewLifecycleOwner) {
                 arguments?.run {
-                    if(containsKey(KEY_COMPLETE_NAV_ACTION)) navigateTo(getInt(KEY_COMPLETE_NAV_ACTION)) else navigateUp()
+                    if (containsKey(KEY_COMPLETE_NAV_ACTION)) navigateTo(getInt(KEY_COMPLETE_NAV_ACTION)) else navigateUp()
                 }
             }
     }

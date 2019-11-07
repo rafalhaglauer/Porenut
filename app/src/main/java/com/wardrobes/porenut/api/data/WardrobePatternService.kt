@@ -19,4 +19,7 @@ interface WardrobePatternService {
     @PUT("/pattern/wardrobe/{id}")
     fun update(@Path("id") patternId: String, @Body wardrobePattern: WardrobePattern): Completable
 
+    @DELETE("/pattern/wardrobe/{id}")
+    fun delete(@Path("id") patternId: String): Completable
+
 }

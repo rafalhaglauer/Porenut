@@ -93,35 +93,21 @@
 
     </ScrollView>
 
-    <FrameLayout
-        android:id="@+id/btnManageComposition"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:background="@color/colorAccent"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnManageRelativeDrilling"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="@dimen/buttonHeight"
+        android:layout_margin="@dimen/spacingMedium"
+        android:text="@string/l_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txtManageRelativeDrilling"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/l_add"
-            android:textColor="@color/textTertiary"
-            android:textSize="@dimen/textBig"
-            android:textStyle="bold" />
-
-    </FrameLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnDeleteRelativeDrilling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/spacingMedium"
         android:src="@drawable/ic_delete"
         app:layout_constraintBottom_toTopOf="@id/btnManageComposition"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -1,9 +1,7 @@
-package com.wardrobes.porenut.ui.pattern.manage
+package com.wardrobes.porenut.ui.pattern.wardrobe.manage
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.common.extension.*
@@ -26,6 +24,20 @@ class ManageWardrobePatternFragment : Fragment() {
         unpackArguments()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_manage_wardrobe_pattern, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (item.itemId == R.id.deleteWardrobePattern) {
+            viewModel.deletePattern()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun observeViewModel() {
         observeViewState()
         observeNavigationEvent()
@@ -36,6 +48,7 @@ class ManageWardrobePatternFragment : Fragment() {
             .observe(viewLifecycleOwner) {
                 progress isVisibleWhen isLoading
                 layoutContent isVisibleWhen !isLoading
+                btnManageWardrobePattern isVisibleWhen !isLoading
                 btnManageWardrobePattern.text = getString(btnActionText)
                 showMessage(errorMessage)
                 bind(viewEntity)
@@ -59,6 +72,7 @@ class ManageWardrobePatternFragment : Fragment() {
     private fun unpackArguments() {
         arguments?.run {
             viewModel.patternId = getString(KEY_WARDROBE_PATTERN_ID).orEmpty()
+            setHasOptionsMenu(viewModel.patternId.isNotEmpty())
         }
     }
 

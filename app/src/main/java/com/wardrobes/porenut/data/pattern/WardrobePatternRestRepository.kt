@@ -7,7 +7,6 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 
 object WardrobePatternRestRepository : WardrobePatternRepository {
-
     private val wardrobePatternService = BaseProvider.retrofit.create(WardrobePatternService::class.java)
 
     override fun getAll(): Observable<List<WardrobePattern>> = wardrobePatternService.getAll()
@@ -17,5 +16,7 @@ object WardrobePatternRestRepository : WardrobePatternRepository {
     override fun add(wardrobePattern: WardrobePattern): Completable = wardrobePatternService.add(wardrobePattern)
 
     override fun update(wardrobePattern: WardrobePattern): Completable = wardrobePatternService.update(wardrobePattern.id, wardrobePattern)
+
+    override fun delete(patternId: String): Completable = wardrobePatternService.delete(patternId)
 
 }

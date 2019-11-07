@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.pattern.group
+package com.wardrobes.porenut.ui.pattern.wardrobe.group
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.common.extension.*
-import com.wardrobes.porenut.ui.pattern.details.WardrobePatternDetailsFragment
+import com.wardrobes.porenut.ui.pattern.wardrobe.details.WardrobePatternDetailsFragment
+import com.wardrobes.porenut.ui.pattern.wardrobe.manage.ManageWardrobePatternFragment
 import kotlinx.android.synthetic.main.fragment_wardrobe_pattern_group.*
 
 class WardrobePatternGroupFragment : Fragment() {
@@ -28,7 +29,7 @@ class WardrobePatternGroupFragment : Fragment() {
     }
 
     private fun setupToolbar() {
-        setTitle(getString(R.string.app_name)) // TODO
+        setTitle(R.string.l_wardrobe_patterns)
     }
 
     private fun setupContent() {
@@ -52,10 +53,10 @@ class WardrobePatternGroupFragment : Fragment() {
                 showMessage(errorMessage)
             }
             showDetailsEvent.observeEvent(viewLifecycleOwner) { patternId ->
-                navigateTo(R.id.wardrobePatternGroupToWardrobePatternDetails, WardrobePatternDetailsFragment.createExtras(patternId)) // TODO patternId!
+                navigateTo(R.id.wardrobePatternGroupToWardrobePatternDetails, WardrobePatternDetailsFragment.createExtras(patternId))
             }
             addDescriptionEvent.observeEvent(viewLifecycleOwner) { patternId ->
-                TODO("Not implemented yet!")
+                navigateTo(R.id.wardrobePatternGroupToManageWardrobePattern, ManageWardrobePatternFragment.createExtras(patternId))
             }
         }
     }

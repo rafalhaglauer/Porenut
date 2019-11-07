@@ -14,4 +14,6 @@ interface WardrobePatternRepository {
 
     fun update(wardrobePattern: WardrobePattern): Completable
 
+    fun delete(patternId: String): Completable
+
 }

@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.ui.pattern.details
+package com.wardrobes.porenut.ui.pattern.wardrobe.details
 
 import android.view.LayoutInflater
 import android.view.View

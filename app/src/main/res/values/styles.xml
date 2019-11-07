@@ -1,16 +1,21 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#880E4F</item>
+        <item name="colorPrimaryVariant">#560027</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#1A237E</item>
+        <item name="colorSecondaryVariant">#000051</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Text" />
 
     <style name="Text.Primary">
-        <item name="android:textColor">@color/textPrimary</item>
+        <!--        <item name="android:textColor">@color/textPrimary</item>-->
     </style>
 
     <style name="Text.Primary.Bold">
@@ -18,7 +23,7 @@
     </style>
 
     <style name="Text.Secondary">
-        <item name="android:textColor">@color/textSecondary</item>
+        <!--        <item name="android:textColor">@color/textSecondary</item>-->
     </style>
 
     <style name="Text.Secondary.Bold">
@@ -26,7 +31,7 @@
     </style>
 
     <style name="Text.Tertiary">
-        <item name="android:textColor">@color/textTertiary</item>
+        <!--        <item name="android:textColor">@color/textTertiary</item>-->
     </style>
 
 </resources>
