@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.data.pattern
+package com.wardrobes.porenut.data.pattern.wardrobe
 
 import com.wardrobes.porenut.domain.WardrobePattern
 import io.reactivex.Completable

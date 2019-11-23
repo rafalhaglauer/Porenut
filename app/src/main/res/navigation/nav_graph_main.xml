@@ -28,12 +28,21 @@
             android:id="@+id/wardrobePatternDetailsToManageWardrobePattern"
             app:destination="@id/manageWardrobePatternFragment" />
 
+        <action
+            android:id="@+id/wardrobePatternDetailsToElementPatternGroup"
+            app:destination="@id/elementPatternGroupFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/manageWardrobePatternFragment"
         android:name="com.wardrobes.porenut.ui.pattern.wardrobe.manage.ManageWardrobePatternFragment"
         tools:layout="@layout/fragment_manage_wardrobe_pattern" />
+
+    <fragment
+        android:id="@+id/manageElementPatternFragment"
+        android:name="com.wardrobes.porenut.ui.pattern.element.manage.ManageElementPatternFragment"
+        tools:layout="@layout/fragment_manage_element_pattern" />
 
     <fragment
         android:id="@+id/wardrobeSectionFragment"
@@ -84,6 +93,10 @@
         <action
             android:id="@+id/wardrobeCreationTypeFragmentToManageWardrobeFragment"
             app:destination="@id/manageWardrobeFragment" />
+
+        <action
+            android:id="@+id/wardrobeCreationTypeFragmentToSelectWardrobePatternFragment"
+            app:destination="@id/selectWardrobePatternFragment" />
 
     </fragment>
 
@@ -202,5 +215,47 @@
         android:id="@+id/manageRelativeDrillingFragment"
         android:name="com.wardrobes.porenut.ui.drilling.relative.manage.ManageRelativeDrillingFragment"
         tools:layout="@layout/fragment_manage_relative_drilling" />
+
+    <fragment
+        android:id="@+id/elementPatternGroupFragment"
+        android:name="com.wardrobes.porenut.ui.pattern.element.group.ElementPatternGroupFragment"
+        tools:layout="@layout/fragment_element_pattern_group">
+
+        <action
+            android:id="@+id/elementPatternGroupToManageElementPattern"
+            app:destination="@id/manageElementPatternFragment" />
+
+        <action
+            android:id="@+id/elementPatternGroupToDrillingPatternGroup"
+            app:destination="@id/drillingPatternGroupFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/drillingPatternGroupFragment"
+        android:name="com.wardrobes.porenut.ui.pattern.drilling.group.DrillingPatternGroupFragment"
+        tools:layout="@layout/fragment_drilling_pattern_group">
+
+        <action
+            android:id="@+id/drillingPatternGroupToManageDrillingPattern"
+            app:destination="@id/manageDrillingPatternFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/manageDrillingPatternFragment"
+        android:name="com.wardrobes.porenut.ui.pattern.drilling.manage.ManageDrillingPatternFragment"
+        tools:layout="@layout/fragment_manage_drilling_pattern" />
+
+    <fragment
+        android:id="@+id/selectWardrobePatternFragment"
+        android:name="com.wardrobes.porenut.ui.wardrobe.manage.SelectWardrobePatternFragment"
+        tools:layout="@layout/fragment_wardrobe_pattern_group">
+
+        <action
+            android:id="@+id/selectWardrobePatternFragmentToManageWardrobeFragment"
+            app:destination="@id/manageWardrobeFragment" />
+
+    </fragment>
 
 </navigation>

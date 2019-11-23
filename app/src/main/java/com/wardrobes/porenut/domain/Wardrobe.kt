@@ -5,10 +5,5 @@ data class Wardrobe(
     val symbol: String,
     val width: Float,
     val height: Float,
-    val depth: Float,
-    val type: Type
-) {
-    enum class Type { UPPER, BOTTOM }
-}
-
-enum class CreationType { CUSTOM, GENERATE }
+    val depth: Float
+)

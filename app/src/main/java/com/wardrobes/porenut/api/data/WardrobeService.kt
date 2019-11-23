@@ -1,6 +1,5 @@
 package com.wardrobes.porenut.api.data
 
-import com.wardrobes.porenut.domain.CreationType
 import com.wardrobes.porenut.domain.Wardrobe
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -14,8 +13,8 @@ interface WardrobeService {
     @GET("/wardrobe/{id}")
     fun get(@Path("id") wardrobeId: String): Observable<Wardrobe>
 
-    @POST("/wardrobe")
-    fun add(@Body wardrobe: Wardrobe, @Query("creationType") creationType: CreationType): Completable
+    @POST("/wardrobe/{patternId}")
+    fun add(@Body wardrobe: Wardrobe, @Path("patternId") patternId: String): Completable
 
     @DELETE("/wardrobe/{id}")
     fun delete(@Path("id") wardrobeId: String): Completable

@@ -1,4 +1,4 @@
-package com.wardrobes.porenut.data.pattern
+package com.wardrobes.porenut.data.pattern.wardrobe
 
 import com.wardrobes.porenut.api.base.BaseProvider
 import com.wardrobes.porenut.api.data.WardrobePatternService
@@ -7,6 +7,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 
 object WardrobePatternRestRepository : WardrobePatternRepository {
+
     private val wardrobePatternService = BaseProvider.retrofit.create(WardrobePatternService::class.java)
 
     override fun getAll(): Observable<List<WardrobePattern>> = wardrobePatternService.getAll()

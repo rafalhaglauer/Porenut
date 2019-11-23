@@ -7,7 +7,6 @@ import com.wardrobes.porenut.R
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.wardrobe.WardrobeRepository
 import com.wardrobes.porenut.data.wardrobe.WardrobeRestRepository
-import com.wardrobes.porenut.domain.CreationType
 import com.wardrobes.porenut.domain.Wardrobe
 import com.wardrobes.porenut.ui.common.DefaultMeasureFormatter
 import com.wardrobes.porenut.ui.common.Event
@@ -27,7 +26,7 @@ class ManageWardrobeViewModel(
         set(value) {
             field = value?.also { fetchWardrobeDetails(it) }
         }
-    var creationType: CreationType = CreationType.GENERATE
+    var wardrobePatternId: String? = null
 
     fun manageWardrobe(viewEntity: ManageWardrobeViewEntity) {
         val wardrobe = viewEntity.toWardrobe()
@@ -46,7 +45,7 @@ class ManageWardrobeViewModel(
     }
 
     private fun addWardrobe(wardrobe: Wardrobe) {
-        wardrobeRepository.add(wardrobe, creationType)
+        wardrobeRepository.add(wardrobe, wardrobePatternId ?: "0") // TODO
             .fetchStateFullModel(
                 onLoading = { createLoadingState() },
                 onSuccess = { navigateBack() },
@@ -83,18 +82,15 @@ class ManageWardrobeViewModel(
         symbol = symbol,
         width = width.format(),
         height = height.format(),
-        depth = depth.format(),
-        isUpper = type == Wardrobe.Type.UPPER
+        depth = depth.format()
     )
 
-    private fun ManageWardrobeViewEntity.toWardrobe() =
-        Wardrobe(
-            symbol = symbol,
-            width = width.toFloat(),
-            height = height.toFloat(),
-            depth = depth.toFloat(),
-            type = if (isUpper) Wardrobe.Type.UPPER else Wardrobe.Type.BOTTOM
-        )
+    private fun ManageWardrobeViewEntity.toWardrobe() = Wardrobe(
+        symbol = symbol,
+        width = width.toFloat(),
+        height = height.toFloat(),
+        depth = depth.toFloat()
+    )
 
     private fun Float.format(): String = measureFormatter.format(this)
 
@@ -112,6 +108,5 @@ data class ManageWardrobeViewEntity(
     val symbol: String = "",
     val width: String = "",
     val height: String = "",
-    val depth: String = "",
-    val isUpper: Boolean = false
+    val depth: String = ""
 )

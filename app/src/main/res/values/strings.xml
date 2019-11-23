@@ -6,8 +6,6 @@
     <string name="l_symbol">Symbol</string>
     <string name="l_add">Dodaj</string>
     <string name="l_cancel">Anuluj</string>
-    <string name="l_upper">Górna</string>
-    <string name="l_bottom">Dolna</string>
     <string name="l_type">Typ</string>
     <string name="l_details">Szczegóły</string>
     <string name="l_name">Nazwa</string>
@@ -23,6 +21,16 @@
     <string name="l_elements">Elementy</string>
     <string name="l_3d_model">Model</string>
     <string name="l_wardrobe_patterns">Wzory szaf</string>
+    <string name="l_element_patterns">Wzory elementów</string>
+    <string name="l_drilling_patterns">Wzory wierceń</string>
+
+    <string name="l_width_pattern">Wzór na szerokość</string>
+    <string name="l_length_pattern">Wzór na długość</string>
+    <string name="l_position_x_pattern">Wzór na pozycję X wiercenia</string>
+    <string name="l_position_y_pattern">Wzór na pozycję Y wiercenia</string>
+
+    <string name="l_manage">Zarządzaj</string>
+    <string name="l_drillings">Wiercenia</string>
 
     <string name="l_direction">Kierunek</string>
     <string name="l_offset">Przesunięcie</string>

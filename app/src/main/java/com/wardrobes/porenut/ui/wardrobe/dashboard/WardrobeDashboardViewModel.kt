@@ -3,7 +3,6 @@ package com.wardrobes.porenut.ui.wardrobe.dashboard
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.wardrobes.porenut.R
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
 import com.wardrobes.porenut.data.attachment.AttachmentRepository
 import com.wardrobes.porenut.data.attachment.AttachmentRestRepository
@@ -99,8 +98,7 @@ class WardrobeDashboardViewModel(
         symbol = symbol,
         width = width.format(),
         height = height.format(),
-        depth = depth.format(),
-        type = type.text
+        depth = depth.format()
     )
 
     private fun List<Element>.toViewEntities() = map {
@@ -114,9 +112,4 @@ class WardrobeDashboardViewModel(
 
     private fun Float.format() = measureFormatter.format(this)
 
-    private val Wardrobe.Type.text: Int
-        get() = when (this) {
-            Wardrobe.Type.BOTTOM -> R.string.l_bottom
-            Wardrobe.Type.UPPER -> R.string.l_upper
-        }
 }

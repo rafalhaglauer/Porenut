@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.wardrobes.porenut.R
-import com.wardrobes.porenut.domain.CreationType
 import com.wardrobes.porenut.ui.common.extension.*
 import kotlinx.android.synthetic.main.fragment_manage_wardrobe.*
 
 private const val KEY_WARDROBE_ID = "key-wardrobe-id"
-private const val KEY_WARDROBE_CREATION_TYPE = "key-wardrobe-creation-type"
-private const val KEY_COMPLETE_NAV_ACTION = "key_complete_nav_action"
+private const val KEY_WARDROBE_PATTERN_ID = "key-wardrobe-pattern-id"
 
 class ManageWardrobeFragment : Fragment() {
     private lateinit var viewModel: ManageWardrobeViewModel
@@ -52,9 +51,7 @@ class ManageWardrobeFragment : Fragment() {
     private fun observeNavigationEvent() {
         viewModel.navigateBack
             .observeEvent(viewLifecycleOwner) {
-                arguments?.run {
-                    if (containsKey(KEY_COMPLETE_NAV_ACTION)) navigateTo(getInt(KEY_COMPLETE_NAV_ACTION)) else navigateUp()
-                }
+                navigateBack()
             }
     }
 
@@ -68,7 +65,7 @@ class ManageWardrobeFragment : Fragment() {
     private fun unpackArguments() {
         arguments?.run {
             if (containsKey(KEY_WARDROBE_ID)) viewModel.wardrobeId = getString(KEY_WARDROBE_ID)
-            if (containsKey(KEY_WARDROBE_CREATION_TYPE)) viewModel.creationType = getSerializable(KEY_WARDROBE_CREATION_TYPE) as CreationType
+            if (containsKey(KEY_WARDROBE_PATTERN_ID)) viewModel.wardrobePatternId = getString(KEY_WARDROBE_PATTERN_ID)
         }
     }
 
@@ -78,7 +75,6 @@ class ManageWardrobeFragment : Fragment() {
             txtWardrobeWidth.setText(width)
             txtWardrobeHeight.setText(height)
             txtWardrobeDepth.setText(depth)
-            checkBoxIsUpperWardrobe.isChecked = isUpper
         }
     }
 
@@ -86,9 +82,14 @@ class ManageWardrobeFragment : Fragment() {
         symbol = txtWardrobeSymbol.string(),
         width = txtWardrobeWidth.string(),
         height = txtWardrobeHeight.string(),
-        depth = txtWardrobeDepth.string(),
-        isUpper = checkBoxIsUpperWardrobe.isChecked
+        depth = txtWardrobeDepth.string()
     )
+
+    private fun navigateBack() {
+        with(findNavController()) {
+            if (!popBackStack(R.id.wardrobeCreationTypeFragment, true)) navigateUp()
+        }
+    }
 
     companion object {
 
@@ -96,9 +97,8 @@ class ManageWardrobeFragment : Fragment() {
             putString(KEY_WARDROBE_ID, wardrobeId)
         }
 
-        fun createExtras(creationType: CreationType, completeNavAction: Int): Bundle = Bundle().apply {
-            putSerializable(KEY_WARDROBE_CREATION_TYPE, creationType)
-            putInt(KEY_COMPLETE_NAV_ACTION, completeNavAction)
+        fun createPatternExtras(wardrobePatternId: String): Bundle = Bundle().apply {
+            putSerializable(KEY_WARDROBE_PATTERN_ID, wardrobePatternId)
         }
     }
 }

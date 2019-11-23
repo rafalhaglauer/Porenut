@@ -12,4 +12,6 @@
     <dimen name="buttonWidth">250dp</dimen>
     <dimen name="buttonHeight">60dp</dimen>
 
+    <dimen name="spaceUnderButton">92dp</dimen>
+
 </resources>

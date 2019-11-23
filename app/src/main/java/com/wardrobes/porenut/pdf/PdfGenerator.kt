@@ -68,7 +68,6 @@ class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
             addText("${context.getString(R.string.l_width)}: ${wardrobe.width}", normalFont)
             addText("${context.getString(R.string.l_height)}: ${wardrobe.height}", normalFont)
             addText("${context.getString(R.string.l_depth)}: ${wardrobe.depth}", normalFont)
-            addText("${context.getString(R.string.l_type)}: ${context.getString(wardrobe.type).toLowerCase()}", normalFont)
         }.also { add(it) }
     }
 
@@ -98,11 +97,9 @@ class DefaultPdfGenerator(private val context: Context) : PdfGenerator {
     private fun emptyLine() = Paragraph(" ")
 }
 
-// TODO
 class WardrobeDetailsViewEntity(
     val symbol: String,
     val width: String,
     val height: String,
-    val depth: String,
-    val type: Int // TODO
+    val depth: String
 )

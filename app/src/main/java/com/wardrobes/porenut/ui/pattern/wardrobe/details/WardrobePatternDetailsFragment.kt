@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.ui.common.extension.navigateTo
 import com.wardrobes.porenut.ui.common.extension.setTitle
+import com.wardrobes.porenut.ui.pattern.element.group.ElementPatternGroupFragment
 import com.wardrobes.porenut.ui.pattern.wardrobe.manage.ManageWardrobePatternFragment
 import kotlinx.android.synthetic.main.fragment_wardrobe_pattern_details.*
-
 
 private const val KEY_WARDROBE_PATTERN_ID = "key-wardrobe-pattern-id"
 
@@ -28,6 +28,9 @@ class WardrobePatternDetailsFragment : Fragment() {
         setTitle(patternId)
         btnManageWardrobePattern.setOnClickListener {
             navigateTo(R.id.wardrobePatternDetailsToManageWardrobePattern, ManageWardrobePatternFragment.createExtras(patternId))
+        }
+        btnPatternElements.setOnClickListener {
+            navigateTo(R.id.wardrobePatternDetailsToElementPatternGroup, ElementPatternGroupFragment.createExtras(patternId))
         }
         layoutGallery.adapter = WardrobePatternGalleryAdapter().apply {
             setItem(

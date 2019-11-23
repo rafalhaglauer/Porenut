@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wardrobes.porenut.R
 import com.wardrobes.porenut.api.extension.fetchStateFullModel
-import com.wardrobes.porenut.data.pattern.WardrobePatternRepository
-import com.wardrobes.porenut.data.pattern.WardrobePatternRestRepository
+import com.wardrobes.porenut.data.pattern.wardrobe.WardrobePatternRepository
+import com.wardrobes.porenut.data.pattern.wardrobe.WardrobePatternRestRepository
 import com.wardrobes.porenut.domain.WardrobePattern
 import com.wardrobes.porenut.ui.common.Event
 import com.wardrobes.porenut.ui.common.extension.updateValue

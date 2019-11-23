@@ -20,9 +20,7 @@
         android:id="@+id/layoutContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:paddingBottom="@dimen/spaceUnderButton"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnManageElementPattern"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,70 +28,65 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/spacingMedium">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutWardrobeSymbol"
+                android:id="@+id/layoutElementPatternName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacingMedium"
-                android:hint="@string/l_symbol">
+                android:hint="@string/l_name">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtWardrobeSymbol"
+                    android:id="@+id/editElementPatternName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textCapCharacters"
-                    android:textAllCaps="true" />
+                    android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutWardrobeWidth"
+                android:id="@+id/layoutElementPatternLength"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacingMedium"
-                android:hint="@string/l_width">
+                android:layout_marginTop="@dimen/spacingMedium"
+                android:hint="@string/l_length_pattern">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtWardrobeWidth"
+                    android:id="@+id/editElementPatternLength"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
+                    android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutWardrobeHeight"
+                android:id="@+id/layoutElementPatternWidth"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacingMedium"
+                android:layout_marginTop="@dimen/spacingMedium"
+                android:hint="@string/l_width_pattern">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editElementPatternWidth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutElementPatternHeight"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacingMedium"
                 android:hint="@string/l_height">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtWardrobeHeight"
+                    android:id="@+id/editElementPatternHeight"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layoutWardrobeDepth"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacingMedium"
-                android:hint="@string/l_depth">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txtWardrobeDepth"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
+                    android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,7 +95,7 @@
     </ScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnManageWardrobe"
+        android:id="@+id/btnManageElementPattern"
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="@dimen/buttonHeight"
         android:layout_margin="@dimen/spacingMedium"
